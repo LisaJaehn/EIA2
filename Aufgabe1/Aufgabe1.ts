@@ -5,7 +5,7 @@ function Hallo() {
       
     document.getElementById("Type").innerHTML =
     
-      "Hallo " + name + "! Willkommen auf meiner Seite.";
+      "Servus" + name + "! Schöner Name!";
   }
       
 }
