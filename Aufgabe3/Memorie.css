@@ -1,0 +1,79 @@
+@import url("https://fonts.googleapis.com/css?family=Barlow");
+
+*{
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	font-family: "Barlow",sans-serif; 
+	font-size: 20px ;
+}
+
+#Spielfeld {
+	height: auto;
+	width: auto;
+	padding: 10px;
+	background-color: pink;
+	
+}
+
+#Spielfeld h2 {
+	color: white;
+	front-size: 30px;
+	text-align: center;
+}
+
+#Spielfeld > div{
+	position: relative;
+	margin: 5%;
+	height: auto;
+	width: auto;
+	display: flex;
+	flex-wrap: wrap;	
+}
+
+#Spielfeld div > div {
+	height: 144px;
+	width: 144px;
+	line-height: 144px;
+	margin: 0px 20px 20px 0px;
+	text-align: center;
+	line-height: 70px;
+	position: relative;
+	font-family: "Barlow",sans-serif; 	
+	font-size: 100%;
+}
+
+
+/*Spielinfo/ Footer*/
+
+#Spielerinfo{
+	background-color: white;
+	height: auto;
+	width: 100%;
+}
+
+/#Spielerinfo div > div {
+	height: 50px;
+	width: auto;
+	margin: 5px 5px 0px 25px;
+	float: left;
+	font-family: "Barlow",sans-serif; 
+}
+
+.hidden {
+	background-color: purple;
+	text-indent: -99999px;
+}
+
+.taken {
+	background-color: red;
+	transform: scale(0);
+}
+.visible{
+	background-color: white;
+  	pointer-events: auto;
+	
+}
+
