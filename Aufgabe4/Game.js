@@ -5,10 +5,10 @@ var Aufgabe_3;
     let numPlayers = 0;
     //Anzahl Kartenpaare
     let numPairs = 0;
-    //Neue Variablen für Karte 1 und 2 anlegen, als any, der Typ wird somit selbst ausgesucht
+    //Neue Variablen für die Id der Karten any, der Typ wird somit selbst ausgesucht
     let idCard1;
     let idCard2;
-    //Neue Variablen für die KLassen
+    //Neue Variablen für die KLassen der Karten
     let classCard1;
     let classCard2;
     //Variable counter anlegen

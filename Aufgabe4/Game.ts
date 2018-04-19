@@ -10,13 +10,13 @@ let numPlayers: number = 0;
 
 let numPairs: number = 0;  
 
-//Neue Variablen für Karte 1 und 2 anlegen, als any, der Typ wird somit selbst ausgesucht
+//Neue Variablen für die Id der Karten any, der Typ wird somit selbst ausgesucht
 
 let idCard1: any;
 
 let idCard2: any;
 
-//Neue Variablen für die KLassen
+//Neue Variablen für die KLassen der Karten
 
 let classCard1: any;
 
