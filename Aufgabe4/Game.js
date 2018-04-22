@@ -13,11 +13,11 @@ var Aufgabe_3;
     let classCard2;
     //Variable counter anlegen
     let counter = 0;
+    let l = 0;
     //Karten einen Inhalt geben
     let cardContent = ["Panda", "Koala", "Löwe", "Delfin", "Hase", "Bär", "Katze", "Hund", "Känguru", "Maus"];
     //Leeres Array um die Karten später hinein abspeichern zu können
     let cardArray = [];
-    let q = cardArray.length;
     //Arrays erstellen um  den Score und Anzahl der Spieler später abzuspeichern
     let player = [];
     let score = [0, 0, 0, 0]; //Punktestand = 0, ist vordefiniert
@@ -47,8 +47,7 @@ var Aufgabe_3;
                     document.getElementById(idCard2).classList.remove("visible");
                     document.getElementById(idCard1).classList.add("taken");
                     document.getElementById(idCard2).classList.add("taken");
-                    q--;
-                    graduation();
+                    l--;
                 }
                 else {
                     document.getElementById(idCard1).classList.remove("visible");
@@ -60,11 +59,6 @@ var Aufgabe_3;
             }, 2000);
             //Counter leeren
             counter = 0;
-        }
-    }
-    function graduation() {
-        if (q == 0) {
-            alert("Gratulation, du hast gewonnen!");
         }
     }
     //Funktion erstellen, damit alle Karten umgedreht sind beim Spielbeginn
@@ -154,6 +148,11 @@ var Aufgabe_3;
         //Ausgabe auf die Konsole
         console.log(childNodeHTML);
     }
+    function graduation() {
+        if (l == 0) {
+            alert("Gratualation, du hast gewonnen!");
+        }
+    }
     //Hauptfunktion wird erzeugt
     //Funtkion main aufstellen
     function main() {
@@ -191,6 +190,7 @@ var Aufgabe_3;
                 //Ansonsten ist i unwahr
                 i = false;
             }
+            l = numPairs;
         }
         //Schleife für die Kartenpaare erstellen, Verdopplung der Kartenpaare
         //Variable i wird definiert, i=0, ist kleiner als die Anzahl der Paare, i wird hochgezählt   

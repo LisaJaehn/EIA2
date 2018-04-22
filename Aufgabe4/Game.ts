@@ -26,6 +26,8 @@ let classCard2: any;
 
 let counter: number = 0;
 
+let l: number = 0;
+
 
 //Karten einen Inhalt geben
 
@@ -35,7 +37,7 @@ let cardContent: string[] = ["Panda", "Koala", "Löwe", "Delfin", "Hase", "Bär"
 
 let cardArray: string[] = [];
 
-let q: number = cardArray.length;
+
 
 //Arrays erstellen um  den Score und Anzahl der Spieler später abzuspeichern
 
@@ -70,7 +72,6 @@ if (counter == 0) {
     document.getElementById(target.id).classList.add("visible");
     console.log(counter);
     
-   
 
 //Timerfunktion, wie lange es dauert bis sich die Karten wieder umdrehen und die verschiednen Fälle
 
@@ -86,9 +87,7 @@ setTimeout (function() {
         document.getElementById(idCard1).classList.add("taken");
         document.getElementById(idCard2).classList.add("taken");
         
-        q--;
-        
-        graduation();
+        l--;
         
     }else {
         document.getElementById(idCard1).classList.remove("visible");
@@ -97,7 +96,6 @@ setTimeout (function() {
         
         document.getElementById(idCard1).classList.add("hidden");
         document.getElementById(idCard2).classList.add("hidden");
-        
         
     }
     
@@ -114,16 +112,7 @@ setTimeout (function() {
 
 }
 
-function graduation(): void {
-    
-if (q == 0){
-    
-    alert("Gratulation, du hast gewonnen!");
-    
-}
-}
-        
-    
+
 //Funktion erstellen, damit alle Karten umgedreht sind beim Spielbeginn
 
 function randomState(): string {
@@ -284,6 +273,14 @@ function playerInfo(): void {
     console.log(childNodeHTML);
 }
 
+function graduation(): void{
+    
+    if (l == 0){
+        alert("Gratualation, du hast gewonnen!")
+        
+    }
+}
+
 //Hauptfunktion wird erzeugt
 
 //Funtkion main aufstellen
@@ -315,8 +312,6 @@ function main(): void {
             
             i = false;
         }
-        
-      
     }    
   
     //Schleife für die Abfrage der Spielernamen wird erzeugt, Variable i wird definiert, i=0, i ist kleiner als die Anzahl der Spieler, i wird hochgezählt
@@ -355,6 +350,8 @@ function main(): void {
             
             i = false;
         }
+        
+        l = numPairs;
     }  
     
 
@@ -381,8 +378,6 @@ playerInfo();
 
 
 }
-
-
 
 // Add EventListener - Main() wird ausgeführt, sobald das DOM vollständig geladen ist
 
