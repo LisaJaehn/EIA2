@@ -87,7 +87,7 @@ setTimeout (function() {
         document.getElementById(idCard1).classList.add("taken");
         document.getElementById(idCard2).classList.add("taken");
         
-        l--;
+        l++;
         
     }else {
         document.getElementById(idCard1).classList.remove("visible");
@@ -103,13 +103,13 @@ setTimeout (function() {
     
    }, 2000);
        
+graduation();
 
     //Counter leeren
 
     counter = 0;
     
     }
-
 }
 
 
@@ -275,7 +275,7 @@ function playerInfo(): void {
 
 function graduation(): void{
     
-    if (l == 0){
+    if (l == numPairs){
         alert("Gratualation, du hast gewonnen!")
         
     }
@@ -351,7 +351,6 @@ function main(): void {
             i = false;
         }
         
-        l = numPairs;
     }  
     
 

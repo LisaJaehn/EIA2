@@ -47,7 +47,7 @@ var Aufgabe_3;
                     document.getElementById(idCard2).classList.remove("visible");
                     document.getElementById(idCard1).classList.add("taken");
                     document.getElementById(idCard2).classList.add("taken");
-                    l--;
+                    l++;
                 }
                 else {
                     document.getElementById(idCard1).classList.remove("visible");
@@ -57,6 +57,7 @@ var Aufgabe_3;
                 }
                 //Zeit bis sich die Karten wieder umdrehen -> 2sek.
             }, 2000);
+            graduation();
             //Counter leeren
             counter = 0;
         }
@@ -149,7 +150,7 @@ var Aufgabe_3;
         console.log(childNodeHTML);
     }
     function graduation() {
-        if (l == 0) {
+        if (l == numPairs) {
             alert("Gratualation, du hast gewonnen!");
         }
     }
@@ -190,7 +191,6 @@ var Aufgabe_3;
                 //Ansonsten ist i unwahr
                 i = false;
             }
-            l = numPairs;
         }
         //Schleife für die Kartenpaare erstellen, Verdopplung der Kartenpaare
         //Variable i wird definiert, i=0, ist kleiner als die Anzahl der Paare, i wird hochgezählt   
