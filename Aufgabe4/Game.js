@@ -13,6 +13,7 @@ var Aufgabe_3;
     let classCard2;
     //Variable counter anlegen
     let counter = 0;
+    //Variable l für die Gratulation erstellen
     let l = 0;
     //Karten einen Inhalt geben
     let cardContent = ["Panda", "Koala", "Löwe", "Delfin", "Hase", "Bär", "Katze", "Hund", "Känguru", "Maus"];
@@ -47,7 +48,10 @@ var Aufgabe_3;
                     document.getElementById(idCard2).classList.remove("visible");
                     document.getElementById(idCard1).classList.add("taken");
                     document.getElementById(idCard2).classList.add("taken");
+                    //Hochzählen, wieviele Paare richtig sind
                     l++;
+                    //Funktion graduation aufrufen
+                    graduation();
                 }
                 else {
                     document.getElementById(idCard1).classList.remove("visible");
@@ -57,7 +61,6 @@ var Aufgabe_3;
                 }
                 //Zeit bis sich die Karten wieder umdrehen -> 2sek.
             }, 2000);
-            graduation();
             //Counter leeren
             counter = 0;
         }
@@ -149,8 +152,11 @@ var Aufgabe_3;
         //Ausgabe auf die Konsole
         console.log(childNodeHTML);
     }
+    //Funktion graduation erstellen
     function graduation() {
+        //Es wird geprüft, ob die Anzahl der richtigen Paare die Anzahl auf dem Spielfeld sind
         if (l == numPairs) {
+            //Alertbox erstellen
             alert("Gratualation, du hast gewonnen!");
         }
     }
@@ -177,7 +183,7 @@ var Aufgabe_3;
             player[i] = prompt("Bitte Spielernamen " + (i + 1) + " eingeben");
             //Wenn es keinen Spieler gibt, wird ein Spieler erzeugt, welcher Mickey heißt
             if (player[i] == null) {
-                player[i] = "Mickey";
+                player[i] = "Josef";
             }
         }
         //Kartenpaarabfrage erstellen 

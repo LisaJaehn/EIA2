@@ -26,8 +26,9 @@ let classCard2: any;
 
 let counter: number = 0;
 
-let l: number = 0;
+//Variable l für die Gratulation erstellen
 
+let l: number = 0;
 
 //Karten einen Inhalt geben
 
@@ -37,13 +38,10 @@ let cardContent: string[] = ["Panda", "Koala", "Löwe", "Delfin", "Hase", "Bär"
 
 let cardArray: string[] = [];
 
-
-
 //Arrays erstellen um  den Score und Anzahl der Spieler später abzuspeichern
 
 let player: string[] = [];
 let score: number[] = [0, 0, 0, 0]; //Punktestand = 0, ist vordefiniert
-
 
 window.addEventListener("click", init);
 
@@ -72,11 +70,9 @@ if (counter == 0) {
     document.getElementById(target.id).classList.add("visible");
     console.log(counter);
     
-
 //Timerfunktion, wie lange es dauert bis sich die Karten wieder umdrehen und die verschiednen Fälle
 
-    
-setTimeout (function() {
+    setTimeout (function() {
 
 
     if (classCard1 == classCard2) {
@@ -87,7 +83,13 @@ setTimeout (function() {
         document.getElementById(idCard1).classList.add("taken");
         document.getElementById(idCard2).classList.add("taken");
         
+        //Hochzählen, wieviele Paare richtig sind
+        
         l++;
+        
+        //Funktion graduation aufrufen
+        
+        graduation();
         
     }else {
         document.getElementById(idCard1).classList.remove("visible");
@@ -103,15 +105,12 @@ setTimeout (function() {
     
    }, 2000);
        
-graduation();
-
     //Counter leeren
 
     counter = 0;
     
     }
 }
-
 
 //Funktion erstellen, damit alle Karten umgedreht sind beim Spielbeginn
 
@@ -121,7 +120,6 @@ function randomState(): string {
     
     return "hidden";
 }
-
 
 //Karten mischen -> Shuffle Funktion (Karten sollen durchgemischt werden, es sollen nicht immer die selben Karten auf dem Spielfeld erscheinen)        
 
@@ -205,7 +203,6 @@ for (let i: number = 0; i < cardArray.length; i++) {
 
     childNodeHTML += "</div>";
     
-    
 //Inhalt der Knoten mit childNodeHTML befüllen    
     
 node.innerHTML += childNodeHTML;
@@ -213,8 +210,8 @@ node.innerHTML += childNodeHTML;
 //Ausgabe auf die Konsole
 
 console.log(childNodeHTML); 
-}
 
+}
 
 //Spieleranzeige erstellen
 
@@ -273,9 +270,16 @@ function playerInfo(): void {
     console.log(childNodeHTML);
 }
 
-function graduation(): void{
+    //Funktion graduation erstellen
+    
+    function graduation(): void{
+        
+    //Es wird geprüft, ob die Anzahl der richtigen Paare die Anzahl auf dem Spielfeld sind
     
     if (l == numPairs){
+        
+        //Alertbox erstellen
+        
         alert("Gratualation, du hast gewonnen!")
         
     }
@@ -291,7 +295,6 @@ function main(): void {
     
     console.log("main");
    
-
 //Funtion für die Spielerabfrage erstellen
 
     //Variable i definieren,, wenn i wahr ist
@@ -325,11 +328,9 @@ function main(): void {
         //Wenn es keinen Spieler gibt, wird ein Spieler erzeugt, welcher Mickey heißt
         
         if (player[i] == null) {
-            player[i] = "Mickey";
+            player[i] = "Josef";
         }
     }
-    
-    
     
     //Kartenpaarabfrage erstellen 
     
@@ -350,10 +351,8 @@ function main(): void {
             
             i = false;
         }
-        
-    }  
+      }  
     
-
 //Schleife für die Kartenpaare erstellen, Verdopplung der Kartenpaare
  
 //Variable i wird definiert, i=0, ist kleiner als die Anzahl der Paare, i wird hochgezählt   
@@ -366,7 +365,6 @@ for (let i: number = 0; i < numPairs; i++) {
      cardArray.push(cardContent[i]);    
 }    
 
-
 //Spielbrett erzeugen 
 
 createGame();
@@ -374,7 +372,6 @@ createGame();
 //Spielerinfo erzeugen
 
 playerInfo();
-
 
 }
 
