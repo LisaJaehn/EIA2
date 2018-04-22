@@ -26,6 +26,7 @@ let classCard2: any;
 
 let counter: number = 0;
 
+
 //Karten einen Inhalt geben
 
 let cardContent: string[] = ["Panda", "Koala", "Löwe", "Delfin", "Hase", "Bär", "Katze", "Hund", "Känguru", "Maus"];
@@ -33,6 +34,8 @@ let cardContent: string[] = ["Panda", "Koala", "Löwe", "Delfin", "Hase", "Bär"
 //Leeres Array um die Karten später hinein abspeichern zu können
 
 let cardArray: string[] = [];
+
+let q: number = cardArray.length;
 
 //Arrays erstellen um  den Score und Anzahl der Spieler später abzuspeichern
 
@@ -65,12 +68,12 @@ if (counter == 0) {
     document.getElementById(target.id).classList.add("visible");
     console.log(counter);
     
-
+   
 
 //Timerfunktion, wie lange es dauert bis sich die Karten wieder umdrehen und die verschiednen Fälle
 
+    
 setTimeout (function() {
-
 
 
     if (classCard1 == classCard2) {
@@ -80,6 +83,10 @@ setTimeout (function() {
         
         document.getElementById(idCard1).classList.add("taken");
         document.getElementById(idCard2).classList.add("taken");
+        
+        q--;
+        
+        graduation();
         
     }else {
         document.getElementById(idCard1).classList.remove("visible");
@@ -93,12 +100,24 @@ setTimeout (function() {
     }
     
    }, 2000);
-        
+       
+
+    //Counter leeren
+
     counter = 0;
     
     }
+
 }
 
+function graduation(): void {
+    
+if (q == 0){
+    
+    alert("Josef ist der Beste");
+    
+}
+}
         
     
 //Funktion erstellen, damit alle Karten umgedreht sind beim Spielbeginn
@@ -193,6 +212,7 @@ for (let i: number = 0; i < cardArray.length; i++) {
 
     childNodeHTML += "</div>";
     
+    
 //Inhalt der Knoten mit childNodeHTML befüllen    
     
 node.innerHTML += childNodeHTML;
@@ -201,6 +221,7 @@ node.innerHTML += childNodeHTML;
 
 console.log(childNodeHTML); 
 }
+
 
 //Spieleranzeige erstellen
 
@@ -268,6 +289,7 @@ function main(): void {
     //Ausgabe auf die Konsole
     
     console.log("main");
+   
 
 //Funtion für die Spielerabfrage erstellen
 
@@ -329,7 +351,8 @@ function main(): void {
             
             i = false;
         }
-    }    
+    }  
+    
 
 //Schleife für die Kartenpaare erstellen, Verdopplung der Kartenpaare
  
@@ -343,6 +366,7 @@ for (let i: number = 0; i < numPairs; i++) {
      cardArray.push(cardContent[i]);    
 }    
 
+
 //Spielbrett erzeugen 
 
 createGame();
@@ -350,7 +374,11 @@ createGame();
 //Spielerinfo erzeugen
 
 playerInfo();
+
+
 }
+
+
 
 // Add EventListener - Main() wird ausgeführt, sobald das DOM vollständig geladen ist
 

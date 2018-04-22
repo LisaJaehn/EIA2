@@ -17,6 +17,7 @@ var Aufgabe_3;
     let cardContent = ["Panda", "Koala", "Löwe", "Delfin", "Hase", "Bär", "Katze", "Hund", "Känguru", "Maus"];
     //Leeres Array um die Karten später hinein abspeichern zu können
     let cardArray = [];
+    let q = cardArray.length;
     //Arrays erstellen um  den Score und Anzahl der Spieler später abzuspeichern
     let player = [];
     let score = [0, 0, 0, 0]; //Punktestand = 0, ist vordefiniert
@@ -45,6 +46,8 @@ var Aufgabe_3;
                     document.getElementById(idCard2).classList.remove("visible");
                     document.getElementById(idCard1).classList.add("taken");
                     document.getElementById(idCard2).classList.add("taken");
+                    q--;
+                    graduation();
                 }
                 else {
                     document.getElementById(idCard1).classList.remove("visible");
@@ -53,7 +56,13 @@ var Aufgabe_3;
                     document.getElementById(idCard2).classList.add("hidden");
                 }
             }, 2000);
+            //Counter leeren
             counter = 0;
+        }
+    }
+    function graduation() {
+        if (q == 0) {
+            alert("Josef ist der Beste");
         }
     }
     //Funktion erstellen, damit alle Karten umgedreht sind beim Spielbeginn
