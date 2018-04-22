@@ -43,13 +43,15 @@ let player: string[] = [];
 let score: number[] = [0, 0, 0, 0]; //Punktestand = 0, ist vordefiniert
 
 
-//Funktion erstellen 
-
 window.addEventListener("click", init);
+
+//Funktion erstellen 
 
 function init (_event: Event): void {
 let target: HTMLDivElement = <HTMLDivElement>_event.target;
-    
+   
+//Konsolenausgabe
+
 console.log(_event);
 
 if (counter == 0) {
@@ -99,6 +101,8 @@ setTimeout (function() {
         
     }
     
+    //Zeit bis sich die Karten wieder umdrehen -> 2sek.
+    
    }, 2000);
        
 
@@ -114,7 +118,7 @@ function graduation(): void {
     
 if (q == 0){
     
-    alert("Josef ist der Beste");
+    alert("Gratulation, du hast gewonnen!");
     
 }
 }

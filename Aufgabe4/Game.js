@@ -21,10 +21,11 @@ var Aufgabe_3;
     //Arrays erstellen um  den Score und Anzahl der Spieler später abzuspeichern
     let player = [];
     let score = [0, 0, 0, 0]; //Punktestand = 0, ist vordefiniert
-    //Funktion erstellen 
     window.addEventListener("click", init);
+    //Funktion erstellen 
     function init(_event) {
         let target = _event.target;
+        //Konsolenausgabe
         console.log(_event);
         if (counter == 0) {
             document.getElementById(target.id).classList.remove("hidden");
@@ -55,6 +56,7 @@ var Aufgabe_3;
                     document.getElementById(idCard1).classList.add("hidden");
                     document.getElementById(idCard2).classList.add("hidden");
                 }
+                //Zeit bis sich die Karten wieder umdrehen -> 2sek.
             }, 2000);
             //Counter leeren
             counter = 0;
@@ -62,7 +64,7 @@ var Aufgabe_3;
     }
     function graduation() {
         if (q == 0) {
-            alert("Josef ist der Beste");
+            alert("Gratulation, du hast gewonnen!");
         }
     }
     //Funktion erstellen, damit alle Karten umgedreht sind beim Spielbeginn
