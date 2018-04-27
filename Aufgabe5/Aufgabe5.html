@@ -1,0 +1,85 @@
+<!--Aufgabe: (Aufgabe 1)
+		Name: Lisa J�hn
+		Matrikel: (257455)
+		
+		Datum: (22.03.2018)
+		Hiermit versichere ich, dass ich diesen
+		Code selbst geschrieben habe. Er wurde
+		nicht kopiert und auch nicht diktiert.-->
+
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Memory</title>
+    <script src="Aufgabe5.js"></script>
+    <link rel="stylesheet" href="Aufgabe5.css"/>
+</head>
+<body>
+
+<div id="starteinstellungen">
+
+    <h2>Memory</h2>
+
+    <div id="spieleranzahl">
+        <h3>Spieleranzahl</h3>
+        <input type="radio" name="radio" value="radio1" id="1" checked/>
+        <label for="1">1</label>
+        <input type="radio" name="radio" value="radio2" id="2"/>
+        <label for="2">2</label>
+        <input type="radio" name="radio" value="radio1" id="3"/>
+        <label for="3">3</label>
+        <input type="radio" name="radio" value="radio2" id="4"/>
+        <label for="4">4</label>
+    </div>
+
+    <hr>
+
+    <div id="name">
+        <h3>Name der Spieler</h3>
+        <h4>Spieler 1</h4>
+        <input id="player1" type="text" name="Text" placeholder="Enter your name here" value="" required/>
+        <h4>Spieler 2</h4>
+        <input id="player2" type="text" name="Text" placeholder="Enter your name here" value=""/>
+        <h4>Spieler 3</h4>
+        <input id="player3" type="text" name="Text" placeholder="Enter your name here" value=""/>
+        <h4>Spieler 4</h4>
+        <input id="player4" type="text" name="Text" placeholder="Enter your name here" value=""/>
+    </div>
+
+    <hr>
+
+    <div id="kartensatz">
+        <h3>Kartensatz</h3>
+        <input type="radio" name="Radiogroup" value="radio1" id="radio5" checked/>
+        <label for="radio5">Tiere</label>
+        <input type="radio" name="Radiogroup" value="radio2" id="radio6"/>
+        <label for="radio6">Planeten</label>
+        <input type="radio" name="Radiogroup" value="radio3" id="radio7"/>
+        <label for="radio7">Musikgenres</label>
+    </div>
+
+    <hr>
+
+    <div >
+        <h3>Kartenpaare</h3>
+        <input id="kartenpaare" type="range" name="Stepper" step="1" min="5" max="10" value="5" oninput="Aufgabe_5.onInputEvent(this.value)"/>
+        <label for="kartenpaare" id="kartenpaare-label">5</label>
+    </div>
+
+    <hr>
+
+    <div id="spielstart">
+        <button onclick="Aufgabe_5.main()">Spiel starten</button>
+    </div>
+
+</div>
+
+<div id="Spielbrett">
+    <div id="Spielfeld"></div>
+    <div id="Spielerinfo"></div>
+</div>
+
+</body>
+</html>
