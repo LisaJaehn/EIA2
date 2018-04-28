@@ -31,7 +31,7 @@ namespace L05_Interfaces {
             matrikel: parseInt( matrikel ),
             age: parseInt( inputs[3].value ),
             gender: genderButton.checked,
-            studiengang: document.getElementsByTagName( "select" ).item( 0 ).value
+            studiengang: document.getElementsByTagName( "select" ).item( 0 ).value,
         };
 
 
@@ -113,7 +113,7 @@ namespace L05_Interfaces {
         //Keine Übereinstimmung mit Student
 
         } else {
-            alert( "Es wurde kein Student gefunden" );
+            alert( "Es wurde kein Student gefunden, bitte versuchen sie es noch einmal." );
         }
     }
 }
