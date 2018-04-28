@@ -1,4 +1,4 @@
-namespace L04_Interfaces {
+namespace L05_Interfaces {
     // Struktur des heterogenen assoziativen Arrays als Datensatz für eine studierende Person
     export interface Studi {
         name: string;

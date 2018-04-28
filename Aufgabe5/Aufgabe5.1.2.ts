@@ -1,4 +1,4 @@
-namespace L04_Interfaces {
+namespace L05_Interfaces {
     window.addEventListener( "load", init );
 
     function init( _event: Event ): void {
@@ -31,7 +31,7 @@ namespace L04_Interfaces {
             matrikel: parseInt( matrikel ),
             age: parseInt( inputs[3].value ),
             gender: genderButton.checked,
-            studiengang: inputs[6].value,
+            studiengang: document.getElementsByTagName( "select" ).item( 0 ).value
         };
 
 
@@ -48,36 +48,15 @@ namespace L04_Interfaces {
         studiSimpleArray.push( studi );
     }
 
-    
-  //Funktion, um Studenten nach Matrikelnummer zu suchen
-    
-    function search(_event: Event): void {
-        
-        //Variable output definieren
-        
-        let output: HTMLTextAreaElement = document.getElementsByTagName("textarea")[0];
-        output.value = "";
-        
-        // for-in-Schleife iteriert über die Schlüssel des assoziativen Arrays
-        
-        for (let matrikel in studiHomoAssoc) {      // Besonderheit: Type-Annotation nicht erlaubt, ergibt sich aus der Interface-Definition 
-            let studi: Studi = studiHomoAssoc[matrikel];
-            let line: string = matrikel + ": ";
-            line += studi.name + ", " + studi.firstname + ", " + studi.age + " Jahre ";
-            line += studi.gender ? ", (M)" : ", (F)";
-            line += studi.studiengang + ": ";
-            output.value += line + "\n";
-        
-}
-    }
+
 
     //Funktion Ausgabe der Information
 
     function refresh( _event: Event ): void {
-        let output: HTMLTextAreaElement = document.getElementsByTagName( "textarea" )[0];
+        let output: HTMLTextAreaElement = document.getElementsByTagName( "textarea" )[1];
         output.value = "";
         // for-in-Schleife iteriert über die Schlüssel des assoziativen Arrays
-        
+
         for ( let matrikel in studiHomoAssoc ) {  // Besonderheit: Type-Annotation nicht erlaubt, ergibt sich aus der Interface-Definition
             let studi: Studi = studiHomoAssoc[matrikel];
             let line: string = matrikel + ": ";
@@ -96,5 +75,44 @@ namespace L04_Interfaces {
         console.log( studiHomoAssoc );
         console.groupEnd();
     }
-    
+
+    //Funktion, um Studenten nach Matrikelnummer zu suchen
+
+    //Funktion search aufstellen
+
+    function search( _event: Event ): void {
+
+        //Auf erste Textarea zugreifen
+
+        let output: HTMLTextAreaElement = document.getElementsByTagName( "textarea" )[0];
+
+        output.value = "";
+
+        //Zugriff auf Inputs
+
+        let inputs: NodeListOf<HTMLInputElement> = document.getElementsByTagName( "input" );
+
+        //Matrikel wird aufgerufen durch den 6. Input
+
+        let matrikel: string = inputs[6].value;
+
+        //Matrikelnummer wird gespeichert
+
+        let studi: Studi = studiHomoAssoc[matrikel];
+
+        //Bei keiner korrekten Matrikelnummer erscheint eine Alertbox
+
+        if ( typeof studi === "undefined" ) {
+            alert( "Es wurde kein Student gefunden" );
+
+            //Bei korrekter Matrikelnummer werden die Daten im Textfeld ausgegeben
+
+        } else {
+            let line: string = matrikel + ": ";
+            line += studi.name + ", " + studi.firstname + ", " + studi.age + " Jahre ";
+            line += studi.gender ? ", (M)" : ", (F)";
+            line += studi.studiengang + ": ";
+            output.value += line + "\n";
+        }
+    }
 }
