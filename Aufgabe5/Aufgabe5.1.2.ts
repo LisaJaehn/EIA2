@@ -100,19 +100,20 @@ namespace L05_Interfaces {
 
         let studi: Studi = studiHomoAssoc[matrikel];
 
-        //Bei keiner korrekten Matrikelnummer erscheint eine Alertbox
+        if ( studi ) {
+            
+            //Übereinstimmung mit Student
 
-        if ( typeof studi === "undefined" ) {
-            alert( "Es wurde kein Student gefunden" );
-
-            //Bei korrekter Matrikelnummer werden die Daten im Textfeld ausgegeben
-
-        } else {
             let line: string = matrikel + ": ";
             line += studi.name + ", " + studi.firstname + ", " + studi.age + " Jahre ";
             line += studi.gender ? ", (M)" : ", (F)";
             line += studi.studiengang + ": ";
             output.value += line + "\n";
+            
+        //Keine Übereinstimmung mit Student
+
+        } else {
+            alert( "Es wurde kein Student gefunden" );
         }
     }
 }

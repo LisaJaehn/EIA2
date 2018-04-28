@@ -67,16 +67,16 @@ var L05_Interfaces;
         let matrikel = inputs[6].value;
         //Matrikelnummer wird gespeichert
         let studi = L05_Interfaces.studiHomoAssoc[matrikel];
-        //Bei keiner korrekten Matrikelnummer erscheint eine Alertbox
-        if (typeof studi === "undefined") {
-            alert("Es wurde kein Student gefunden");
-        }
-        else {
+        if (studi) {
+            //Übereinstimmung mit Student
             let line = matrikel + ": ";
             line += studi.name + ", " + studi.firstname + ", " + studi.age + " Jahre ";
             line += studi.gender ? ", (M)" : ", (F)";
             line += studi.studiengang + ": ";
             output.value += line + "\n";
+        }
+        else {
+            alert("Es wurde kein Student gefunden");
         }
     }
 })(L05_Interfaces || (L05_Interfaces = {}));
