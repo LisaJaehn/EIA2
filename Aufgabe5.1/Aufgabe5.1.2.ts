@@ -38,6 +38,9 @@ namespace L05_Interfaces {
 
         console.log( studi );
         console.log( studi.age );
+        
+        
+        
         console.log( studi["age"] );
 
         // Datensatz im assoziativen Array unter der Matrikelnummer speichern
