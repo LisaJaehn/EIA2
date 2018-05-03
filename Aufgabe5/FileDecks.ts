@@ -18,7 +18,7 @@ namespace Aufgabe_5 {
     export function populateDecks() {
         decks["animals"] = {
             name: "animals",
-            content: ["Panda", "Koala", "Löwe", "Delfin", "Hase", "Bär", "Katze", "Hund", "Känguru", "Maus"],
+            content: ["Panda", "Koala", "Löwe", "Delfin", "Hase", "Bär", "Katze", "Hund", "Wal", "Kaninchen"],
             color: "hsla(180, 100%, 80%, 0.8)",
             font: "Arial",
             size: 20,
@@ -27,7 +27,7 @@ namespace Aufgabe_5 {
 
         decks["planets"] = {
             name: "planets",
-            content: ["Merkur", "Venus", "Erde", "Mars", "Jupiter", "Saturn", "Neptun", "Uranus", "Tatooine", "Endor"],
+            content: ["Merkur", "Venus", "Erde", "Mars", "Jupiter", "Saturn", "Neptun", "Uranus", "Tatooine", "Endor", "Ahca-To", "Alderaan"],
             color: "hsla(240, 100%, 50%, 0.8)",
             font: "Times New Roman",
             size: 30,
@@ -36,7 +36,7 @@ namespace Aufgabe_5 {
 
         decks["music"] = {
             name: "music",
-            content: ["Metal", "Hip-Hop", "Elektro", "Lo-Fi", "Pop", "Rock", "Dance", "Techno", "Jazz", "Rap", "Klassik"],
+            content: ["Metal", "Hip-Hop", "Elektro", "Lo-Fi", "Pop", "Rock", "Dance", "Techno", "Jazz", "Rap", "Klassik","Indie", "Ska", "K-Pop"],
             color: "hsla(35, 100%, 50%, 0.8)",
             font: "Calibri",
             size: 25,
