@@ -1,3 +1,4 @@
+
 namespace Aufgabe_5 {
 
     //Variablen definieren
@@ -8,16 +9,21 @@ namespace Aufgabe_5 {
 
     //Anzahl Kartenpaare
 
-    let numPairs: number = 0;
+    export let numPairs: number = 5;
 
     //Array welches alle offenen Karten trackt.
 
     let openCards: HTMLElement[] = [];
 
+    //Variable des momentanen Kartendecks
+
+    let currentCardDeck: Deck = undefined;
+
 
     //Variable counter anlegen
 
     let counter: number = 0;
+
 
     //Variable l für die Gratulation erstellen
 
@@ -25,13 +31,6 @@ namespace Aufgabe_5 {
 
     let nehmeKlicksAn: boolean = true;
 
-
-    //Karten einen Inhalt geben
-
-
-    let cardsAnimals: string[] = ["Panda", "Koala", "Löwe", "Delfin", "Hase", "Bär", "Katze", "Hund", "Känguru", "Maus"];
-    let cardsPlanets: string[] = ["Merkur", "Venus", "Erde", "Mars", "Jupiter", "Saturn", "Neptun", "Uranus", "Tatooine", "Endor"];
-    let cardsMusik: string[] = ["Metal", "Hip-Hop", "Elektro", "Lo-Fi", "Pop", "Rock", "Dance", "Techno", "Jazz", "Rap", "Klassik"];
 
     //Leeres Array um die Karten später hinein abspeichern zu können
 
@@ -43,6 +42,8 @@ namespace Aufgabe_5 {
     let score: number[] = [0, 0, 0, 0]; //Punktestand = 0, ist vordefiniert
 
     window.addEventListener( "click", verarbeiteKlick );
+
+    populateDecks();
 
 
     //Funktion erstellen
@@ -150,7 +151,7 @@ namespace Aufgabe_5 {
 
     //Funktion erstellen, damit alle Karten umgedreht sind beim Spielbeginn
 
-    function randomState(): string {
+    export function randomState(): string {
 
         //Alle Karten sind umgedreht
 
@@ -202,52 +203,42 @@ namespace Aufgabe_5 {
         //Funktion shuffleCards wird aufgerufen, damit die Karten bei jedem Spiel gemischelt werden
 
         shuffleCards();
+        
+        //Überschrift wird erstellt
 
-        //HTML string
+        let header = document.createElement("h2");
+        header.innerText = "Spielfeld";
+        node.appendChild(header);
 
-        let childNodeHTML: string = "";
+        //Spielfeld innerhalb eines Divs
 
-        //H2 erzeugen
-
-        childNodeHTML += "<h2>Spielfeld</h2>";
-
-        //Div erzeugen
-
-        childNodeHTML += "<div>";
-
-        //Schleife erstellen, i=0, muss kleiner als die cardArray Länge sein und wird hochgezählt
+        let spielFeld = document.createElement("div");
 
         for ( let i: number = 0; i < cardArray.length; i++ ) {
 
-            //Div öffnen
+            let card = document.createElement("div");
+            card.id = i.toString();
+            card.setAttribute("attr", i.toString());
 
+            card.classList.add(cardArray[i]);
+            card.classList.add(randomState());
 
-            //Divs bekommen ein Attribut, zur Zuordung des Inhaltes und zur Verdeckung (Jede id heißt anders durch das +1)
+            card.textContent = cardArray[i];
+            
+            //CSS wird definiert
 
-            childNodeHTML += "<div id = " + i + " attr = " + i + " class = ' ";
+            card.style.backgroundColor = currentCardDeck.color;
+            card.style.fontFamily = currentCardDeck.font;
+            card.style.fontSize = currentCardDeck.size + "px";
+            card.style.color = currentCardDeck.textColor;
 
-            //Aufruf der Funktion randomState für den Status der Karte
-
-            childNodeHTML += cardArray[i] + " " + randomState();
-            childNodeHTML += " ' >";
-
-            //cardArray wird aufgerufen
-
-            childNodeHTML += cardArray[i];
-            childNodeHTML += "</div>";
+            spielFeld.appendChild(card);
         }
 
-        //div schließen
-
-        childNodeHTML += "</div>";
-
-        //Inhalt der Knoten mit childNodeHTML befüllen    
-
-        node.innerHTML += childNodeHTML;
+        node.appendChild(spielFeld);
 
         //Ausgabe auf die Konsole
 
-        console.log( childNodeHTML );
 
     }
 
@@ -330,45 +321,60 @@ namespace Aufgabe_5 {
     export function main(): void {
 
         //Funtion für die Spielerabfrage erstellen
+        
+        //Variable für Spielernzahl definieren
 
         let spielerAnzahl: number;
+    
+        //Variable collection als NodeListOfElement
+    
+        //NodeList Objekte sind Sammlungen von Knoten
         
         let collection: NodeListOf<Element> = document.getElementById("spieleranzahl").getElementsByTagName("input");
 
+        // i=0, größer als die Länge von collection und wird hochgezählt
+    
         for (let i = 0; i < collection.length; i++) {
+
+            //Spieleranzahl wird hochgezählt 
+            
             if ((<HTMLInputElement>collection[i]).checked) {
                 spielerAnzahl = i + 1;
                 break;
             }
         }
+        
+        //Eingabe Spielernamen
 
         collection = document.getElementById("name").getElementsByTagName("input");
 
+        //Wenn kein Spielername eingegeben wurde, heißt der Spieler Jeff
+        
         for (let i = 0; i < collection.length; i++) {
             if ((<HTMLInputElement>collection[i]).value == "" && i == 0) {
                 playerNames.push("Jeff")
             }
+            
+            //Ansonsten wird der Spielername ins Spiel gepusht
+            
             else if ((<HTMLInputElement>collection[i]).value != "") {
                 playerNames.push((<HTMLInputElement>collection[i]).value)
             }
         }
+        
+        //Auswahl des Kartensatzes
 
         collection = document.getElementById("kartensatz").getElementsByTagName("input");
 
-        for (let i = 0; i < collection.length; i++) {
-            if ((<HTMLInputElement>collection[i]).checked) {
-                switch (i) {
-                    case 0: fuegeKartenHinzu(cardsAnimals); break;
-                    case 1: fuegeKartenHinzu(cardsPlanets); break;
-                    case 2: fuegeKartenHinzu(cardsMusik); break;
-                }
-            }
-        }
+        
+        //Wenn beim Kartendeck nichts ausgewählt wird, erscheint automatisch das Kartendeck "animals"
 
+        if (currentCardDeck == undefined)
+            currentCardDeck = decks["animals"];
+        
+        //Karten werden erzeugt
 
-
-
-
+        populateCardArray(currentCardDeck.content);
 
         //Spielbrett erzeugen 
 
@@ -377,22 +383,83 @@ namespace Aufgabe_5 {
         //Spielerinfo erzeugen
 
         playerInfo();
+        
+        //Starteinstellung wird nach der Einstellung gelöscht
 
         document.getElementById("starteinstellungen").remove()
 
     }
+    
+    //Für den Kartenpaare Slider
+    
 
     export function onInputEvent(value: number) {
         document.getElementById("kartenpaare-label").innerText = value.toString();
         numPairs = value;
     }
 
-    function fuegeKartenHinzu(karten: string[]) {
+    //Karten werden hinzugefügt
+    
+    function populateCardArray(karten: string[]) {
+        
+        //Kartenpaare werden erzeugt
 
         for (let i = 0; i < numPairs; i++) {
             cardArray.push(karten[i]);
             cardArray.push(karten[i]);
         }
 
+    }
+
+    //Für Auswahl des Kartensatzes, damit sich die Länge anpasst
+    
+    export function bearbeiteKartenSatzKlick(element: HTMLInputElement) {
+        currentCardDeck = decks[element.value];
+        repopulateCardForm();
+    }
+    
+    //Fehlererkennung (Slider ansich ändert sich)
+
+    function repopulateCardForm() {
+        let kartenPaareElement = <HTMLInputElement>document.getElementById("kartenpaare");
+        kartenPaareElement.max = currentCardDeck.content.length.toString();
+
+        let maxWert = currentCardDeck.content.length;
+        let momentanerWert = parseInt(kartenPaareElement.value);
+
+        if (maxWert < momentanerWert) {
+            kartenPaareElement.value = maxWert.toString()
+        }
+
+        //Update des HTML (Zahl neben dem Slider ändert sich)
+        
+        document.getElementById("kartenpaare-label").innerText = kartenPaareElement.value;
+    }
+    
+    //Spieleranzahl und Spielername
+
+    export function bearbeiteSpielerZahlKlick(element: HTMLInputElement) {
+        
+        //parseInt = String wird zu einer ganzen Zahl umgewandelt
+        
+        let spielerZahl = parseInt(element.value);
+
+        for (let i = 1; i <= 4; i++) {
+            
+            //`player${i}`: Innerhalb eines String wird Javascripts aufgerufen, zur Bearbeitung  
+            
+            let inputElement = <HTMLInputElement>document.getElementById(`player${i}`);
+            let labelElement = document.getElementById(`player${i}-label`);
+            if (i <= spielerZahl) {
+                inputElement.disabled = false;
+                labelElement.style.opacity = "1";
+
+            }
+            else {
+                inputElement.disabled = true;
+                labelElement.style.opacity = "0.33";
+                inputElement.value = "";
+            }
+        }
     }
 }

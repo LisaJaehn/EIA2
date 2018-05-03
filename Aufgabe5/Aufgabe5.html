@@ -13,6 +13,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Memory</title>
+    <script src="FileDecks.js"></script>
+    <script src="Players.js"></script>
     <script src="Aufgabe5.js"></script>
     <link rel="stylesheet" href="Aufgabe5.css"/>
 </head>
@@ -24,13 +26,18 @@
 
     <div id="spieleranzahl">
         <h3>Spieleranzahl</h3>
-        <input type="radio" name="radio" value="radio1" id="1" checked/>
+        
+        <!-- Checked, damit min. 1 Spieler vorgeben ist-->
+        <!-- Wenn ein Radiobutton geklickt wird, dann wird Funktion bearbeiteSpielerZahlKlick ausgeführt. Als Parameter wird der gedrückte Button übergeben-->
+        <!-- This= Das momentane Html Element-->
+        
+        <input type="radio" name="radio" value="1" id="1" checked onclick="Aufgabe_5.bearbeiteSpielerZahlKlick(this)"/>
         <label for="1">1</label>
-        <input type="radio" name="radio" value="radio2" id="2"/>
+        <input type="radio" name="radio" value="2" id="2" onclick="Aufgabe_5.bearbeiteSpielerZahlKlick(this)"/>
         <label for="2">2</label>
-        <input type="radio" name="radio" value="radio1" id="3"/>
+        <input type="radio" name="radio" value="3" id="3" onclick="Aufgabe_5.bearbeiteSpielerZahlKlick(this)"/>
         <label for="3">3</label>
-        <input type="radio" name="radio" value="radio2" id="4"/>
+        <input type="radio" name="radio" value="4" id="4" onclick="Aufgabe_5.bearbeiteSpielerZahlKlick(this)"/>
         <label for="4">4</label>
     </div>
 
@@ -38,29 +45,38 @@
 
     <div id="name">
         <h3>Name der Spieler</h3>
-        <h4>Spieler 1</h4>
-        <input id="player1" type="text" name="Text" placeholder="Enter your name here" value="" required/>
-        <h4>Spieler 2</h4>
-        <input id="player2" type="text" name="Text" placeholder="Enter your name here" value=""/>
-        <h4>Spieler 3</h4>
-        <input id="player3" type="text" name="Text" placeholder="Enter your name here" value=""/>
-        <h4>Spieler 4</h4>
-        <input id="player4" type="text" name="Text" placeholder="Enter your name here" value=""/>
+
+        
+        <!-- Mindestens ein Spielername ist erforderlich-->
+        <!-- Als Startwert haben alle bis auf Spieler 1 einen durchsichtigen Text und einen deaktivierten Input-->
+        
+        <h4 id="player1-label">Spieler 1</h4>
+        <input id="player1" type="text" name="Text" placeholder="Enter your name here" value="" required />
+        <h4 id="player2-label" style="opacity: 0.33;">Spieler 2</h4>
+        <input id="player2" type="text" name="Text" placeholder="Enter your name here" value="" disabled/>
+        <h4 id="player3-label" style="opacity: 0.33;">Spieler 3</h4>
+        <input id="player3" type="text" name="Text" placeholder="Enter your name here" value="" disabled/>
+        <h4 id="player4-label" style="opacity: 0.33;">Spieler 4</h4>
+        <input id="player4" type="text" name="Text" placeholder="Enter your name here" value="" disabled/>
     </div>
 
     <hr>
+    
+    <!-- Wenn ein Radiobutton geklickt wird, dann wird Funktion bearbeiteKartenSatzKlick ausgeführt. Als Parameter wird der gedrückte Button übergeben-->
 
     <div id="kartensatz">
         <h3>Kartensatz</h3>
-        <input type="radio" name="Radiogroup" value="radio1" id="radio5" checked/>
+        <input type="radio" name="Radiogroup" value="animals" id="radio5" checked onclick="Aufgabe_5.bearbeiteKartenSatzKlick(this)"/>
         <label for="radio5">Tiere</label>
-        <input type="radio" name="Radiogroup" value="radio2" id="radio6"/>
+        <input type="radio" name="Radiogroup" value="planets" id="radio6" onclick="Aufgabe_5.bearbeiteKartenSatzKlick(this)"/>
         <label for="radio6">Planeten</label>
-        <input type="radio" name="Radiogroup" value="radio3" id="radio7"/>
+        <input type="radio" name="Radiogroup" value="music" id="radio7" onclick="Aufgabe_5.bearbeiteKartenSatzKlick(this)"/>
         <label for="radio7">Musikgenres</label>
     </div>
 
     <hr>
+    
+    <!-- This.value = Nur der Wert wird übergeben-->
 
     <div >
         <h3>Kartenpaare</h3>
