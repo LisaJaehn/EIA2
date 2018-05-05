@@ -5,6 +5,46 @@
 	padding: 0;
 }
 
+ #starteinstellungen {
+	display: block;
+    background-color: pink;
+    border: none;
+    padding: 2em;
+    width: 50%;
+    margin: auto;
+    margin-top: 2em;
+}
+
+#starteinstellungen h2 {
+	text-align: center;
+    color: black;
+}
+
+#starteinstellungen h3 {
+	text-align: center;
+    color: white;
+}
+
+#name {
+text-align: center;
+}
+
+#spieleranzahl{
+text-align: center;
+}
+
+#kartensatz{
+text-align: center;
+}
+
+#anzahl{
+text-align: center;
+}
+
+#spielstart{
+text-align: center;
+}
+
 body{
 	font-family: "Barlow",sans-serif; 
 	font-size: 20px ;

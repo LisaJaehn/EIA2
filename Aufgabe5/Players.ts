@@ -1,7 +1,7 @@
 namespace Aufgabe_5 {
-    
-    //Speicherort für Spielername und Score
-    
+
+    //Speicherort für die Spielernamen und Score
+
     export interface Player {
 
         name: string;
@@ -12,7 +12,7 @@ namespace Aufgabe_5 {
         [players: string]: Player;
     }
 
-    export let players: Players = {}
+    export let players: Players = {}  //Objekt
 }
 
 
