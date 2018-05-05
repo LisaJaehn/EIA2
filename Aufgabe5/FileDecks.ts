@@ -1,5 +1,8 @@
 namespace Aufgabe_5 {
+
     export interface Deck {
+
+        //Variablen dekalrieren
 
         name: string;
         content: string[];
@@ -16,6 +19,9 @@ namespace Aufgabe_5 {
     export let decks: Decks = {}  //Objekt
 
     export function populateDecks() {
+
+        //Homogenes, assoziatives Array
+
         decks["animals"] = {
             name: "animals",
             content: ["Panda", "Koala", "Löwe", "Delfin", "Hase", "Bär", "Katze", "Hund", "Wal", "Kaninchen"],
@@ -36,7 +42,7 @@ namespace Aufgabe_5 {
 
         decks["music"] = {
             name: "music",
-            content: ["Metal", "Hip-Hop", "Elektro", "Lo-Fi", "Pop", "Rock", "Dance", "Techno", "Jazz", "Rap", "Klassik","Indie", "Ska", "K-Pop"],
+            content: ["Metal", "Hip-Hop", "Elektro", "Lo-Fi", "Pop", "Rock", "Dance", "Techno", "Jazz", "Rap", "Klassik", "Indie", "Ska", "K-Pop"],
             color: "hsla(35, 100%, 50%, 0.8)",
             font: "Calibri",
             size: 25,

@@ -7,7 +7,7 @@ var Aufgabe_5;
     Aufgabe_5.numPairs = 5;
     //Array welches alle offenen Karten trackt.
     let openCards = [];
-    //Variable des momentanen Kartendecks
+    //Variable des momentanen Kartendecks, wenn keine Eingaben getätigt werden
     let currentCardDeck = undefined;
     //Variable counter anlegen
     let counter = 0;
@@ -20,6 +20,7 @@ var Aufgabe_5;
     let playerNames = [];
     let score = [0, 0, 0, 0]; //Punktestand = 0, ist vordefiniert
     window.addEventListener("click", verarbeiteKlick);
+    //Aufruf Funktion populateDecks, damit das Spiel gestartet werden kann (Funktion beim Interface)
     Aufgabe_5.populateDecks();
     //Funktion erstellen
     function verarbeiteKlick(_event) {
@@ -111,22 +112,28 @@ var Aufgabe_5;
         node.appendChild(header);
         //Spielfeld innerhalb eines Divs
         let spielFeld = document.createElement("div");
+        //Variable i bestimmen, welche=0 ist und kleiner als die Länge des Card Arrays sein muss, i wird hochgezählt
         for (let i = 0; i < cardArray.length; i++) {
+            //Karte wird als div erstellt
             let card = document.createElement("div");
+            //Karte bekommt eine id, i wird zum string
             card.id = i.toString();
+            //Karte bekommt ein Attribut 
             card.setAttribute("attr", i.toString());
             card.classList.add(cardArray[i]);
             card.classList.add(randomState());
+            //Karteninhalt wird im cardArray gespeichert
             card.textContent = cardArray[i];
-            //CSS wird definiert
+            //CSS wird definiert (Dynamische Erzeugung)
             card.style.backgroundColor = currentCardDeck.color;
             card.style.fontFamily = currentCardDeck.font;
             card.style.fontSize = currentCardDeck.size + "px";
             card.style.color = currentCardDeck.textColor;
+            //Variable card wird als Kind an die Variable spielFeld geheftet
             spielFeld.appendChild(card);
         }
+        //An den Knoten wird die Variable spielFeld als Kind angeheftet
         node.appendChild(spielFeld);
-        //Ausgabe auf die Konsole
     }
     //Spieleranzeige erstellen
     //Funktion playerInfo erstellen
@@ -176,27 +183,34 @@ var Aufgabe_5;
         let spielerAnzahl;
         //Variable collection als NodeListOfElement
         //NodeList Objekte sind Sammlungen von Knoten
+        //Zugriff auf die id spieleranzahl und auf die inputs
         let collection = document.getElementById("spieleranzahl").getElementsByTagName("input");
         // i=0, größer als die Länge von collection und wird hochgezählt
         for (let i = 0; i < collection.length; i++) {
             //Spieleranzahl wird hochgezählt 
+            //Variable collection als HTMLInputElement
             if (collection[i].checked) {
+                //Spieleranzahl hochzälen
                 spielerAnzahl = i + 1;
+                //Abbruch
                 break;
             }
         }
         //Eingabe Spielernamen
+        //Zugriff auf die id name und auf die inputs
         collection = document.getElementById("name").getElementsByTagName("input");
-        //Wenn kein Spielername eingegeben wurde, heißt der Spieler Jeff
+        //Variable i=0, ist kleiner als die Länge von collection, wird hochgezählt
         for (let i = 0; i < collection.length; i++) {
+            //Wenn kein Spielername eingegeben wurde, heißt der Spieler Jeff
             if (collection[i].value == "" && i == 0) {
+                //Name wird gepusht
                 playerNames.push("Jeff");
             }
             else if (collection[i].value != "") {
                 playerNames.push(collection[i].value);
             }
         }
-        //Auswahl des Kartensatzes
+        //Auswahl des Kartensatzes, Zugriff auf die id kartensatz und auf die inputs
         collection = document.getElementById("kartensatz").getElementsByTagName("input");
         //Wenn beim Kartendeck nichts ausgewählt wird, erscheint automatisch das Kartendeck "animals"
         if (currentCardDeck == undefined)
@@ -212,7 +226,9 @@ var Aufgabe_5;
     }
     Aufgabe_5.main = main;
     //Für den Kartenpaare Slider
+    //Parameter value wird als number übergeben
     function onInputEvent(value) {
+        //Zugriff auf die id kartenpaare-label, der Wert wird von einer number zum string
         document.getElementById("kartenpaare-label").innerText = value.toString();
         Aufgabe_5.numPairs = value;
     }
@@ -233,10 +249,15 @@ var Aufgabe_5;
     Aufgabe_5.bearbeiteKartenSatzKlick = bearbeiteKartenSatzKlick;
     //Fehlererkennung (Slider ansich ändert sich)
     function repopulateCardForm() {
+        //Variable kartenPaarElement, als HTMLInputElement, Zugriff auf die id kartenpaare
         let kartenPaareElement = document.getElementById("kartenpaare");
+        //Maximallänge des kartenPaareElement beträgt der Länge des Inhaltes des currentCardDecks
         kartenPaareElement.max = currentCardDeck.content.length.toString();
+        //Variable maxWert enspricht der Länge des Inhaltes des currentCardDecks
         let maxWert = currentCardDeck.content.length;
+        //Variable momentanterWert, string wird zu einer ganzzahligen Zahl umgewandelt
         let momentanerWert = parseInt(kartenPaareElement.value);
+        //Wenn der maxWert kleiner als der momentanerWert ist
         if (maxWert < momentanerWert) {
             kartenPaareElement.value = maxWert.toString();
         }
@@ -247,10 +268,12 @@ var Aufgabe_5;
     function bearbeiteSpielerZahlKlick(element) {
         //parseInt = String wird zu einer ganzen Zahl umgewandelt
         let spielerZahl = parseInt(element.value);
+        //Wenn i gleich 1 und kleiner gleich 4 ist
         for (let i = 1; i <= 4; i++) {
             //`player${i}`: Innerhalb eines String wird Javascripts aufgerufen, zur Bearbeitung  
             let inputElement = document.getElementById(`player${i}`);
             let labelElement = document.getElementById(`player${i}-label`);
+            //Wenn die Eingabe  eintritt, erscheint das Feld, um den Namen einzutragen
             if (i <= spielerZahl) {
                 inputElement.disabled = false;
                 labelElement.style.opacity = "1";

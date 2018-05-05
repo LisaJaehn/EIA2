@@ -1,4 +1,3 @@
-
 namespace Aufgabe_5 {
 
     //Variablen definieren
@@ -15,7 +14,7 @@ namespace Aufgabe_5 {
 
     let openCards: HTMLElement[] = [];
 
-    //Variable des momentanen Kartendecks
+    //Variable des momentanen Kartendecks, wenn keine Eingaben getätigt werden
 
     let currentCardDeck: Deck = undefined;
 
@@ -42,6 +41,8 @@ namespace Aufgabe_5 {
     let score: number[] = [0, 0, 0, 0]; //Punktestand = 0, ist vordefiniert
 
     window.addEventListener( "click", verarbeiteKlick );
+
+    //Aufruf Funktion populateDecks, damit das Spiel gestartet werden kann (Funktion beim Interface)
 
     populateDecks();
 
@@ -162,9 +163,6 @@ namespace Aufgabe_5 {
 
     function shuffleCards(): void {
 
-
-
-
         //Variable i wird definiert, sie ist so groß wie die Länge des cardArrays
 
         let i: number = cardArray.length;
@@ -203,42 +201,55 @@ namespace Aufgabe_5 {
         //Funktion shuffleCards wird aufgerufen, damit die Karten bei jedem Spiel gemischelt werden
 
         shuffleCards();
-        
+
         //Überschrift wird erstellt
 
-        let header = document.createElement("h2");
+        let header = document.createElement( "h2" );
         header.innerText = "Spielfeld";
-        node.appendChild(header);
+        node.appendChild( header );
 
         //Spielfeld innerhalb eines Divs
 
-        let spielFeld = document.createElement("div");
+        let spielFeld = document.createElement( "div" );
+
+        //Variable i bestimmen, welche=0 ist und kleiner als die Länge des Card Arrays sein muss, i wird hochgezählt
 
         for ( let i: number = 0; i < cardArray.length; i++ ) {
 
-            let card = document.createElement("div");
-            card.id = i.toString();
-            card.setAttribute("attr", i.toString());
+            //Karte wird als div erstellt
 
-            card.classList.add(cardArray[i]);
-            card.classList.add(randomState());
+            let card = document.createElement( "div" );
+
+            //Karte bekommt eine id, i wird zum string
+
+            card.id = i.toString();
+
+            //Karte bekommt ein Attribut 
+
+            card.setAttribute( "attr", i.toString() );
+
+            card.classList.add( cardArray[i] );
+            card.classList.add( randomState() );
+
+            //Karteninhalt wird im cardArray gespeichert
 
             card.textContent = cardArray[i];
-            
-            //CSS wird definiert
+
+            //CSS wird definiert (Dynamische Erzeugung)
 
             card.style.backgroundColor = currentCardDeck.color;
             card.style.fontFamily = currentCardDeck.font;
             card.style.fontSize = currentCardDeck.size + "px";
             card.style.color = currentCardDeck.textColor;
 
-            spielFeld.appendChild(card);
+            //Variable card wird als Kind an die Variable spielFeld geheftet
+
+            spielFeld.appendChild( card );
         }
 
-        node.appendChild(spielFeld);
+        //An den Knoten wird die Variable spielFeld als Kind angeheftet
 
-        //Ausgabe auf die Konsole
-
+        node.appendChild( spielFeld );
 
     }
 
@@ -321,60 +332,77 @@ namespace Aufgabe_5 {
     export function main(): void {
 
         //Funtion für die Spielerabfrage erstellen
-        
+
         //Variable für Spielernzahl definieren
 
         let spielerAnzahl: number;
-    
+
         //Variable collection als NodeListOfElement
-    
+
         //NodeList Objekte sind Sammlungen von Knoten
-        
-        let collection: NodeListOf<Element> = document.getElementById("spieleranzahl").getElementsByTagName("input");
+
+        //Zugriff auf die id spieleranzahl und auf die inputs
+
+        let collection: NodeListOf<Element> = document.getElementById( "spieleranzahl" ).getElementsByTagName( "input" );
 
         // i=0, größer als die Länge von collection und wird hochgezählt
-    
-        for (let i = 0; i < collection.length; i++) {
+
+        for ( let i = 0; i < collection.length; i++ ) {
 
             //Spieleranzahl wird hochgezählt 
-            
-            if ((<HTMLInputElement>collection[i]).checked) {
+
+            //Variable collection als HTMLInputElement
+
+            if ( ( <HTMLInputElement>collection[i] ).checked ) {
+
+                //Spieleranzahl hochzälen
+
                 spielerAnzahl = i + 1;
+
+                //Abbruch
+
                 break;
             }
         }
-        
+
         //Eingabe Spielernamen
 
-        collection = document.getElementById("name").getElementsByTagName("input");
+        //Zugriff auf die id name und auf die inputs
 
-        //Wenn kein Spielername eingegeben wurde, heißt der Spieler Jeff
-        
-        for (let i = 0; i < collection.length; i++) {
-            if ((<HTMLInputElement>collection[i]).value == "" && i == 0) {
-                playerNames.push("Jeff")
+        collection = document.getElementById( "name" ).getElementsByTagName( "input" );
+
+        //Variable i=0, ist kleiner als die Länge von collection, wird hochgezählt
+
+        for ( let i = 0; i < collection.length; i++ ) {
+
+            //Wenn kein Spielername eingegeben wurde, heißt der Spieler Jeff
+
+            if ( ( <HTMLInputElement>collection[i] ).value == "" && i == 0 ) {
+
+                //Name wird gepusht
+
+                playerNames.push( "Jeff" )
             }
-            
-            //Ansonsten wird der Spielername ins Spiel gepusht
-            
-            else if ((<HTMLInputElement>collection[i]).value != "") {
-                playerNames.push((<HTMLInputElement>collection[i]).value)
+
+            //Ansonsten wird der Spielername ins Spiel gepusht der eingegeben wurde
+
+            else if ( ( <HTMLInputElement>collection[i] ).value != "" ) {
+                playerNames.push(( <HTMLInputElement>collection[i] ).value )
             }
         }
-        
-        //Auswahl des Kartensatzes
 
-        collection = document.getElementById("kartensatz").getElementsByTagName("input");
+        //Auswahl des Kartensatzes, Zugriff auf die id kartensatz und auf die inputs
 
-        
+        collection = document.getElementById( "kartensatz" ).getElementsByTagName( "input" );
+
         //Wenn beim Kartendeck nichts ausgewählt wird, erscheint automatisch das Kartendeck "animals"
 
-        if (currentCardDeck == undefined)
+        if ( currentCardDeck == undefined )
             currentCardDeck = decks["animals"];
-        
+
         //Karten werden erzeugt
 
-        populateCardArray(currentCardDeck.content);
+        populateCardArray( currentCardDeck.content );
 
         //Spielbrett erzeugen 
 
@@ -383,78 +411,103 @@ namespace Aufgabe_5 {
         //Spielerinfo erzeugen
 
         playerInfo();
-        
+
         //Starteinstellung wird nach der Einstellung gelöscht
 
-        document.getElementById("starteinstellungen").remove()
+        document.getElementById( "starteinstellungen" ).remove()
 
     }
-    
-    //Für den Kartenpaare Slider
-    
 
-    export function onInputEvent(value: number) {
-        document.getElementById("kartenpaare-label").innerText = value.toString();
+    //Für den Kartenpaare Slider
+
+    //Parameter value wird als number übergeben
+
+    export function onInputEvent( value: number ) {
+
+        //Zugriff auf die id kartenpaare-label, der Wert wird von einer number zum string
+
+        document.getElementById( "kartenpaare-label" ).innerText = value.toString();
         numPairs = value;
     }
 
     //Karten werden hinzugefügt
-    
-    function populateCardArray(karten: string[]) {
-        
+
+    function populateCardArray( karten: string[] ) {
+
         //Kartenpaare werden erzeugt
 
-        for (let i = 0; i < numPairs; i++) {
-            cardArray.push(karten[i]);
-            cardArray.push(karten[i]);
+        for ( let i = 0; i < numPairs; i++ ) {
+            cardArray.push( karten[i] );
+            cardArray.push( karten[i] );
         }
 
     }
 
     //Für Auswahl des Kartensatzes, damit sich die Länge anpasst
-    
-    export function bearbeiteKartenSatzKlick(element: HTMLInputElement) {
+
+    export function bearbeiteKartenSatzKlick( element: HTMLInputElement ) {
         currentCardDeck = decks[element.value];
         repopulateCardForm();
     }
-    
+
     //Fehlererkennung (Slider ansich ändert sich)
 
     function repopulateCardForm() {
-        let kartenPaareElement = <HTMLInputElement>document.getElementById("kartenpaare");
+
+        //Variable kartenPaarElement, als HTMLInputElement, Zugriff auf die id kartenpaare
+
+        let kartenPaareElement = <HTMLInputElement>document.getElementById( "kartenpaare" );
+
+        //Maximallänge des kartenPaareElement beträgt der Länge des Inhaltes des currentCardDecks
+
         kartenPaareElement.max = currentCardDeck.content.length.toString();
 
-        let maxWert = currentCardDeck.content.length;
-        let momentanerWert = parseInt(kartenPaareElement.value);
+        //Variable maxWert enspricht der Länge des Inhaltes des currentCardDecks
 
-        if (maxWert < momentanerWert) {
+        let maxWert = currentCardDeck.content.length;
+
+        //Variable momentanterWert, string wird zu einer ganzzahligen Zahl umgewandelt
+
+        let momentanerWert = parseInt( kartenPaareElement.value );
+
+        //Wenn der maxWert kleiner als der momentanerWert ist
+
+        if ( maxWert < momentanerWert ) {
             kartenPaareElement.value = maxWert.toString()
         }
 
         //Update des HTML (Zahl neben dem Slider ändert sich)
-        
-        document.getElementById("kartenpaare-label").innerText = kartenPaareElement.value;
+
+        document.getElementById( "kartenpaare-label" ).innerText = kartenPaareElement.value;
     }
-    
+
     //Spieleranzahl und Spielername
 
-    export function bearbeiteSpielerZahlKlick(element: HTMLInputElement) {
-        
-        //parseInt = String wird zu einer ganzen Zahl umgewandelt
-        
-        let spielerZahl = parseInt(element.value);
+    export function bearbeiteSpielerZahlKlick( element: HTMLInputElement ) {
 
-        for (let i = 1; i <= 4; i++) {
-            
+        //parseInt = String wird zu einer ganzen Zahl umgewandelt
+
+        let spielerZahl = parseInt( element.value );
+
+        //Wenn i gleich 1 und kleiner gleich 4 ist
+
+        for ( let i = 1; i <= 4; i++ ) {
+
             //`player${i}`: Innerhalb eines String wird Javascripts aufgerufen, zur Bearbeitung  
-            
-            let inputElement = <HTMLInputElement>document.getElementById(`player${i}`);
-            let labelElement = document.getElementById(`player${i}-label`);
-            if (i <= spielerZahl) {
+
+            let inputElement = <HTMLInputElement>document.getElementById( `player${i}` );
+            let labelElement = document.getElementById( `player${i}-label` );
+
+            //Wenn die Eingabe  eintritt, erscheint das Feld, um den Namen einzutragen
+
+            if ( i <= spielerZahl ) {
                 inputElement.disabled = false;
                 labelElement.style.opacity = "1";
 
             }
+
+            //Wenn die Eingabe nicht eintritt, wird das Feld, um den Namen einzutragen ausgegraut und man kann nichts mehr eintragen
+
             else {
                 inputElement.disabled = true;
                 labelElement.style.opacity = "0.33";

@@ -2,6 +2,7 @@ var Aufgabe_5;
 (function (Aufgabe_5) {
     Aufgabe_5.decks = {}; //Objekt
     function populateDecks() {
+        //Homogenes, assoziatives Array
         Aufgabe_5.decks["animals"] = {
             name: "animals",
             content: ["Panda", "Koala", "Löwe", "Delfin", "Hase", "Bär", "Katze", "Hund", "Wal", "Kaninchen"],
