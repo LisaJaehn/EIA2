@@ -1,6 +1,6 @@
 function Hallo(): void {
 
-    var name: string = prompt("Wie heißt du?", "");
+    var name : string = prompt("Wie heißt du?", "");
 
     if (name != null) {
 
