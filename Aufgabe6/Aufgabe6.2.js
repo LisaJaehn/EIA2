@@ -1,15 +1,31 @@
 var L06_Interfaces;
 (function (L06_Interfaces) {
     window.addEventListener("load", init);
+    let address = "https://eia2node257455.herokuapp.com/";
     function init(_event) {
         console.log("Init");
         //Enventlistener auf Button übergeben
         let insertButton = document.getElementById("insert");
         let searchButton = document.getElementById("search");
         let refreshButton = document.getElementById("refresh");
+        let exampleButton = document.getElementById("exampleData");
         insertButton.addEventListener("click", insert);
-        refreshButton.addEventListener("click", refresh);
+        refreshButton.addEventListener("click", refreshStudents);
         searchButton.addEventListener("click", search);
+        exampleButton.addEventListener("click", exampleData);
+    }
+    function exampleData() {
+        for (let i = 0; i < 3; i++) {
+            let student = {
+                name: "Nachname " + i,
+                firstname: "Jeff" + i,
+                matrikel: Math.floor(Math.random() * 222222),
+                age: Math.floor(Math.random() * 22),
+                gender: !!Math.round(Math.random()),
+                studiengang: "OMB"
+            };
+            sendDataToHost("addStudent", student);
+        }
     }
     //Funktion um Daten der Studenten zu speichern
     function insert(_event) {
@@ -33,9 +49,13 @@ var L06_Interfaces;
         L06_Interfaces.studiHomoAssoc[matrikel] = studi;
         // nur um das auch noch zu zeigen...
         L06_Interfaces.studiSimpleArray.push(studi);
+        sendDataToHost("addStudent", studi);
     }
     //Funktion Ausgabe der Information
-    function refresh(_event) {
+    function refreshStudents(_event) {
+        sendDataToHost("refreshStudents");
+    }
+    function refresh() {
         let output = document.getElementsByTagName("textarea")[1];
         output.value = "";
         // for-in-Schleife iteriert über die Schlüssel des assoziativen Arrays
@@ -78,6 +98,25 @@ var L06_Interfaces;
         else {
             alert("Es wurde kein Student gefunden, bitte versuchen sie es noch einmal.");
         }
+    }
+    function sendDataToHost(method, data = undefined) {
+        console.log("Sending data to host..");
+        let xhr = new XMLHttpRequest();
+        let dataString = JSON.stringify(data);
+        xhr.open("GET", address + method + "?method=" + method + "&data=" + encodeURIComponent(dataString), true);
+        if (method == "addStudent") {
+            xhr.onload = function () {
+                console.log(xhr.responseText);
+            };
+        }
+        else if (method == "refreshStudents") {
+            xhr.onload = function () {
+                console.log('Refreshing Students...');
+                L06_Interfaces.studiHomoAssoc = JSON.parse(xhr.responseText);
+                refresh();
+            };
+        }
+        xhr.send();
     }
 })(L06_Interfaces || (L06_Interfaces = {}));
 //# sourceMappingURL=Aufgabe6.2.js.map

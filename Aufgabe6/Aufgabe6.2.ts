@@ -1,6 +1,7 @@
 namespace L06_Interfaces {
     window.addEventListener( "load", init );
 
+    let address: string = "https://eia2node257455.herokuapp.com/";
     function init( _event: Event ): void {
         console.log( "Init" );
 
@@ -9,9 +10,26 @@ namespace L06_Interfaces {
         let insertButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById( "insert" );
         let searchButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById( "search" );
         let refreshButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById( "refresh" );
+        let exampleButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById( "exampleData" );
         insertButton.addEventListener( "click", insert );
-        refreshButton.addEventListener( "click", refresh );
+        refreshButton.addEventListener( "click", refreshStudents );
         searchButton.addEventListener( "click", search );
+        exampleButton.addEventListener( "click", exampleData )
+    }
+
+
+    function exampleData() {
+        for (let i = 0; i < 3; i++) {
+            let student: L06_Interfaces.Studi = {
+                name: "Nachname " + i,
+                firstname: "Jeff" + i,
+                matrikel: Math.floor(Math.random() * 222222),
+                age: Math.floor(Math.random() * 22),
+                gender: !!Math.round(Math.random()),
+                studiengang: "OMB"
+            }
+            sendDataToHost("addStudent", student)
+        }
     }
 
 
@@ -34,32 +52,34 @@ namespace L06_Interfaces {
             studiengang: document.getElementsByTagName( "select" ).item( 0 ).value,
         };
 
-
-
         console.log( studi );
         console.log( studi.age );
-        
-        
         
         console.log( studi["age"] );
 
         // Datensatz im assoziativen Array unter der Matrikelnummer speichern
         studiHomoAssoc[matrikel] = studi;
 
-
         // nur um das auch noch zu zeigen...
         studiSimpleArray.push( studi );
+
+        sendDataToHost("addStudent", studi);
     }
 
 
 
     //Funktion Ausgabe der Information
 
-    function refresh( _event: Event ): void {
+    function refreshStudents(_event: Event): void {
+        sendDataToHost("refreshStudents");
+    }
+
+    function refresh(): void {
+
         let output: HTMLTextAreaElement = document.getElementsByTagName( "textarea" )[1];
         output.value = "";
-        // for-in-Schleife iteriert über die Schlüssel des assoziativen Arrays
 
+        // for-in-Schleife iteriert über die Schlüssel des assoziativen Arrays
         for ( let matrikel in studiHomoAssoc ) {  // Besonderheit: Type-Annotation nicht erlaubt, ergibt sich aus der Interface-Definition
             let studi: Studi = studiHomoAssoc[matrikel];
             let line: string = matrikel + ": ";
@@ -80,33 +100,27 @@ namespace L06_Interfaces {
     }
 
     //Funktion, um Studenten nach Matrikelnummer zu suchen
-
     //Funktion search aufstellen
-
     function search( _event: Event ): void {
 
-        //Auf erste Textarea zugreifen
 
+        //Auf erste Textarea zugreifen
         let output: HTMLTextAreaElement = document.getElementsByTagName( "textarea" )[0];
 
         output.value = "";
 
         //Zugriff auf Inputs
-
         let inputs: NodeListOf<HTMLInputElement> = document.getElementsByTagName( "input" );
 
         //Matrikel wird aufgerufen durch den 6. Input
-
         let matrikel: string = inputs[6].value;
 
         //Matrikelnummer wird gespeichert
-
         let studi: Studi = studiHomoAssoc[matrikel];
 
         if ( studi ) {
             
             //Übereinstimmung mit Student
-
             let line: string = matrikel + ": ";
             line += studi.name + ", " + studi.firstname + ", " + studi.age + " Jahre ";
             line += studi.gender ? ", (M)" : ", (F)";
@@ -114,9 +128,30 @@ namespace L06_Interfaces {
             output.value += line + "\n";
             
         //Keine Übereinstimmung mit Student
-
         } else {
             alert( "Es wurde kein Student gefunden, bitte versuchen sie es noch einmal." );
         }
+    }
+
+    function sendDataToHost(method: string, data: any = undefined) {
+        console.log("Sending data to host..");
+        let xhr: XMLHttpRequest = new XMLHttpRequest();
+        let dataString: string = JSON.stringify(data);
+
+        xhr.open("GET", address + method + "?method=" + method + "&data=" + encodeURIComponent(dataString), true);
+
+        if (method == "addStudent") {
+            xhr.onload = function () {
+                console.log(xhr.responseText)
+            }
+        }
+        else if (method == "refreshStudents") {
+            xhr.onload = function () {
+                console.log('Refreshing Students...');
+                studiHomoAssoc = JSON.parse(xhr.responseText);
+                refresh();
+            }
+        }
+        xhr.send();
     }
 }
