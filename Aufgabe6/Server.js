@@ -38,6 +38,9 @@ var Node;
         _response.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET');
         _response.setHeader('Access-Control-Allow-Headers', '*');
         //Aus string ein Objekt machen
+        //Url.parse= Funktion/Methode
+        //_request.url= Auf reinkommende Nachricht, Url zugreifen
+        //true= query wird zum Objekt, false= query wird zum string
         let query = Url.parse(_request.url, true).query;
         //console.log(query);
         //Schaut nach welche Methode angegeben wurde
