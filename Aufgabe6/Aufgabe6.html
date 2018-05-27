@@ -9,7 +9,6 @@
 
 In Gruppenarbeit erstellt-->
 
-
 <!DOCTYPE html>
 
 <html lang="en">
@@ -30,45 +29,29 @@ In Gruppenarbeit erstellt-->
 
 <body>
 
-
-
 	<!--Fielset, um Formelemente zu gruppieren-->
 
-
-
 	<fieldset id="input">
-
-
 
 		<!--Überschrift-->
 
 		<legend> Type student data here </legend>
 
-
-
 		<!--Nachname des Studenten-->
 
 		<input type="text" name="name" placeholder="name"/>
-
-
 
 		<!--Vorname des Studenten-->
 
 		<input type="text" name="firstname" placeholder="firstname"/>
 
-
-
 		<!--Matrikelnummer-->
 
 		<input type="text" name="matrikel" placeholder="matrikel"/>
 
-
-
 		<!--Alter des Studenten min 1 bis max 120-->
 
 		<input type="number" name="age" placeholder="age" min="1" max="120"/>
-
-
 
 		<!--Radiobutton ob männlich oder weiblich-->
 
@@ -80,11 +63,7 @@ In Gruppenarbeit erstellt-->
 
 		<label for="female">Female</label>
 
-
-
 		<!--Studiengang-->
-
-
 
 		<select name="studiengang" id="select">
 
@@ -97,90 +76,51 @@ In Gruppenarbeit erstellt-->
 		</select>
 
 
-
-
-
-
-
 		<!--Button um die Information zu speichern-->
 
 		<button type="button" id="insert">Insert to database</button>
 
-
-
 	</fieldset>
-
-
 
 	<fieldset id="searchStudents">
 
-
-
 	<legend> Suche nach Student </legend>
-
-
 
 	<!--Matrikelnummer-->
 
 		<input type="text" name="search" placeholder="matrikel"/>
 
-
-
 	<!--Button um den Studenten nach der Matrikelnummer zu suchen-->
 
 		<button type="button" id="search">Search</button>
 
-
-
 	<!--Textfeld-->
-
-
 
 		<textarea id="outputMatrikel" rows="20" cols="90"> </textarea>
 
-
-
 	</fieldset>
 
-
-
 	<!--Fielset um Formelemente zu gruppieren-->
-
-
 
 	<fieldset id="output">
 
 		<legend> All student data </legend>
 
-
-
-		<!Refresh Button-->
-
-
+	<!Refresh Button-->
 
 		<button type="button" id="refresh">Refresh</button>
 
-
-
-		<!--Textfeld-->
-
-
+	<!--Textfeld-->
 
 		<textarea rows="20" cols="90"> </textarea>
 
-
-
 	</fieldset>
 
+	<!--Buuton für die Beispieldatensätz-->
 
-
-	<button id="exampleData">Beispieldatensätze</button>
-
-
+		<button id="exampleData">Beispieldatensätze</button>
 
 </body>
-
-
 
 </html>
 
