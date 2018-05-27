@@ -116,11 +116,15 @@ var L06_Interfaces;
         //Ausgabe wenn Daten zum Server gesendet werden
         console.log("Sending data to host..");
         //Variable xhr, XMLHttpRequest wird erstellt
+        //XMLHttpRequest= Um Daten von einem URL zu erhalten
         let xhr = new XMLHttpRequest();
         //Dataobjekt wird in ein string umgewandelt, damit es zum Server gesendet werden kann
         let dataString = JSON.stringify(data);
         //true= asynchron
         //Neue Http Request wird geöffnet
+        //Parameterliste: ("GET", address + method + "?method=" + method + "&data=" + encodeURIComponent(dataString), true);
+        //xhr.open= Verbindung zum Server wird geöffnet
+        //GET= Methode, mit der Infos gesendet werden
         xhr.open("GET", address + method + "?method=" + method + "&data=" + encodeURIComponent(dataString), true);
         //Überprüfen welche Methode ausgeführt werden soll
         if (method == "addStudent") {

@@ -163,6 +163,7 @@ namespace L06_Interfaces {
         console.log("Sending data to host..");
         
         //Variable xhr, XMLHttpRequest wird erstellt
+        //XMLHttpRequest= Um Daten von einem URL zu erhalten
         
         let xhr: XMLHttpRequest = new XMLHttpRequest();
         
@@ -172,6 +173,9 @@ namespace L06_Interfaces {
         
         //true= asynchron
         //Neue Http Request wird geöffnet
+        //Parameterliste: ("GET", address + method + "?method=" + method + "&data=" + encodeURIComponent(dataString), true);
+        //xhr.open= Verbindung zum Server wird geöffnet
+        //GET= Methode, mit der Infos gesendet werden
 
         xhr.open("GET", address + method + "?method=" + method + "&data=" + encodeURIComponent(dataString), true);
 
