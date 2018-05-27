@@ -111,7 +111,7 @@ var L06_Interfaces;
     }
     //Funktion sendDataToHost
     //Parameter method: string, data: any = undefined
-    //data: any = undefined -> Optionalparameter, muss nicht unbedingt angeben werden(Daten werden schon übergeben)
+    //data: any = undefined -> Optionalparameter, muss nicht unbedingt angeben werden(Daten werden schon übergeben), kann ein string oder eine number sein
     function sendDataToHost(method, data = undefined) {
         //Ausgabe wenn Daten zum Server gesendet werden
         console.log("Sending data to host..");
@@ -127,6 +127,7 @@ var L06_Interfaces;
         //GET= Methode, mit der Infos gesendet werden
         xhr.open("GET", address + method + "?method=" + method + "&data=" + encodeURIComponent(dataString), true);
         //Überprüfen welche Methode ausgeführt werden soll
+        //Methode addStudent
         if (method == "addStudent") {
             //Sobald eine Antwort ankommt schreibe die Antwort in die Konsole
             xhr.onload = function () {
