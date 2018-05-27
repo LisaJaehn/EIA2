@@ -1,3 +1,5 @@
+//Diese Aufgabe wurde in Gruppenarbeit erstellt
+
 namespace L06_Interfaces {
     window.addEventListener( "load", init );
 

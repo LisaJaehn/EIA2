@@ -1,3 +1,4 @@
+//Diese Aufgabe wurde in Gruppenarbeit erstellt
 var L06_Interfaces;
 (function (L06_Interfaces) {
     window.addEventListener("load", init);

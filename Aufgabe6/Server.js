@@ -1,5 +1,6 @@
-//Bindet Url Modul mit ein
+//Diese Aufgabe wurde in Gruppenarbeit erstellt
 "use strict";
+//Bindet Url Modul mit ein
 const Url = require("url");
 //HTTP Objekt wird im Code erstellt
 //Interpreter sucht nach jedem möglichen Import im http- Modul  und wird ihn einzeln an das http- Objekt im Code anhängen

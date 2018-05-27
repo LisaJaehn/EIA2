@@ -1,3 +1,5 @@
+//Diese Aufgabe wurde in Gruppenarbeit erstellt
+
 //Bindet Url Modul mit ein
 
 import * as Url from "url";
