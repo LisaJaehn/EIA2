@@ -9,18 +9,28 @@ const Http = require("http");
 var Node;
 (function (Node) {
     let studis = {};
-    // Todo: Ändern!
+    //Variable port wird erstellt, eine number wird erwartet
+    //Infos über Maschine/Umgebung, Maschine gibt den Port vor
     let port = process.env.PORT;
+    //Wenn der die Portnummer undefiniert ist wird Port 8100 geöffnet
     if (port == undefined)
         port = 8100;
+    //Ereugung des Serverobjektes, Variable server, um mit dem Server weiter arbeiten zu können (Zugriff möglich)
     let server = Http.createServer();
+    //Wenn der Server zuhört, wird die Funktion handleListen ausgeführt
     server.addListener("listening", handleListen);
+    // Server beibringen auf etwas zu hören
     server.addListener("request", handleRequest);
     server.listen(port);
+    //Funktion handleListen wird erstellt
     function handleListen() {
     }
+    //Funktion handleRequest wird erstellt, 2 Parameter werden festgelegt, ohne Rückgabewert
+    //Die einkommenden Information werden bearbeitet und wieder zurück geschickt
+    //_request: Http.IncomingMessage: Einkommende Informationen
+    //_response: Http.ServerResponse: Bearbeitete Informationen
     function handleRequest(_request, _response) {
-        //Die Headers sind dazu da um von anderen Servern zugreifen zu können
+        //Die Headers sind dazu da, um von anderen Servern zugreifen zu können
         _response.setHeader('Access-Control-Allow-Origin', '*');
         _response.setHeader('Access-Control-Request-Method', '*');
         //Options: Um abzufragen, ob man auf den Server zugreifen kann
