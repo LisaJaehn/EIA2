@@ -1,4 +1,4 @@
-//Bindet Url Modul mit ein
+/*//Bindet Url Modul mit ein
 
 import * as Url from "url";
 
@@ -111,4 +111,4 @@ namespace Node {
 
         _response.end();
     }
-}
+}*/
