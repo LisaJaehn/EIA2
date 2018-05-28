@@ -88,26 +88,13 @@ var L06_Interfaces;
     //Funktion, um Studenten nach Matrikelnummer zu suchen
     //Funktion search aufstellen
     function search(_event) {
-        //Auf erste Textarea zugreifen
-        let output = document.getElementsByTagName("textarea")[0];
-        output.value = "";
         //Zugriff auf Inputs
         let inputs = document.getElementsByTagName("input");
         //Matrikel wird aufgerufen durch den 6. Input
         let matrikel = inputs[6].value;
-        //Matrikelnummer wird gespeichert
-        let studi = L06_Interfaces.studiHomoAssoc[matrikel];
-        if (studi) {
-            //Übereinstimmung mit Student
-            let line = matrikel + ": ";
-            line += studi.name + ", " + studi.firstname + ", " + studi.age + " Jahre ";
-            line += studi.gender ? ", (M)" : ", (F)";
-            line += studi.studiengang + ": ";
-            output.value += line + "\n";
-        }
-        else {
-            alert("Es wurde kein Student gefunden, bitte versuchen sie es noch einmal.");
-        }
+        console.log(matrikel);
+        //Funktion sendDataToHost, Variable matrikel wird übergeben
+        sendDataToHost("searchStudent", matrikel);
     }
     //Funktion sendDataToHost
     //Parameter method: string, data: any = undefined
@@ -141,6 +128,27 @@ var L06_Interfaces;
                 //Überschreibe studiHomoAssoc mit der Antwort
                 L06_Interfaces.studiHomoAssoc = JSON.parse(xhr.responseText);
                 refresh();
+            };
+        }
+        else if (method == "searchStudent") {
+            //Onload wird erst ausgeführt wenn es eine Antwort bekommt
+            xhr.onload = function () {
+                // Wenn undefined zurückgegeben wird, gebe Meldung aus
+                if (xhr.responseText == "undefined") {
+                    alert("Es wurde kein Student gefunden, bitte versuchen sie es noch einmal.");
+                    return;
+                }
+                // Student Rückgabe String wird zum Objekt umgewandelt
+                let student = JSON.parse(xhr.responseText);
+                //Auf erste Textarea zugreifen
+                let output = document.getElementsByTagName("textarea")[0];
+                output.value = "";
+                //Übereinstimmung mit Student
+                let line = data + ": ";
+                line += student.name + ", " + student.firstname + ", " + student.age + " Jahre ";
+                line += student.gender ? ", (M)" : ", (F)";
+                line += student.studiengang + ": ";
+                output.value += line + "\n";
             };
         }
         //Sende Request zum Server
