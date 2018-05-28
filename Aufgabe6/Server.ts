@@ -90,7 +90,7 @@ namespace Node {
             let student = <L06_Interfaces.Studi>JSON.parse( query["data"].toString() );
             studis[student.matrikel.toString()] = student;
             _response.write( "Student added!" );
-            _response.end();
+            //_response.end();
         }
 
         //Wenn die Methode refreshStudents ist, gebe die Liste der Studenten als Antwort
@@ -98,7 +98,7 @@ namespace Node {
 
         if ( query["method"] == "refreshStudents" ) {
             _response.write( JSON.stringify( studis ) );
-            _response.end();
+           // _response.end();
         }
         
         _response.end();
