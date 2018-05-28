@@ -18,12 +18,16 @@ var Node;
     //Ereugung des Serverobjektes, Variable server, um mit dem Server weiter arbeiten zu können (Zugriff möglich)
     let server = Http.createServer();
     //Wenn der Server zuhört, wird die Funktion handleListen ausgeführt
+    //Nur für uns, das wir wissen, dass der Server lauscht
     server.addListener("listening", handleListen);
-    // Server beibringen auf etwas zu hören
+    // Server beibringen auf etwas zu hören auf einem gewissen Port
+    //Sobald ein request mitkommt wir function handleRequest ausgeführt
     server.addListener("request", handleRequest);
+    //Lausche, damit wird auch der evenet-Listener gefeuert
     server.listen(port);
     //Funktion handleListen wird erstellt
     function handleListen() {
+        console.log("ich höre" + port);
     }
     //Funktion handleRequest wird erstellt, 2 Parameter werden festgelegt, ohne Rückgabewert
     //Die einkommenden Information werden bearbeitet und wieder zurück geschickt
@@ -31,12 +35,13 @@ var Node;
     //_response: Http.ServerResponse: Bearbeitete Informationen
     function handleRequest(_request, _response) {
         //Die Headers sind dazu da, um von anderen Servern zugreifen zu können
+        //Access-Control-Allow-Origin= Sicherheitsfeature
         _response.setHeader('Access-Control-Allow-Origin', '*');
-        _response.setHeader('Access-Control-Request-Method', '*');
+        // _response.setHeader( 'Access-Control-Request-Method', '*' );
         //Options: Um abzufragen, ob man auf den Server zugreifen kann
         //GET: Um Antwort zurück zu bekommen
-        _response.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET');
-        _response.setHeader('Access-Control-Allow-Headers', '*');
+        //   _response.setHeader( 'Access-Control-Allow-Methods', 'OPTIONS, GET' );
+        //   _response.setHeader( 'Access-Control-Allow-Headers', '*' );
         //Aus string ein Objekt machen
         //Url.parse= Funktion/Methode
         //_request.url= Auf reinkommende Nachricht, Url zugreifen
@@ -46,6 +51,7 @@ var Node;
         //Schaut nach welche Methode angegeben wurde
         //Wenn die Methode addStudent ist füge Student zur Liste hinzu
         //Gebe als Antwort "Student added!"
+        _response.write("Hallo");
         if (query["method"] == "addStudent") {
             let student = JSON.parse(query["data"].toString());
             studis[student.matrikel.toString()] = student;
@@ -58,6 +64,7 @@ var Node;
             _response.write(JSON.stringify(studis));
             _response.end();
         }
+        _response.end();
     }
 })(Node || (Node = {}));
 //# sourceMappingURL=Server.js.map
