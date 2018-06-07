@@ -27,8 +27,6 @@ namespace L07_Interfaces {
         let matrikel: string = inputs[2].value;
         let studi: Studi;
 
-        //Interface übergeben
-
         studi = {
             name: inputs[0].value,
             firstname: inputs[1].value,

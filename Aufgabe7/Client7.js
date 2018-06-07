@@ -18,7 +18,6 @@ var L07_Interfaces;
         let genderButton = document.getElementById("male");
         let matrikel = inputs[2].value;
         let studi;
-        //Interface übergeben
         studi = {
             name: inputs[0].value,
             firstname: inputs[1].value,
