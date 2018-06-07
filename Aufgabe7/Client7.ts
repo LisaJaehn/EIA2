@@ -5,7 +5,7 @@ namespace L07_Interfaces {
 
     let inputs: NodeListOf<HTMLInputElement> = document.getElementsByTagName( "input" );
 
-    function init( _event: Event ): void {
+    export function init( ): void {
         console.log( "Init" );
 
         //Enventlistener auf Button übergeben
@@ -27,6 +27,8 @@ namespace L07_Interfaces {
         let matrikel: string = inputs[2].value;
         let studi: Studi;
 
+        //Interface übergeben
+
         studi = {
             name: inputs[0].value,
             firstname: inputs[1].value,
@@ -40,7 +42,7 @@ namespace L07_Interfaces {
         console.log( stringifyJSON );
 
         let xhr: XMLHttpRequest = new XMLHttpRequest();
-        xhr.open( "GET", address + "?order=insert&data=" + stringifyJSON, true );
+        xhr.open( "GET", address + "?command=insert&data=" + stringifyJSON, true );
         xhr.send();
     }
 
@@ -54,7 +56,23 @@ namespace L07_Interfaces {
 
     function refresh( _event: Event ): void {
         let xhr: XMLHttpRequest = new XMLHttpRequest();
-        xhr.open( "GET", address + "?order=refresh", true );
+        xhr.open( "GET", address + "?command=findAll", true );
+        xhr.onreadystatechange = function (): void {
+            if (xhr.readyState == XMLHttpRequest.DONE) {
+
+                let studis: Studi[] = JSON.parse(xhr.responseText);
+
+                console.log(studis);
+                let answer: string = "";
+
+                for (let i = 0; i < studis.length; i++) {
+                    answer += "Name: " + studis[i].name + ", " + studis[i].firstname + ", Matrikel: " + studis[i].matrikel + ", "
+                        + studis[i].studiengang + ", Mann: " + studis[i].gender + ", Alter: " + studis[i].age + "\n";
+                }
+
+                document.getElementsByTagName("textarea")[1].value = answer;
+            }
+        }
         xhr.send();
     }
 
@@ -71,9 +89,20 @@ namespace L07_Interfaces {
     function search( _event: Event ): void {
         let matrikel: string = inputs[6].value;
 
-
         let xhr: XMLHttpRequest = new XMLHttpRequest();
-        xhr.open( "GET", address + "?order=search&searchFor=" + matrikel, true );
+        xhr.open( "GET", address + "?command=find&data=" + matrikel, true );
+        xhr.onreadystatechange = function (): void {
+            if (xhr.readyState == XMLHttpRequest.DONE) {
+
+                let studi: Studi = JSON.parse(xhr.responseText);
+                console.log(studi);
+
+                let answer: string = "Name: " + studi.name + ", " + studi.firstname + ", Matrikel: " + studi.matrikel + ", "
+                        + studi.studiengang + ", Mann: " + studi.gender + ", Alter: " + studi.age + "\n";
+
+                document.getElementsByTagName("textarea")[0].value = answer;
+            }
+        }
         xhr.send();
     }
 

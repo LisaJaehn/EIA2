@@ -3,7 +3,7 @@ var L07_Interfaces;
     window.addEventListener("load", init);
     let address = "https://eia2node257455.herokuapp.com/";
     let inputs = document.getElementsByTagName("input");
-    function init(_event) {
+    function init() {
         console.log("Init");
         //Enventlistener auf Button übergeben
         let insertButton = document.getElementById("insert");
@@ -13,11 +13,13 @@ var L07_Interfaces;
         refreshButton.addEventListener("click", refresh);
         searchButton.addEventListener("click", search);
     }
+    L07_Interfaces.init = init;
     //Funktion um Daten der Studenten zu speichern
     function insert(_event) {
         let genderButton = document.getElementById("male");
         let matrikel = inputs[2].value;
         let studi;
+        //Interface übergeben
         studi = {
             name: inputs[0].value,
             firstname: inputs[1].value,
@@ -29,7 +31,7 @@ var L07_Interfaces;
         let stringifyJSON = JSON.stringify(studi);
         console.log(stringifyJSON);
         let xhr = new XMLHttpRequest();
-        xhr.open("GET", address + "?order=insert&data=" + stringifyJSON, true);
+        xhr.open("GET", address + "?command=insert&data=" + stringifyJSON, true);
         xhr.send();
     }
     function handleChangeInsert(_event) {
@@ -40,7 +42,19 @@ var L07_Interfaces;
     }
     function refresh(_event) {
         let xhr = new XMLHttpRequest();
-        xhr.open("GET", address + "?order=refresh", true);
+        xhr.open("GET", address + "?command=findAll", true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == XMLHttpRequest.DONE) {
+                let studis = JSON.parse(xhr.responseText);
+                console.log(studis);
+                let answer = "";
+                for (let i = 0; i < studis.length; i++) {
+                    answer += "Name: " + studis[i].name + ", " + studis[i].firstname + ", Matrikel: " + studis[i].matrikel + ", "
+                        + studis[i].studiengang + ", Mann: " + studis[i].gender + ", Alter: " + studis[i].age + "\n";
+                }
+                document.getElementsByTagName("textarea")[1].value = answer;
+            }
+        };
         xhr.send();
     }
     function handleChangeRefresh(_event) {
@@ -54,7 +68,16 @@ var L07_Interfaces;
     function search(_event) {
         let matrikel = inputs[6].value;
         let xhr = new XMLHttpRequest();
-        xhr.open("GET", address + "?order=search&searchFor=" + matrikel, true);
+        xhr.open("GET", address + "?command=find&data=" + matrikel, true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == XMLHttpRequest.DONE) {
+                let studi = JSON.parse(xhr.responseText);
+                console.log(studi);
+                let answer = "Name: " + studi.name + ", " + studi.firstname + ", Matrikel: " + studi.matrikel + ", "
+                    + studi.studiengang + ", Mann: " + studi.gender + ", Alter: " + studi.age + "\n";
+                document.getElementsByTagName("textarea")[0].value = answer;
+            }
+        };
         xhr.send();
     }
     function handleChangeSearch(_event) {
