@@ -45,7 +45,7 @@ var L07_Interfaces;
         xhr.send();
     }
     function handleChangeRefresh(_event) {
-        let output = document.getElementsByTagName("textarea")[0];
+        let output = document.getElementsByTagName("textarea")[1];
         output.value = "";
         var xhr = _event.target;
         if (xhr.readyState == XMLHttpRequest.DONE) {
@@ -59,7 +59,7 @@ var L07_Interfaces;
         xhr.send();
     }
     function handleChangeSearch(_event) {
-        let output = document.getElementsByTagName("textarea")[1];
+        let output = document.getElementsByTagName("textarea")[0];
         output.value = "";
         var xhr = _event.target;
         if (xhr.readyState == XMLHttpRequest.DONE) {

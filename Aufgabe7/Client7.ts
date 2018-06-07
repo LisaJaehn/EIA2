@@ -61,7 +61,7 @@ namespace L07_Interfaces {
     }
 
     function handleChangeRefresh( _event: ProgressEvent ): void {
-        let output: HTMLTextAreaElement = document.getElementsByTagName( "textarea" )[0];
+        let output: HTMLTextAreaElement = document.getElementsByTagName( "textarea" )[1];
         output.value = "";
         var xhr: XMLHttpRequest = ( <XMLHttpRequest>_event.target );
         if ( xhr.readyState == XMLHttpRequest.DONE ) {
@@ -80,7 +80,7 @@ namespace L07_Interfaces {
     }
 
     function handleChangeSearch( _event: ProgressEvent ): void {
-        let output: HTMLTextAreaElement = document.getElementsByTagName( "textarea" )[1];
+        let output: HTMLTextAreaElement = document.getElementsByTagName( "textarea" )[0];
         output.value = "";
         var xhr: XMLHttpRequest = ( <XMLHttpRequest>_event.target );
         if ( xhr.readyState == XMLHttpRequest.DONE ) {
