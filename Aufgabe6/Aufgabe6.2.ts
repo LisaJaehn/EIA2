@@ -1,4 +1,4 @@
-//Diese Aufgabe wurde in Gruppenarbeit erstellt
+/*//Diese Aufgabe wurde in Gruppenarbeit erstellt
 
 namespace L06_Interfaces {
     window.addEventListener( "load", init );
@@ -224,4 +224,4 @@ namespace L06_Interfaces {
 
         xhr.send();
     }
-}
+}*/
