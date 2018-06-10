@@ -5,7 +5,7 @@ namespace L07_Interfaces {
 
     let inputs: NodeListOf<HTMLInputElement> = document.getElementsByTagName( "input" );
 
-    export function init( ): void {
+    export function init(): void {
         console.log( "Init" );
 
         //Enventlistener auf Button übergeben
@@ -38,45 +38,47 @@ namespace L07_Interfaces {
             studiengang: document.getElementsByTagName( "select" ).item( 0 ).value,
         };
 
-        let stringifyJSON: string = JSON.stringify( studi );
+        let stringifyJSON: string = JSON.stringify( studi ); //studi wird in einen Sting umgewandelt
         console.log( stringifyJSON );
 
         let xhr: XMLHttpRequest = new XMLHttpRequest();
         xhr.open( "GET", address + "?command=insert&data=" + stringifyJSON, true );
-        xhr.send();
+        xhr.send();  //Request wird an den Server geschickt
     }
 
     function handleChangeInsert( _event: ProgressEvent ): void {
         var xhr: XMLHttpRequest = ( <XMLHttpRequest>_event.target );
         if ( xhr.readyState == XMLHttpRequest.DONE ) {
-            alert( xhr.response );
-
+            alert( xhr.response ); //Wenn Operation abgeschlossen wurde, gebe die Antwort wieder
         }
     }
 
+    //Funktion zu Aufrufen der Daten
+
     function refresh( _event: Event ): void {
-        let xhr: XMLHttpRequest = new XMLHttpRequest();
-        xhr.open( "GET", address + "?command=findAll", true );
-        xhr.onreadystatechange = function (): void {
-            if (xhr.readyState == XMLHttpRequest.DONE) {
+        let xhr: XMLHttpRequest = new XMLHttpRequest(); //Neue Request wird erstellt
+        xhr.open( "GET", address + "?command=findAll", true ); 
+        xhr.onreadystatechange = function(): void {  //Anonyme Funktion, es wird geprüft, ob sich der Status geändert hat
+            
+            if ( xhr.readyState == XMLHttpRequest.DONE ) { //Wenn Operation abgeschlossen ist, dann gebe wieder...
 
-                let studis: Studi[] = JSON.parse(xhr.responseText);
+                let studis: Studi[] = JSON.parse( xhr.responseText ); //Umwandlung des Antwort in ein Objekt
 
-                console.log(studis);
+                console.log( studis );
                 let answer: string = "";
 
-                for (let i = 0; i < studis.length; i++) {
+                for ( let i = 0; i < studis.length; i++ ) {
                     answer += "Name: " + studis[i].name + ", " + studis[i].firstname + ", Matrikel: " + studis[i].matrikel + ", "
                         + studis[i].studiengang + ", Mann: " + studis[i].gender + ", Alter: " + studis[i].age + "\n";
                 }
 
-                document.getElementsByTagName("textarea")[1].value = answer;
+                document.getElementsByTagName( "textarea" )[1].value = answer; //Im zweiten Textfeld werden die Antworten wiedergegeben
             }
         }
-        xhr.send();
+        xhr.send(); //Request wird gesendet
     }
 
-    function handleChangeRefresh( _event: ProgressEvent ): void {
+    function handleChangeRefresh( _event: ProgressEvent ): void { //ProgressEvent: Repräsentiert Ereignisse, die den Fortschritt eines zugrunde liegenden Prozesses messen, wie eine HTTP-Anfrage 
         let output: HTMLTextAreaElement = document.getElementsByTagName( "textarea" )[1];
         output.value = "";
         var xhr: XMLHttpRequest = ( <XMLHttpRequest>_event.target );
@@ -91,22 +93,22 @@ namespace L07_Interfaces {
 
         let xhr: XMLHttpRequest = new XMLHttpRequest();
         xhr.open( "GET", address + "?command=find&data=" + matrikel, true );
-        xhr.onreadystatechange = function (): void {
-            if (xhr.readyState == XMLHttpRequest.DONE) {
+        xhr.onreadystatechange = function(): void {
+            if ( xhr.readyState == XMLHttpRequest.DONE ) {  //Wenn Operation abgeschlossen ist, dann gebe wieder...
 
-                let studi: Studi = JSON.parse(xhr.responseText);
-                console.log(studi);
+                let studi: Studi = JSON.parse( xhr.responseText ); //Umwandlung des Antwort in ein Objekt
+                console.log( studi );
 
                 let answer: string = "Name: " + studi.name + ", " + studi.firstname + ", Matrikel: " + studi.matrikel + ", "
-                        + studi.studiengang + ", Mann: " + studi.gender + ", Alter: " + studi.age + "\n";
+                    + studi.studiengang + ", Mann: " + studi.gender + ", Alter: " + studi.age + "\n";
 
-                document.getElementsByTagName("textarea")[0].value = answer;
+                document.getElementsByTagName( "textarea" )[0].value = answer; //Im ersten Testfeld erscheint die Antwort
             }
         }
-        xhr.send();
+        xhr.send(); //Request wird gesendet
     }
 
-    function handleChangeSearch( _event: ProgressEvent ): void {
+    function handleChangeSearch( _event: ProgressEvent ): void { //ProgressEvent: Repräsentiert Ereignisse, die den Fortschritt eines zugrunde liegenden Prozesses messen, wie eine HTTP-Anfrage 
         let output: HTMLTextAreaElement = document.getElementsByTagName( "textarea" )[0];
         output.value = "";
         var xhr: XMLHttpRequest = ( <XMLHttpRequest>_event.target );
