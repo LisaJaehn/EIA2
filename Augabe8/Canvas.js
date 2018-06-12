@@ -8,80 +8,84 @@ var L08_Canvas;
         crc2 = canvas.getContext("2d");
         ctx = canvas.getContext("2d");
         console.log(crc2);
-        //Boden
-        crc2.fillStyle = "rgb(189,183,107)";
-        crc2.fillRect(0, 0, 800, 600);
-        //Wasser
-        crc2.fillStyle = "rgb(100,149, 237)";
-        crc2.fillRect(0, 0, 800, 400);
+        //Hintergrund
+        drawBackground(260);
         //Schatztruhe
-        crc2.fillStyle = "rgb(139,69,000)";
-        crc2.fillRect(100, 450, 100, 60);
+        drawTreasureChest(60, 370, 100, 60);
         //Schiffswrak
         //Schiffskörper
-        ctx.beginPath();
-        crc2.fillStyle = "rgb(139,69,19 )";
-        ctx.moveTo(450, 450);
-        ctx.bezierCurveTo(450, 550, 590, 550, 590, 450);
-        ctx.stroke();
-        // crc2.beginPath();
-        crc2.moveTo(450, 450);
-        crc2.lineTo(590, 450);
-        crc2.closePath();
-        crc2.stroke();
-        crc2.fill();
-        //Schiffsmasten
-        crc2.beginPath();
-        crc2.moveTo(520, 450);
-        crc2.lineTo(520, 300);
-        crc2.closePath();
-        crc2.stroke();
-        //Flagge
-        ctx.beginPath();
-        crc2.fillStyle = "rgb(238,0,0)";
-        ctx.moveTo(520, 300);
-        ctx.lineTo(430, 340);
-        ctx.lineTo(520, 380);
-        ctx.stroke();
-        ctx.fill();
+        drawShip(100, 450);
         //Luftblasen 
-        drawBubble(150, 200);
-        /* //Fisch
-         ctx.beginPath();
-         crc2.fillStyle = "rgb(255,20,147)";
-         ctx.moveTo( 50, 50);
-         ctx.bezierCurveTo( 80, 50, 80, 70, 50, 70 );
-         crc2.moveTo( 50, 70 );
-         crc2.lineTo( 30, 60);
-         crc2.lineTo( 25, 65);
-         crc2.lineTo( 25, 50);
-         crc2.lineTo( 30, 55);
-         crc2.lineTo( 50, 50);
-         ctx.stroke();
-         ctx.fill();
-         crc2.closePath();*/
-        drawFish(20, 20);
+        for (let i = 0; i < 15; i++) {
+            let x = Math.random() * crc2.canvas.width;
+            let y = Math.random() * crc2.canvas.height;
+            drawBubble(x, y, 10);
+        }
+        for (let i = 0; i < 5; i++) {
+            let x = Math.random() * crc2.canvas.width;
+            let y = Math.random() * crc2.canvas.height;
+            drawFish(x, y);
+        }
     }
     //Funktion Luftblasen
-    function drawBubble(_x, _y) {
+    function drawBubble(_x, _y, _radius) {
         ctx.beginPath();
         crc2.fillStyle = "rgb(152,245,255)";
-        ctx.arc(95, 50, 15, 0, 2 * Math.PI);
+        ctx.arc(_x, _y, _radius, 0, 2 * Math.PI);
         //ctx.stroke();
         crc2.fill();
     }
-    //Funktion Fische
+    function drawTreasureChest(_x, _y, _width, _height) {
+        crc2.fillStyle = "rgb(139,69,000)";
+        crc2.fillRect(_x, _y, _width, _height);
+    }
+    function drawBackground(_sandHeight) {
+        crc2.fillStyle = "rgb(100,149, 237)";
+        crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);
+        crc2.fillStyle = "rgb(189,183,107)";
+        crc2.fillRect(0, crc2.canvas.height - _sandHeight, crc2.canvas.width, crc2.canvas.height);
+    }
+    function drawShip(_x, _y) {
+        ctx.beginPath();
+        crc2.fillStyle = "rgb(139,69,19 )";
+        ctx.moveTo(_x, _y);
+        ctx.bezierCurveTo(_x, _y + 100, _x + 140, _y + 100, _x + 150, _y);
+        ctx.stroke();
+        crc2.moveTo(_x, _y);
+        crc2.lineTo(_x + 140, _y);
+        crc2.closePath();
+        crc2.stroke();
+        crc2.fill();
+        drawShipsflag(_x + 70, _y);
+    }
+    function drawShipsflag(_x, _y) {
+        crc2.beginPath();
+        crc2.moveTo(_x, _y);
+        crc2.lineTo(_x, _y - 150);
+        crc2.closePath();
+        crc2.stroke();
+        drawFlag(_x, _y - 150);
+    }
+    function drawFlag(_x, _y) {
+        ctx.beginPath();
+        crc2.fillStyle = "rgb(238,0,0)";
+        ctx.moveTo(_x, _y);
+        ctx.lineTo(_x - 90, _y + 40);
+        ctx.lineTo(_x, _y + 80);
+        ctx.stroke();
+        ctx.fill();
+    }
     function drawFish(_x, _y) {
         ctx.beginPath();
         crc2.fillStyle = "rgb(255,20,147)";
-        ctx.moveTo(_x + 50, _y + 50);
-        ctx.bezierCurveTo(_x + 30, _y, _x, _y + 20, _x - 30, _y);
-        crc2.moveTo(_x, _y);
-        crc2.moveTo(_x - 20, _y - 10);
-        crc2.moveTo(_x - 5, _y + 5);
-        crc2.moveTo(_x, _y - 15);
-        crc2.moveTo(_x + 5, _y + 5);
-        crc2.moveTo(_x - 20, _y - 5);
+        ctx.moveTo(_x, _y);
+        ctx.bezierCurveTo(_x + 30, _y, _x + 30, _y + 20, _x, _y + 20);
+        crc2.moveTo(_x, _y + 20);
+        crc2.lineTo(_x - 20, _y + 10);
+        crc2.lineTo(_x - 25, _y + 15);
+        crc2.lineTo(_x - 25, _y);
+        crc2.lineTo(_x - 20, _y + 5);
+        crc2.lineTo(_x, _y);
         ctx.stroke();
         ctx.fill();
         crc2.closePath();
