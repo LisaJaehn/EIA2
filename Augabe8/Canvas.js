@@ -42,16 +42,49 @@ var L08_Canvas;
         ctx.moveTo(520, 300);
         ctx.lineTo(430, 340);
         ctx.lineTo(520, 380);
+        ctx.stroke();
         ctx.fill();
-        drawBubble(200, 200);
+        //Luftblasen 
+        drawBubble(150, 200);
+        /* //Fisch
+         ctx.beginPath();
+         crc2.fillStyle = "rgb(255,20,147)";
+         ctx.moveTo( 50, 50);
+         ctx.bezierCurveTo( 80, 50, 80, 70, 50, 70 );
+         crc2.moveTo( 50, 70 );
+         crc2.lineTo( 30, 60);
+         crc2.lineTo( 25, 65);
+         crc2.lineTo( 25, 50);
+         crc2.lineTo( 30, 55);
+         crc2.lineTo( 50, 50);
+         ctx.stroke();
+         ctx.fill();
+         crc2.closePath();*/
+        drawFish(20, 20);
     }
     //Funktion Luftblasen
     function drawBubble(_x, _y) {
         ctx.beginPath();
         crc2.fillStyle = "rgb(152,245,255)";
-        ctx.arc(95, 50, 40, 0, 2 * Math.PI);
-        ctx.stroke();
+        ctx.arc(95, 50, 15, 0, 2 * Math.PI);
+        //ctx.stroke();
         crc2.fill();
+    }
+    //Funktion Fische
+    function drawFish(_x, _y) {
+        ctx.beginPath();
+        crc2.fillStyle = "rgb(255,20,147)";
+        ctx.moveTo(_x + 50, _y + 50);
+        ctx.bezierCurveTo(_x + 30, _y, _x, _y + 20, _x - 30, _y);
+        crc2.moveTo(_x, _y);
+        crc2.moveTo(_x - 20, _y - 10);
+        crc2.moveTo(_x - 5, _y + 5);
+        crc2.moveTo(_x, _y - 15);
+        crc2.moveTo(_x + 5, _y + 5);
+        crc2.moveTo(_x - 20, _y - 5);
+        ctx.stroke();
+        ctx.fill();
+        crc2.closePath();
     }
 })(L08_Canvas || (L08_Canvas = {}));
 //# sourceMappingURL=Canvas.js.map
