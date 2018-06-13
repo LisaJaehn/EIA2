@@ -26,6 +26,12 @@ var L08_Canvas;
             let y = Math.random() * crc2.canvas.height;
             drawFish(x, y);
         }
+        //Pflanze 1
+        drawPlant1(110, 640);
+        //Pflanze 2
+        drawPlant1(290, 640);
+        //Pflanze 3
+        drawPlant1(50, 640);
     }
     //Funktion Luftblasen
     function drawBubble(_x, _y, _radius) {
@@ -97,6 +103,48 @@ var L08_Canvas;
         ctx.stroke();
         ctx.fill();
         crc2.closePath();
+    }
+    //Funktion Pflanze 1
+    function drawPlant1(_x, _y) {
+        crc2.beginPath();
+        crc2.fillStyle = "rgb(34,139,34)";
+        crc2.moveTo(_x, _y);
+        crc2.lineTo(_x + 10, _y - 100);
+        crc2.lineTo(_x + 20, _y + 60);
+        crc2.lineTo(_x + 20, _y - 40);
+        crc2.lineTo(_x + 10, _y + 30);
+        crc2.lineTo(_x + 10, _y - 35);
+        crc2.lineTo(_x + 10, _y + 85);
+        ctx.stroke();
+        crc2.fill();
+    }
+    //Funktion Pflanze 2
+    function drawPlant2(_x, _y) {
+        crc2.beginPath();
+        crc2.fillStyle = "rgb(34,139,34)";
+        crc2.moveTo(_x, _y);
+        crc2.lineTo(_x + 10, _y - 100);
+        crc2.lineTo(_x + 20, _y + 60);
+        crc2.lineTo(_x + 20, _y - 40);
+        crc2.lineTo(_x + 10, _y + 30);
+        crc2.lineTo(_x + 10, _y - 35);
+        crc2.lineTo(_x + 10, _y + 85);
+        ctx.stroke();
+        crc2.fill();
+    }
+    //Funktion Pflanze 3
+    function drawPlant3(_x, _y) {
+        crc2.beginPath();
+        crc2.fillStyle = "rgb(34,139,34)";
+        crc2.moveTo(_x, _y);
+        crc2.lineTo(_x + 10, _y - 100);
+        crc2.lineTo(_x + 20, _y + 60);
+        crc2.lineTo(_x + 20, _y - 40);
+        crc2.lineTo(_x + 10, _y + 30);
+        crc2.lineTo(_x + 10, _y - 35);
+        crc2.lineTo(_x + 10, _y + 85);
+        ctx.stroke();
+        crc2.fill();
     }
 })(L08_Canvas || (L08_Canvas = {}));
 //# sourceMappingURL=Canvas.js.map
