@@ -19,8 +19,6 @@ namespace L08_Canvas {
 
         //Schiffswrak
 
-        //Schiffskörper
-
         drawShip( 100, 450 );
 
         //Luftblasen 
@@ -32,14 +30,14 @@ namespace L08_Canvas {
             drawBubble( x, y, 10 );
         }
 
+        //Fische
+
         for ( let i: number = 0; i < 5; i++ ) {
             let x: number = Math.random() * crc2.canvas.width;
             let y: number = Math.random() * crc2.canvas.height;
 
             drawFish( x, y );
         }
-
-
     }
 
     //Funktion Luftblasen
@@ -52,11 +50,15 @@ namespace L08_Canvas {
         crc2.fill();
     }
 
+    //Funktion Schatruhe
+
     function drawTreasureChest( _x: number, _y: number, _width: number, _height: number ): void {
         crc2.fillStyle = "rgb(139,69,000)";
         crc2.fillRect( _x, _y, _width, _height );
 
     }
+
+    //Funktion Hintergrund
 
     function drawBackground( _sandHeight: number ): void {
 
@@ -68,6 +70,7 @@ namespace L08_Canvas {
 
     }
 
+    //Funktion Schiffskörper
 
     function drawShip( _x: number, _y: number ): void {
         ctx.beginPath();
@@ -81,8 +84,12 @@ namespace L08_Canvas {
         crc2.stroke();
         crc2.fill();
 
+        //Funktion Schiffsmasten wird aufgerufen
+
         drawShipsflag( _x + 70, _y );
     }
+
+    //Funktion Schiffsmasten
 
     function drawShipsflag( _x: number, _y: number ): void {
         crc2.beginPath();
@@ -91,8 +98,12 @@ namespace L08_Canvas {
         crc2.closePath();
         crc2.stroke();
 
+        //Funktion Flagge wird aufgerufen
+
         drawFlag( _x, _y - 150 );
     }
+
+    //Funktion Schiffsflagge
 
     function drawFlag( _x: number, _y: number ): void {
 
@@ -105,6 +116,8 @@ namespace L08_Canvas {
         ctx.fill();
 
     }
+
+    //Funktion pinke Fische
 
     function drawFish( _x: number, _y: number ): void {
 
@@ -121,7 +134,6 @@ namespace L08_Canvas {
         ctx.stroke();
         ctx.fill();
         crc2.closePath();
-
     }
 
 }

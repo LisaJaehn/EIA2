@@ -13,7 +13,6 @@ var L08_Canvas;
         //Schatztruhe
         drawTreasureChest(60, 370, 100, 60);
         //Schiffswrak
-        //Schiffskörper
         drawShip(100, 450);
         //Luftblasen 
         for (let i = 0; i < 15; i++) {
@@ -21,6 +20,7 @@ var L08_Canvas;
             let y = Math.random() * crc2.canvas.height;
             drawBubble(x, y, 10);
         }
+        //Fische
         for (let i = 0; i < 5; i++) {
             let x = Math.random() * crc2.canvas.width;
             let y = Math.random() * crc2.canvas.height;
@@ -35,16 +35,19 @@ var L08_Canvas;
         //ctx.stroke();
         crc2.fill();
     }
+    //Funktion Schatruhe
     function drawTreasureChest(_x, _y, _width, _height) {
         crc2.fillStyle = "rgb(139,69,000)";
         crc2.fillRect(_x, _y, _width, _height);
     }
+    //Funktion Hintergrund
     function drawBackground(_sandHeight) {
         crc2.fillStyle = "rgb(100,149, 237)";
         crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);
         crc2.fillStyle = "rgb(189,183,107)";
         crc2.fillRect(0, crc2.canvas.height - _sandHeight, crc2.canvas.width, crc2.canvas.height);
     }
+    //Funktion Schiffskörper
     function drawShip(_x, _y) {
         ctx.beginPath();
         crc2.fillStyle = "rgb(139,69,19 )";
@@ -56,16 +59,20 @@ var L08_Canvas;
         crc2.closePath();
         crc2.stroke();
         crc2.fill();
+        //Funktion Schiffsmasten wird aufgerufen
         drawShipsflag(_x + 70, _y);
     }
+    //Funktion Schiffsmasten
     function drawShipsflag(_x, _y) {
         crc2.beginPath();
         crc2.moveTo(_x, _y);
         crc2.lineTo(_x, _y - 150);
         crc2.closePath();
         crc2.stroke();
+        //Funktion Flagge wird aufgerufen
         drawFlag(_x, _y - 150);
     }
+    //Funktion Schiffsflagge
     function drawFlag(_x, _y) {
         ctx.beginPath();
         crc2.fillStyle = "rgb(238,0,0)";
@@ -75,6 +82,7 @@ var L08_Canvas;
         ctx.stroke();
         ctx.fill();
     }
+    //Funktion pinke Fische
     function drawFish(_x, _y) {
         ctx.beginPath();
         crc2.fillStyle = "rgb(255,20,147)";
