@@ -54,7 +54,6 @@ namespace L08_Canvas {
         //Pflanze 3
 
         drawPlant1( 50, 640 );
-
     }
 
     //Funktion Luftblasen
@@ -63,7 +62,8 @@ namespace L08_Canvas {
         ctx.beginPath();
         crc2.fillStyle = "rgb(152,245,255)";
         ctx.arc( _x, _y, _radius, 0, 2 * Math.PI );
-        //ctx.stroke();
+        crc2.closePath();
+        ctx.stroke();
         crc2.fill();
     }
 
@@ -72,7 +72,6 @@ namespace L08_Canvas {
     function drawTreasureChest( _x: number, _y: number, _width: number, _height: number ): void {
         crc2.fillStyle = "rgb(139,69,000)";
         crc2.fillRect( _x, _y, _width, _height );
-
     }
 
     //Funktion Hintergrund
@@ -84,7 +83,6 @@ namespace L08_Canvas {
 
         crc2.fillStyle = "rgb(189,183,107)";
         crc2.fillRect( 0, crc2.canvas.height - _sandHeight, crc2.canvas.width, crc2.canvas.height );
-
     }
 
     //Funktion Schiffskörper
@@ -129,9 +127,9 @@ namespace L08_Canvas {
         ctx.moveTo( _x, _y );
         ctx.lineTo( _x - 90, _y + 40 );
         ctx.lineTo( _x, _y + 80 );
+        crc2.closePath();
         ctx.stroke();
         ctx.fill();
-
     }
 
     //Funktion pinke Fische
@@ -148,6 +146,7 @@ namespace L08_Canvas {
         crc2.lineTo( _x - 25, _y );
         crc2.lineTo( _x - 20, _y + 5 );
         crc2.lineTo( _x, _y );
+        crc2.closePath();
         ctx.stroke();
         ctx.fill();
         crc2.closePath();
@@ -156,6 +155,7 @@ namespace L08_Canvas {
     //Funktion Pflanze 1
 
     function drawPlant1( _x: number, _y: number ): void {
+
         crc2.beginPath();
         crc2.fillStyle = "rgb(34,139,34)";
         crc2.moveTo( _x, _y );
@@ -165,6 +165,7 @@ namespace L08_Canvas {
         crc2.lineTo( _x + 10, _y + 30 );
         crc2.lineTo( _x + 10, _y - 35 );
         crc2.lineTo( _x + 10, _y + 85 );
+        crc2.closePath();
         ctx.stroke();
         crc2.fill();
     }
@@ -172,6 +173,7 @@ namespace L08_Canvas {
     //Funktion Pflanze 2
 
     function drawPlant2( _x: number, _y: number ): void {
+
         crc2.beginPath();
         crc2.fillStyle = "rgb(34,139,34)";
         crc2.moveTo( _x, _y );
@@ -181,6 +183,7 @@ namespace L08_Canvas {
         crc2.lineTo( _x + 10, _y + 30 );
         crc2.lineTo( _x + 10, _y - 35 );
         crc2.lineTo( _x + 10, _y + 85 );
+        crc2.closePath();
         ctx.stroke();
         crc2.fill();
     }
@@ -188,6 +191,7 @@ namespace L08_Canvas {
     //Funktion Pflanze 3
 
     function drawPlant3( _x: number, _y: number ): void {
+
         crc2.beginPath();
         crc2.fillStyle = "rgb(34,139,34)";
         crc2.moveTo( _x, _y );
@@ -197,6 +201,7 @@ namespace L08_Canvas {
         crc2.lineTo( _x + 10, _y + 30 );
         crc2.lineTo( _x + 10, _y - 35 );
         crc2.lineTo( _x + 10, _y + 85 );
+        crc2.closePath();
         ctx.stroke();
         crc2.fill();
     }
@@ -206,7 +211,7 @@ namespace L08_Canvas {
     function drawStar( _x: number, _y: number ): void {
         crc2.beginPath();
         crc2.fillStyle = "rgb(255, 165, 0)";
-        crc2.moveTo( _x, _y );
+        crc2.moveTo( _x + 10, _y );
         crc2.lineTo( _x + 20, _y + 30 );
         crc2.lineTo( _x - 40, _y );
         crc2.lineTo( _x + 20, _y - 30 );
@@ -219,9 +224,6 @@ namespace L08_Canvas {
         crc2.closePath();
         crc2.stroke();
         crc2.fill();
- 
     }
-
-
 }
 

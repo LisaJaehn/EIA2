@@ -40,7 +40,8 @@ var L08_Canvas;
         ctx.beginPath();
         crc2.fillStyle = "rgb(152,245,255)";
         ctx.arc(_x, _y, _radius, 0, 2 * Math.PI);
-        //ctx.stroke();
+        crc2.closePath();
+        ctx.stroke();
         crc2.fill();
     }
     //Funktion Schatruhe
@@ -87,6 +88,7 @@ var L08_Canvas;
         ctx.moveTo(_x, _y);
         ctx.lineTo(_x - 90, _y + 40);
         ctx.lineTo(_x, _y + 80);
+        crc2.closePath();
         ctx.stroke();
         ctx.fill();
     }
@@ -102,6 +104,7 @@ var L08_Canvas;
         crc2.lineTo(_x - 25, _y);
         crc2.lineTo(_x - 20, _y + 5);
         crc2.lineTo(_x, _y);
+        crc2.closePath();
         ctx.stroke();
         ctx.fill();
         crc2.closePath();
@@ -117,6 +120,7 @@ var L08_Canvas;
         crc2.lineTo(_x + 10, _y + 30);
         crc2.lineTo(_x + 10, _y - 35);
         crc2.lineTo(_x + 10, _y + 85);
+        crc2.closePath();
         ctx.stroke();
         crc2.fill();
     }
@@ -131,6 +135,7 @@ var L08_Canvas;
         crc2.lineTo(_x + 10, _y + 30);
         crc2.lineTo(_x + 10, _y - 35);
         crc2.lineTo(_x + 10, _y + 85);
+        crc2.closePath();
         ctx.stroke();
         crc2.fill();
     }
@@ -145,6 +150,7 @@ var L08_Canvas;
         crc2.lineTo(_x + 10, _y + 30);
         crc2.lineTo(_x + 10, _y - 35);
         crc2.lineTo(_x + 10, _y + 85);
+        crc2.closePath();
         ctx.stroke();
         crc2.fill();
     }
@@ -152,7 +158,7 @@ var L08_Canvas;
     function drawStar(_x, _y) {
         crc2.beginPath();
         crc2.fillStyle = "rgb(255, 165, 0)";
-        crc2.moveTo(_x, _y);
+        crc2.moveTo(_x + 10, _y);
         crc2.lineTo(_x + 20, _y + 30);
         crc2.lineTo(_x - 40, _y);
         crc2.lineTo(_x + 20, _y - 30);
