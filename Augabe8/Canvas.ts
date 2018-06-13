@@ -76,7 +76,7 @@ namespace L08_Canvas {
         crc2.fill();
     }
 
-    //Funktion Schatruhe
+    //Funktion Schatztruhe
 
     function drawTreasureChest( _x: number, _y: number, _width: number, _height: number ): void {
         crc2.fillStyle = "rgb(139,69,000)";
@@ -160,6 +160,8 @@ namespace L08_Canvas {
         ctx.fill();
         crc2.closePath();
     }
+    
+  //Funktion lila Fische
     
     function drawFish2( _x: number, _y: number ): void {
 
