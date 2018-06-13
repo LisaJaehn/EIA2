@@ -200,7 +200,7 @@ namespace L08_Canvas {
 
     //Funktion Pflanze 2
 
-    function drawPlant2( _x: number, _y: number ): void {
+    function drawPlant2 ( _x: number, _y: number ): void {
 
         crc2.beginPath();
         crc2.fillStyle = "rgb(34,139,34)";
@@ -218,7 +218,7 @@ namespace L08_Canvas {
 
     //Funktion Pflanze 3
 
-    function drawPlant3( _x: number, _y: number ): void {
+    function drawPlant3 ( _x: number, _y: number ): void {
 
         crc2.beginPath();
         crc2.fillStyle = "rgb(34,139,34)";
@@ -236,7 +236,7 @@ namespace L08_Canvas {
 
     //Seestern
 
-    function drawStar( _x: number, _y: number ): void {
+    function drawStar ( _x: number, _y: number ): void {
         crc2.beginPath();
         crc2.fillStyle = "rgb(255, 165, 0)";
         crc2.moveTo( _x + 10, _y );
