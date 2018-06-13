@@ -219,7 +219,7 @@ namespace L08_Canvas {
         crc2.closePath();
         crc2.stroke();
         crc2.fill();
-
+ 
     }
 
 
