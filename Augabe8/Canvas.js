@@ -22,11 +22,17 @@ var L08_Canvas;
         }
         //Seestern
         drawStar(310, 420);
-        //Fische
+        //Fische pink
         for (let i = 0; i < 5; i++) {
             let x = Math.random() * crc2.canvas.width;
             let y = Math.random() * crc2.canvas.height;
-            drawFish(x, y);
+            drawFish1(x, y);
+        }
+        //Fische lila
+        for (let i = 0; i < 5; i++) {
+            let x = Math.random() * crc2.canvas.width;
+            let y = Math.random() * crc2.canvas.height;
+            drawFish2(x, y);
         }
         //Pflanze 1
         drawPlant1(110, 640);
@@ -93,9 +99,25 @@ var L08_Canvas;
         ctx.fill();
     }
     //Funktion pinke Fische
-    function drawFish(_x, _y) {
+    function drawFish1(_x, _y) {
         ctx.beginPath();
         crc2.fillStyle = "rgb(255,20,147)";
+        ctx.moveTo(_x, _y);
+        ctx.bezierCurveTo(_x + 30, _y, _x + 30, _y + 20, _x, _y + 20);
+        crc2.moveTo(_x, _y + 20);
+        crc2.lineTo(_x - 20, _y + 10);
+        crc2.lineTo(_x - 25, _y + 15);
+        crc2.lineTo(_x - 25, _y);
+        crc2.lineTo(_x - 20, _y + 5);
+        crc2.lineTo(_x, _y);
+        crc2.closePath();
+        ctx.stroke();
+        ctx.fill();
+        crc2.closePath();
+    }
+    function drawFish2(_x, _y) {
+        ctx.beginPath();
+        crc2.fillStyle = "rgb(199,21,133)";
         ctx.moveTo(_x, _y);
         ctx.bezierCurveTo(_x + 30, _y, _x + 30, _y + 20, _x, _y + 20);
         crc2.moveTo(_x, _y + 20);
