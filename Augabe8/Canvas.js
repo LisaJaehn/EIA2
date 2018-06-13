@@ -20,6 +20,8 @@ var L08_Canvas;
             let y = Math.random() * crc2.canvas.height;
             drawBubble(x, y, 10);
         }
+        //Seestern
+        drawStar(310, 420);
         //Fische
         for (let i = 0; i < 5; i++) {
             let x = Math.random() * crc2.canvas.width;
@@ -144,6 +146,23 @@ var L08_Canvas;
         crc2.lineTo(_x + 10, _y - 35);
         crc2.lineTo(_x + 10, _y + 85);
         ctx.stroke();
+        crc2.fill();
+    }
+    //Seestern
+    function drawStar(_x, _y) {
+        crc2.beginPath();
+        crc2.fillStyle = "rgb(255, 165, 0)";
+        crc2.moveTo(_x, _y);
+        crc2.lineTo(_x + 20, _y + 30);
+        crc2.lineTo(_x - 40, _y);
+        crc2.lineTo(_x + 20, _y - 30);
+        crc2.closePath();
+        crc2.moveTo(_x + 20, _y + 10);
+        crc2.lineTo(_x - 20, _y + 30);
+        crc2.lineTo(_x - 20, _y - 30);
+        crc2.lineTo(_x + 40, _y);
+        crc2.closePath();
+        crc2.stroke();
         crc2.fill();
     }
 })(L08_Canvas || (L08_Canvas = {}));

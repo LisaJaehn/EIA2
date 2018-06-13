@@ -30,6 +30,10 @@ namespace L08_Canvas {
             drawBubble( x, y, 10 );
         }
 
+        //Seestern
+
+        drawStar( 310, 420 );
+
         //Fische
 
         for ( let i: number = 0; i < 5; i++ ) {
@@ -151,7 +155,7 @@ namespace L08_Canvas {
 
     //Funktion Pflanze 1
 
-    function drawPlant1 ( _x: number, _y: number ): void {
+    function drawPlant1( _x: number, _y: number ): void {
         crc2.beginPath();
         crc2.fillStyle = "rgb(34,139,34)";
         crc2.moveTo( _x, _y );
@@ -167,7 +171,7 @@ namespace L08_Canvas {
 
     //Funktion Pflanze 2
 
-    function drawPlant2 ( _x: number, _y: number ): void {
+    function drawPlant2( _x: number, _y: number ): void {
         crc2.beginPath();
         crc2.fillStyle = "rgb(34,139,34)";
         crc2.moveTo( _x, _y );
@@ -183,7 +187,7 @@ namespace L08_Canvas {
 
     //Funktion Pflanze 3
 
-    function drawPlant3 ( _x: number, _y: number ): void {
+    function drawPlant3( _x: number, _y: number ): void {
         crc2.beginPath();
         crc2.fillStyle = "rgb(34,139,34)";
         crc2.moveTo( _x, _y );
@@ -197,6 +201,26 @@ namespace L08_Canvas {
         crc2.fill();
     }
 
+    //Seestern
+
+    function drawStar( _x: number, _y: number ): void {
+        crc2.beginPath();
+        crc2.fillStyle = "rgb(255, 165, 0)";
+        crc2.moveTo( _x, _y );
+        crc2.lineTo( _x + 20, _y + 30 );
+        crc2.lineTo( _x - 40, _y );
+        crc2.lineTo( _x + 20, _y - 30 );
+        crc2.closePath();
+
+        crc2.moveTo( _x + 20, _y + 10 );
+        crc2.lineTo( _x - 20, _y + 30 );
+        crc2.lineTo( _x - 20, _y - 30 );
+        crc2.lineTo( _x + 40, _y );
+        crc2.closePath();
+        crc2.stroke();
+        crc2.fill();
+
+    }
 
 
 }
