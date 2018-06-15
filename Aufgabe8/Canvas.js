@@ -14,6 +14,8 @@ var L08_Canvas;
         drawStone(260, 380);
         //Schatztruhe
         drawTreasureChest(60, 370, 100, 60);
+        //Deckel Schatztruhe
+        drawDeckel(87, 290);
         //Luftblasen random im Wasser
         for (let i = 0; i < 8; i++) {
             let x = Math.random() * crc2.canvas.width;
@@ -72,6 +74,16 @@ var L08_Canvas;
         crc2.fillStyle = "rgb(139,69,000)";
         crc2.fillRect(_x, _y, _width, _height);
     }
+    //Funktion Deckel Schatztruhe
+    function drawDeckel(_x, _y) {
+        ctx.beginPath();
+        crc2.fillStyle = "rgb(139,69,000)";
+        ctx.moveTo(_x, _y);
+        ctx.bezierCurveTo(_x + 90, _y - 50, _x + 90, _y + 70, _x + 70, _y + 80);
+        crc2.closePath();
+        //ctx.stroke();
+        crc2.fill();
+    }
     //Funktion Hintergrund
     function drawBackground(_sandHeight) {
         crc2.fillStyle = "rgb(100,149, 237)";
@@ -98,19 +110,19 @@ var L08_Canvas;
     function drawShipsflag(_x, _y) {
         crc2.beginPath();
         crc2.moveTo(_x, _y);
-        crc2.lineTo(_x, _y - 150);
+        crc2.lineTo(_x, _y - 120);
         crc2.closePath();
         crc2.stroke();
         //Funktion Flagge wird aufgerufen
-        drawFlag(_x, _y - 150);
+        drawFlag(_x, _y - 120);
     }
     //Funktion Schiffsflagge
     function drawFlag(_x, _y) {
         ctx.beginPath();
         crc2.fillStyle = "rgb(238,0,0)";
         ctx.moveTo(_x, _y);
-        ctx.lineTo(_x - 90, _y + 40);
-        ctx.lineTo(_x, _y + 80);
+        ctx.lineTo(_x + 90, _y - 40);
+        ctx.lineTo(_x, _y - 80);
         crc2.closePath();
         ctx.stroke();
         ctx.fill();
