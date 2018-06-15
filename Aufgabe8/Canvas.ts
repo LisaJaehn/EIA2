@@ -166,7 +166,7 @@ namespace L08_Canvas {
 
         //Funktion Flagge wird aufgerufen
 
-        drawFlag( _x, _y - 120 );
+        drawFlag( _x, _y - 120 ); 
     }
 
     //Funktion Schiffsflagge
