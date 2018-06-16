@@ -122,7 +122,6 @@ namespace L08_Canvas {
     //Funktion Hintergrund
 
     function drawBackground( _sandHeight: number ): void {
-
         crc2.fillStyle = "rgb(100,149, 237)";
         crc2.fillRect( 0, 0, crc2.canvas.width, crc2.canvas.height );
 
@@ -152,7 +151,6 @@ namespace L08_Canvas {
     //Funktion Schiffsmasten
 
     function drawShipsflag( _x: number, _y: number ): void {
-
         crc2.beginPath();
         crc2.moveTo( _x, _y );
         crc2.lineTo( _x, _y - 120 );
@@ -167,7 +165,6 @@ namespace L08_Canvas {
     //Funktion Schiffsflagge
 
     function drawFlag( _x: number, _y: number ): void {
-
         ctx.beginPath();
         crc2.fillStyle = "rgb(238,0,0)";
         ctx.moveTo( _x, _y );
@@ -181,7 +178,6 @@ namespace L08_Canvas {
     //Funktion Fische
 
     function drawFish( _x: number, _y: number, _r: number, _g: number, _b: number ): void {
-
         ctx.beginPath();
         crc2.fillStyle = "rgb(" + _r + "," + _g + "," + _b + ")";
         ctx.moveTo( _x, _y );
@@ -201,7 +197,6 @@ namespace L08_Canvas {
     //Funktion Pflanze 1
 
     function drawPlant1( _x: number, _y: number ): void {
-
         crc2.beginPath();
         crc2.fillStyle = "rgb(34,139,34)";
         crc2.moveTo( _x, _y );
@@ -219,7 +214,6 @@ namespace L08_Canvas {
     //Funktion Pflanze 2
 
     function drawPlant2( _x: number, _y: number ): void {
-
         crc2.beginPath();
         crc2.fillStyle = "rgb(34,139,34)";
         crc2.moveTo( _x, _y );
@@ -237,7 +231,6 @@ namespace L08_Canvas {
     //Funktion Pflanze 3
 
     function drawPlant3( _x: number, _y: number ): void {
-
         crc2.beginPath();
         crc2.fillStyle = "rgb(34,139,34)";
         crc2.moveTo( _x, _y );
@@ -255,7 +248,6 @@ namespace L08_Canvas {
     //Seestern
 
     function drawStar( _x: number, _y: number ): void {
-
         crc2.beginPath();
         crc2.fillStyle = "rgb(255, 165, 0)";
         crc2.moveTo( _x + 10, _y );
@@ -273,7 +265,6 @@ namespace L08_Canvas {
     }
 
     function drawStone( _x: number, _y: number ): void {
-
         crc2.beginPath();
         crc2.fillStyle = "rgb(190,190,190)";
         crc2.moveTo( _x, _y );
