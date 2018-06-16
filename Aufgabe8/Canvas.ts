@@ -12,18 +12,18 @@ namespace L08_Canvas {
         //Hintergrund
 
         drawBackground( 260 );
-        
+
         //Felsen
-        
-        drawStone(260, 380);
+
+        drawStone( 260, 380 );
 
         //Schatztruhe
 
         drawTreasureChest( 60, 370, 100, 60 );
-        
+
         //Deckel Schatztruhe
-        
-        drawDeckel(87, 290);
+
+        drawDeckel( 87, 290 );
 
         //Luftblasen random im Wasser
 
@@ -31,18 +31,19 @@ namespace L08_Canvas {
             let x: number = Math.random() * crc2.canvas.width;
             let y: number = Math.random() * crc2.canvas.height;
 
-            drawBubble( x, y, 5 );
+            drawBubbles( x, y, 5 );
         }
-        
-        //Luftblasen aus Kiste
-        
-        for ( let i: number = 0; i < 10; i++ ) {
-            let x: number = (110);
-            let y: number = Math.random() * 370;
 
-            drawBubble(x, y, 10);
-}
-        
+        //Luftblasen aus Kiste
+
+        for ( let i: number = 0; i < 10; i++ ) {
+            let x: number = ( 110 );
+            let y: number = Math.random() * 370;
+            let r: number = Math.random() * 10;
+
+            drawBubble( x, y, r );
+        }
+
         //Schiffswrak
 
         drawShip( 100, 450 );
@@ -51,22 +52,16 @@ namespace L08_Canvas {
 
         drawStar( 310, 420 );
 
-        //Fische pink
+        //Fische
 
-        for ( let i: number = 0; i < 5; i++ ) {
+        for ( let i: number = 0; i < 15; i++ ) {
             let x: number = Math.random() * crc2.canvas.width;
             let y: number = Math.random() * crc2.canvas.height;
+            let r: number = Math.random() * 300;
+            let g: number = Math.random() * 300;
+            let b: number = Math.random() * 300;
 
-            drawFish1( x, y );
-        }
-        
-      //Fische lila
-
-        for ( let i: number = 0; i < 5; i++ ) {
-            let x: number = Math.random() * crc2.canvas.width;
-            let y: number = Math.random() * crc2.canvas.height;
-
-            drawFish2( x, y );
+            drawFish( x, y, r, g, b );
         }
 
         //Pflanze 1
@@ -80,12 +75,12 @@ namespace L08_Canvas {
         //Pflanze 3
 
         drawPlant1( 50, 640 );
-        
+
     }
 
     //Funktion Luftblasen aus der Kiste
 
-    function drawBubble ( _x: number, _y: number, _radius: number ): void {
+    function drawBubble( _x: number, _y: number, _radius: number ): void {
         ctx.beginPath();
         crc2.fillStyle = "rgb(152,245,255)";
         ctx.arc( _x, _y, _radius, 0, 2 * Math.PI );
@@ -93,12 +88,12 @@ namespace L08_Canvas {
         ctx.stroke();
         crc2.fill();
     }
-    
-  //Funktion Luftblasen random im Wasser
 
-    function drawBubbles ( _x: number, _y: number, _radius: number ): void {
+    //Funktion Luftblasen random im Wasser
+
+    function drawBubbles( _x: number, _y: number, _radius: number ): void {
         ctx.beginPath();
-        crc2.fillStyle = "rgb(202,225,255)";
+        crc2.fillStyle = "rgb(255,250,240)";
         ctx.arc( _x, _y, _radius, 0, 2 * Math.PI );
         crc2.closePath();
         ctx.stroke();
@@ -111,19 +106,19 @@ namespace L08_Canvas {
         crc2.fillStyle = "rgb(139,69,000)";
         crc2.fillRect( _x, _y, _width, _height );
     }
-    
+
     //Funktion Deckel Schatztruhe
-    
+
     function drawDeckel( _x: number, _y: number ): void {
         ctx.beginPath();
         crc2.fillStyle = "rgb(139,69,000)";
-        ctx.moveTo(_x,_y);
-        ctx.bezierCurveTo(_x + 90, _y - 50, _x + 90, _y + 70, _x + 70, _y + 80);
+        ctx.moveTo( _x, _y );
+        ctx.bezierCurveTo( _x + 90, _y - 50, _x + 90, _y + 70, _x + 70, _y + 80 );
         crc2.closePath();
         //ctx.stroke();
         crc2.fill();
-        }
-    
+    }
+
     //Funktion Hintergrund
 
     function drawBackground( _sandHeight: number ): void {
@@ -156,8 +151,8 @@ namespace L08_Canvas {
 
     //Funktion Schiffsmasten
 
-    function drawShipsflag ( _x: number, _y: number ): void {
-        
+    function drawShipsflag( _x: number, _y: number ): void {
+
         crc2.beginPath();
         crc2.moveTo( _x, _y );
         crc2.lineTo( _x, _y - 120 );
@@ -166,7 +161,7 @@ namespace L08_Canvas {
 
         //Funktion Flagge wird aufgerufen
 
-        drawFlag( _x, _y - 120 ); 
+        drawFlag( _x, _y - 120 );
     }
 
     //Funktion Schiffsflagge
@@ -183,12 +178,12 @@ namespace L08_Canvas {
         ctx.fill();
     }
 
-    //Funktion pinke Fische
+    //Funktion Fische
 
-    function drawFish1( _x: number, _y: number ): void {
+    function drawFish( _x: number, _y: number, _r: number, _g: number, _b: number ): void {
 
         ctx.beginPath();
-        crc2.fillStyle = "rgb(255,20,147)";
+        crc2.fillStyle = "rgb(" + _r + "," + _g + "," + _b + ")";
         ctx.moveTo( _x, _y );
         ctx.bezierCurveTo( _x + 30, _y, _x + 30, _y + 20, _x, _y + 20 );
         crc2.moveTo( _x, _y + 20 );
@@ -202,27 +197,6 @@ namespace L08_Canvas {
         ctx.fill();
         crc2.closePath();
     }
-    
-  //Funktion lila Fische
-    
-    function drawFish2( _x: number, _y: number ): void {
-
-        ctx.beginPath();
-        crc2.fillStyle = "rgb(199,21,133)";
-        ctx.moveTo( _x, _y );
-        ctx.bezierCurveTo( _x + 30, _y, _x + 30, _y + 20, _x, _y + 20 );
-        crc2.moveTo( _x, _y + 20 );
-        crc2.lineTo( _x - 20, _y + 10 );
-        crc2.lineTo( _x - 25, _y + 15 );
-        crc2.lineTo( _x - 25, _y );
-        crc2.lineTo( _x - 20, _y + 5 );
-        crc2.lineTo( _x, _y );
-        crc2.closePath();
-        ctx.stroke();
-        ctx.fill();
-        crc2.closePath();
-    }
-
 
     //Funktion Pflanze 1
 
@@ -244,7 +218,7 @@ namespace L08_Canvas {
 
     //Funktion Pflanze 2
 
-    function drawPlant2 ( _x: number, _y: number ): void {
+    function drawPlant2( _x: number, _y: number ): void {
 
         crc2.beginPath();
         crc2.fillStyle = "rgb(34,139,34)";
@@ -262,7 +236,7 @@ namespace L08_Canvas {
 
     //Funktion Pflanze 3
 
-    function drawPlant3 ( _x: number, _y: number ): void {
+    function drawPlant3( _x: number, _y: number ): void {
 
         crc2.beginPath();
         crc2.fillStyle = "rgb(34,139,34)";
@@ -280,7 +254,8 @@ namespace L08_Canvas {
 
     //Seestern
 
-    function drawStar ( _x: number, _y: number ): void {
+    function drawStar( _x: number, _y: number ): void {
+
         crc2.beginPath();
         crc2.fillStyle = "rgb(255, 165, 0)";
         crc2.moveTo( _x + 10, _y );
@@ -288,7 +263,6 @@ namespace L08_Canvas {
         crc2.lineTo( _x - 40, _y );
         crc2.lineTo( _x + 20, _y - 30 );
         crc2.closePath();
-
         crc2.moveTo( _x + 20, _y + 10 );
         crc2.lineTo( _x - 20, _y + 30 );
         crc2.lineTo( _x - 20, _y - 30 );
@@ -297,22 +271,21 @@ namespace L08_Canvas {
         crc2.stroke();
         crc2.fill();
     }
-    
-    function drawStone ( _x: number, _y: number ): void {
-        //260, 380
+
+    function drawStone( _x: number, _y: number ): void {
+
         crc2.beginPath();
         crc2.fillStyle = "rgb(190,190,190)";
         crc2.moveTo( _x, _y );
-        crc2.lineTo(_x, _y - 40);
-        crc2.lineTo(_x + 30, _y -50);
-        crc2.lineTo(_x + 50, _y -70);
-        crc2.lineTo(_x + 70, _y -80);
-        crc2.lineTo(_x + 100, _y -90);
-        crc2.lineTo(_x + 100 , _y + 0);
+        crc2.lineTo( _x, _y - 40 );
+        crc2.lineTo( _x + 30, _y - 50 );
+        crc2.lineTo( _x + 50, _y - 70 );
+        crc2.lineTo( _x + 70, _y - 80 );
+        crc2.lineTo( _x + 100, _y - 90 );
+        crc2.lineTo( _x + 100, _y + 0 );
         crc2.closePath();
         crc2.stroke();
         crc2.fill();
-        
-        }
+    }
 }
 
