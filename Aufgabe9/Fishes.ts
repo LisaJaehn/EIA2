@@ -8,8 +8,6 @@ namespace L09_Canvas {
         g: number;
 
         move(): void {
-            // this.x += Math.random() * 4 - 2;
-            // this.y += Math.random() * 4 - 2;
 
             this.x += 2;
             this.y += 0;
@@ -17,7 +15,7 @@ namespace L09_Canvas {
 
         //Funktion Fische
 
-        draw(): void {
+            draw(): void {
             ctx.beginPath();
             crc2.fillStyle = "rgb(" + this.r + "," + this.g + "," + this.b + ")";
             ctx.moveTo( this.x, this.y );

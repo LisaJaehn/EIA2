@@ -2,8 +2,6 @@ var L09_Canvas;
 (function (L09_Canvas) {
     class Shoal {
         move() {
-            // this.x += Math.random() * 4 - 2;
-            // this.y += Math.random() * 4 - 2;
             this.x += 2;
             this.y += 0;
         }
