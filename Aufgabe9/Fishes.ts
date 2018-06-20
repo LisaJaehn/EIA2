@@ -1,23 +1,23 @@
 namespace L09_Canvas {
-    
+
     export class Shoal {
         x: number;
         y: number;
         r: number;
         b: number;
         g: number;
-    
+
         move(): void {
-           // this.x += Math.random() * 4 - 2;
-           // this.y += Math.random() * 4 - 2;
-            
+            // this.x += Math.random() * 4 - 2;
+            // this.y += Math.random() * 4 - 2;
+
             this.x += 2;
             this.y += 0;
-    }
-    
-      //Funktion Fische
+        }
 
-            draw(): void {
+        //Funktion Fische
+
+        draw(): void {
             ctx.beginPath();
             crc2.fillStyle = "rgb(" + this.r + "," + this.g + "," + this.b + ")";
             ctx.moveTo( this.x, this.y );
@@ -33,12 +33,7 @@ namespace L09_Canvas {
             ctx.fill();
             crc2.closePath();
         }
-    
-    
-    
-    
+
     }
-    
-    
-    
+
 }
