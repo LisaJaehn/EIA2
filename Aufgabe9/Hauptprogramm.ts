@@ -16,7 +16,7 @@ namespace L09_Canvas {
 
 
         //Hintergund mittels einer Klasse erstellen
-        let hg: Hintergrund = new Hintergrund;
+        let hg: Background = new Background;
 
         imgData = crc2.getImageData( 0, 0, canvas.width, canvas.height ); //Speichern des Canvas als Bild
 
