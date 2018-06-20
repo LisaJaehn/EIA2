@@ -5,15 +5,15 @@ var L09_Canvas;
     let bubbles = [];
     let bubblesRandom = [];
     let n = 10;
-    let imgData;
+    //let imgData: ImageData;
     function init(_event) {
         let canvas = document.getElementsByTagName("canvas")[0];
         L09_Canvas.crc2 = canvas.getContext("2d");
         L09_Canvas.ctx = canvas.getContext("2d");
         console.log(L09_Canvas.crc2);
         //Hintergund mittels einer Klasse erstellen
-        let hg = new L09_Canvas.Background;
-        imgData = L09_Canvas.crc2.getImageData(0, 0, canvas.width, canvas.height); //Speichern des Canvas als Bild
+        //let hg: Hintergrund = new Hintergrund;
+        //imgData = crc2.getImageData( 0, 0, canvas.width, canvas.height ); //Speichern des Canvas als Bild
         //Luftblasen random im Wasser
         for (let i = 0; i < n; i++) {
             let bubbleRandom = new L09_Canvas.BlasenRandom();
@@ -46,6 +46,7 @@ var L09_Canvas;
     function animate() {
         window.setTimeout(animate, 10);
         //console.log(animate);
+        //crc2.putImageData(imgData, 0, 0); 
         L09_Canvas.crc2.clearRect(0, 0, L09_Canvas.crc2.canvas.width, L09_Canvas.crc2.canvas.height);
         moveObjects();
         drawObjects();

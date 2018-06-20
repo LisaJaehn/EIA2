@@ -1,6 +1,6 @@
 namespace L09_Canvas {
 
-    export class Background
+    export class Hintergrund
  
      paint (){
         this.drawBackground( 260 );

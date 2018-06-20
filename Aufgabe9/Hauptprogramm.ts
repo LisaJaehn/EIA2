@@ -6,7 +6,7 @@ namespace L09_Canvas {
     let bubbles: Blasen[] = [];
     let bubblesRandom: BlasenRandom[] = [];
     let n: number = 10;
-    let imgData: ImageData;
+    //let imgData: ImageData;
 
     function init( _event: Event ): void {
         let canvas: HTMLCanvasElement = document.getElementsByTagName( "canvas" )[0];
@@ -16,9 +16,9 @@ namespace L09_Canvas {
 
 
         //Hintergund mittels einer Klasse erstellen
-        let hg: Background = new Background;
+        //let hg: Hintergrund = new Hintergrund;
 
-        imgData = crc2.getImageData( 0, 0, canvas.width, canvas.height ); //Speichern des Canvas als Bild
+        //imgData = crc2.getImageData( 0, 0, canvas.width, canvas.height ); //Speichern des Canvas als Bild
 
 
 
@@ -68,6 +68,8 @@ namespace L09_Canvas {
         window.setTimeout( animate, 10 );
 
         //console.log(animate);
+        
+        //crc2.putImageData(imgData, 0, 0); 
 
         crc2.clearRect( 0, 0, crc2.canvas.width, crc2.canvas.height );
 
