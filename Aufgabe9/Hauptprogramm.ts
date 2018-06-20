@@ -1,7 +1,9 @@
 namespace L09_Canvas {
     window.addEventListener( "load", init );
-    let crc2: CanvasRenderingContext2D;
-    let ctx: CanvasRenderingContext2D;
+    export let crc2: CanvasRenderingContext2D;
+    export let ctx: CanvasRenderingContext2D;
+    let fishes: Shoal[] = [];
+    let n: number = 10;
 
     function init( _event: Event ): void {
         let canvas: HTMLCanvasElement = document.getElementsByTagName( "canvas" )[0];
@@ -54,14 +56,16 @@ namespace L09_Canvas {
 
         //Fische
 
-        for ( let i: number = 0; i < 15; i++ ) {
-            let x: number = Math.random() * crc2.canvas.width;
-            let y: number = Math.random() * crc2.canvas.height;
-            let r: number = Math.random() * 300;
-            let g: number = Math.random() * 300;
-            let b: number = Math.random() * 300;
+        for ( let i: number = 0; i < n; i++ ) {
+            let fish: Shoal = new Shoal();
+            fish.x = Math.random() * crc2.canvas.width;
+            fish.y = Math.random() * crc2.canvas.height;
+            fish.r = Math.random() * 300;
+            fish.g = Math.random() * 300;
+            fish.b = Math.random() * 300;
 
-            drawFish( x, y, r, g, b );
+        fishes.push(fish);
+        
         }
 
         //Pflanze 1
@@ -75,6 +79,9 @@ namespace L09_Canvas {
         //Pflanze 3
 
         drawPlant1( 50, 640 );
+        
+        //Animation aufrufen
+        animate();
 
     }
 
@@ -175,24 +182,6 @@ namespace L09_Canvas {
         ctx.fill();
     }
 
-    //Funktion Fische
-
-    function drawFish( _x: number, _y: number, _r: number, _g: number, _b: number ): void {
-        ctx.beginPath();
-        crc2.fillStyle = "rgb(" + _r + "," + _g + "," + _b + ")";
-        ctx.moveTo( _x, _y );
-        ctx.bezierCurveTo( _x + 30, _y, _x + 30, _y + 20, _x, _y + 20 );
-        crc2.moveTo( _x, _y + 20 );
-        crc2.lineTo( _x - 20, _y + 10 );
-        crc2.lineTo( _x - 25, _y + 15 );
-        crc2.lineTo( _x - 25, _y );
-        crc2.lineTo( _x - 20, _y + 5 );
-        crc2.lineTo( _x, _y );
-        crc2.closePath();
-        ctx.stroke();
-        ctx.fill();
-        crc2.closePath();
-    }
 
     //Funktion Pflanze 1
 
@@ -278,4 +267,28 @@ namespace L09_Canvas {
         crc2.stroke();
         crc2.fill();
     }
+    
+    function animate(): void {
+        window.setTimeout(animate, 10);
+        
+        //console.log(animate);
+
+        crc2.clearRect(0, 0, crc2.canvas.width, crc2.canvas.height);
+
+        moveObjects();
+        drawObjects();
+    }
+
+    function moveObjects(): void {
+        for (let i: number = 0; i < fishes.length; i++) {
+            fishes[i].move();
+        }
+    }
+
+    function drawObjects(): void {
+        for (let i: number = 0; i < fishes.length; i++)
+            fishes[i].draw();
+    }
+
+
 }
