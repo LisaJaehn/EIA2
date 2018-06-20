@@ -3,6 +3,7 @@ var L09_Canvas;
     window.addEventListener("load", init);
     let fishes = [];
     let bubbles = [];
+    let bubblesRandom = [];
     let n = 10;
     function init(_event) {
         let canvas = document.getElementsByTagName("canvas")[0];
@@ -18,10 +19,12 @@ var L09_Canvas;
         //Deckel Schatztruhe
         drawDeckel(87, 290);
         //Luftblasen random im Wasser
-        for (let i = 0; i < 8; i++) {
-            let x = Math.random() * L09_Canvas.crc2.canvas.width;
-            let y = Math.random() * L09_Canvas.crc2.canvas.height;
-            drawBubbles(x, y, 5);
+        for (let i = 0; i < n; i++) {
+            let bubbleRandom = new L09_Canvas.BlasenRandom();
+            bubbleRandom.x = Math.random() * L09_Canvas.crc2.canvas.width;
+            bubbleRandom.y = Math.random() * L09_Canvas.crc2.canvas.height;
+            bubbleRandom.radius = Math.random() * 10;
+            bubblesRandom.push(bubbleRandom);
         }
         //Luftblasen aus Kiste
         for (let i = 0; i < n; i++) {
@@ -53,15 +56,6 @@ var L09_Canvas;
         drawPlant1(50, 640);
         //Animation aufrufen
         animate();
-    }
-    //Funktion Luftblasen random im Wasser
-    function drawBubbles(_x, _y, _radius) {
-        L09_Canvas.ctx.beginPath();
-        L09_Canvas.crc2.fillStyle = "rgb(255,250,240)";
-        L09_Canvas.ctx.arc(_x, _y, _radius, 0, 2 * Math.PI);
-        L09_Canvas.crc2.closePath();
-        L09_Canvas.ctx.stroke();
-        L09_Canvas.crc2.fill();
     }
     //Funktion Schatztruhe
     function drawTreasureChest(_x, _y, _width, _height) {
@@ -211,12 +205,17 @@ var L09_Canvas;
         for (let i = 0; i < bubbles.length; i++) {
             bubbles[i].move();
         }
+        for (let i = 0; i < bubblesRandom.length; i++) {
+            bubblesRandom[i].move();
+        }
     }
     function drawObjects() {
         for (let i = 0; i < fishes.length; i++)
             fishes[i].draw();
         for (let i = 0; i < bubbles.length; i++)
             bubbles[i].drawBubble();
+        for (let i = 0; i < bubblesRandom.length; i++)
+            bubblesRandom[i].drawBubblesRandom();
     }
 })(L09_Canvas || (L09_Canvas = {}));
 //# sourceMappingURL=Hauptprogramm.js.map
