@@ -3,6 +3,7 @@ namespace L09_Canvas {
     export let crc2: CanvasRenderingContext2D;
     export let ctx: CanvasRenderingContext2D;
     let fishes: Shoal[] = [];
+    let bubbles: Blasen[] = [];
     let n: number = 10;
 
     function init( _event: Event ): void {
@@ -38,12 +39,13 @@ namespace L09_Canvas {
 
         //Luftblasen aus Kiste
 
-        for ( let i: number = 0; i < 10; i++ ) {
-            let x: number = ( 110 );
-            let y: number = Math.random() * 370;
-            let r: number = Math.random() * 10;
+        for ( let i: number = 0; i < n; i++ ) {
+            let bubble: Blasen = new Blasen();
+            bubble.x = ( 110 );
+            bubble.y = Math.random() * 370;
+            bubble.radius = Math.random() * 10;
 
-            drawBubble( x, y, r );
+            bubbles.push(bubble);
         }
 
         //Schiffswrak
@@ -85,16 +87,6 @@ namespace L09_Canvas {
 
     }
 
-    //Funktion Luftblasen aus der Kiste
-
-    function drawBubble( _x: number, _y: number, _radius: number ): void {
-        ctx.beginPath();
-        crc2.fillStyle = "rgb(152,245,255)";
-        ctx.arc( _x, _y, _radius, 0, 2 * Math.PI );
-        crc2.closePath();
-        ctx.stroke();
-        crc2.fill();
-    }
 
     //Funktion Luftblasen random im Wasser
 
@@ -283,12 +275,20 @@ namespace L09_Canvas {
         for (let i: number = 0; i < fishes.length; i++) {
             fishes[i].move();
         }
+        
+        for (let i: number = 0; i < bubbles.length; i++) {
+            bubbles[i].move();
+        }
     }
 
     function drawObjects(): void {
         for (let i: number = 0; i < fishes.length; i++)
             fishes[i].draw();
-    }
+    
+    
+        for (let i: number = 0; i < bubbles.length; i++)
+        bubbles[i].drawBubble();
+}
 
 
 }

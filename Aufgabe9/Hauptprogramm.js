@@ -2,6 +2,7 @@ var L09_Canvas;
 (function (L09_Canvas) {
     window.addEventListener("load", init);
     let fishes = [];
+    let bubbles = [];
     let n = 10;
     function init(_event) {
         let canvas = document.getElementsByTagName("canvas")[0];
@@ -23,11 +24,12 @@ var L09_Canvas;
             drawBubbles(x, y, 5);
         }
         //Luftblasen aus Kiste
-        for (let i = 0; i < 10; i++) {
-            let x = (110);
-            let y = Math.random() * 370;
-            let r = Math.random() * 10;
-            drawBubble(x, y, r);
+        for (let i = 0; i < n; i++) {
+            let bubble = new L09_Canvas.Blasen();
+            bubble.x = (110);
+            bubble.y = Math.random() * 370;
+            bubble.radius = Math.random() * 10;
+            bubbles.push(bubble);
         }
         //Schiffswrak
         drawShip(100, 450);
@@ -51,15 +53,6 @@ var L09_Canvas;
         drawPlant1(50, 640);
         //Animation aufrufen
         animate();
-    }
-    //Funktion Luftblasen aus der Kiste
-    function drawBubble(_x, _y, _radius) {
-        L09_Canvas.ctx.beginPath();
-        L09_Canvas.crc2.fillStyle = "rgb(152,245,255)";
-        L09_Canvas.ctx.arc(_x, _y, _radius, 0, 2 * Math.PI);
-        L09_Canvas.crc2.closePath();
-        L09_Canvas.ctx.stroke();
-        L09_Canvas.crc2.fill();
     }
     //Funktion Luftblasen random im Wasser
     function drawBubbles(_x, _y, _radius) {
@@ -215,10 +208,15 @@ var L09_Canvas;
         for (let i = 0; i < fishes.length; i++) {
             fishes[i].move();
         }
+        for (let i = 0; i < bubbles.length; i++) {
+            bubbles[i].move();
+        }
     }
     function drawObjects() {
         for (let i = 0; i < fishes.length; i++)
             fishes[i].draw();
+        for (let i = 0; i < bubbles.length; i++)
+            bubbles[i].drawBubble();
     }
 })(L09_Canvas || (L09_Canvas = {}));
 //# sourceMappingURL=Hauptprogramm.js.map
