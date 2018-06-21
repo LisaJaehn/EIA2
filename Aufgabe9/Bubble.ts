@@ -1,18 +1,15 @@
 namespace L09_Canvas {
 
-
     export class Blasen {
         x: number;
         y: number;
         radius: number;
-
 
         move(): void {
 
             this.x += 0;
             this.y -= 2;
         }
-
 
         //Funktion Luftblasen aus der Kiste
 

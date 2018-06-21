@@ -6,7 +6,7 @@ namespace L09_Canvas {
     let bubbles: Blasen[] = [];
     let bubblesRandom: BlasenRandom[] = [];
     let n: number = 10;
-    //let imgData: ImageData;
+    let imgData: ImageData;
 
     function init( _event: Event ): void {
         let canvas: HTMLCanvasElement = document.getElementsByTagName( "canvas" )[0];
@@ -14,13 +14,11 @@ namespace L09_Canvas {
         ctx = canvas.getContext( "2d" );
         console.log( crc2 );
 
-
-        //Hintergund mittels einer Klasse erstellen
-        //let hg: Hintergrund = new Hintergrund;
-
-        //imgData = crc2.getImageData( 0, 0, canvas.width, canvas.height ); //Speichern des Canvas als Bild
-
-
+        //Hintergund mit Klasse erstellen
+        let hg: Hintergrund = new Hintergrund;
+        hg.paint();
+        imgData = crc2.getImageData( 0, 0, canvas.width, canvas.height ); //Speichern des Canvas als Bild
+        console.log( imgData );
 
         //Luftblasen random im Wasser
 
@@ -28,7 +26,7 @@ namespace L09_Canvas {
             let bubbleRandom: BlasenRandom = new BlasenRandom();
             bubbleRandom.x = Math.random() * crc2.canvas.width;
             bubbleRandom.y = Math.random() * crc2.canvas.height;
-            bubbleRandom.radius = Math.random() * 10;
+            bubbleRandom.radius = Math.random() * 5;
 
             bubblesRandom.push( bubbleRandom );
         }
@@ -55,23 +53,21 @@ namespace L09_Canvas {
             fish.b = Math.random() * 300;
 
             fishes.push( fish );
-
         }
 
-
         //Animation aufrufen
-        animate();
 
+        animate();
     }
 
     function animate(): void {
         window.setTimeout( animate, 10 );
 
         //console.log(animate);
-        
-        //crc2.putImageData(imgData, 0, 0); 
 
-        crc2.clearRect( 0, 0, crc2.canvas.width, crc2.canvas.height );
+        crc2.putImageData( imgData, 0, 0 );
+
+        //crc2.clearRect( 0, 0, crc2.canvas.width, crc2.canvas.height );
 
         moveObjects();
         drawObjects();
@@ -102,6 +98,4 @@ namespace L09_Canvas {
         for ( let i: number = 0; i < bubblesRandom.length; i++ )
             bubblesRandom[i].drawBubblesRandom();
     }
-
-
 }

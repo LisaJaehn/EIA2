@@ -5,21 +5,23 @@ var L09_Canvas;
     let bubbles = [];
     let bubblesRandom = [];
     let n = 10;
-    //let imgData: ImageData;
+    let imgData;
     function init(_event) {
         let canvas = document.getElementsByTagName("canvas")[0];
         L09_Canvas.crc2 = canvas.getContext("2d");
         L09_Canvas.ctx = canvas.getContext("2d");
         console.log(L09_Canvas.crc2);
-        //Hintergund mittels einer Klasse erstellen
-        //let hg: Hintergrund = new Hintergrund;
-        //imgData = crc2.getImageData( 0, 0, canvas.width, canvas.height ); //Speichern des Canvas als Bild
+        //Hintergund mit Klasse erstellen
+        let hg = new L09_Canvas.Hintergrund;
+        hg.paint();
+        imgData = L09_Canvas.crc2.getImageData(0, 0, canvas.width, canvas.height); //Speichern des Canvas als Bild
+        console.log(imgData);
         //Luftblasen random im Wasser
         for (let i = 0; i < n; i++) {
             let bubbleRandom = new L09_Canvas.BlasenRandom();
             bubbleRandom.x = Math.random() * L09_Canvas.crc2.canvas.width;
             bubbleRandom.y = Math.random() * L09_Canvas.crc2.canvas.height;
-            bubbleRandom.radius = Math.random() * 10;
+            bubbleRandom.radius = Math.random() * 5;
             bubblesRandom.push(bubbleRandom);
         }
         //Luftblasen aus Kiste
@@ -46,8 +48,8 @@ var L09_Canvas;
     function animate() {
         window.setTimeout(animate, 10);
         //console.log(animate);
-        //crc2.putImageData(imgData, 0, 0); 
-        L09_Canvas.crc2.clearRect(0, 0, L09_Canvas.crc2.canvas.width, L09_Canvas.crc2.canvas.height);
+        L09_Canvas.crc2.putImageData(imgData, 0, 0);
+        //crc2.clearRect( 0, 0, crc2.canvas.width, crc2.canvas.height );
         moveObjects();
         drawObjects();
     }
