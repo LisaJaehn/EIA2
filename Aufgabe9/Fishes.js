@@ -4,6 +4,9 @@ var L09_Canvas;
         move() {
             this.x += 2;
             this.y += 0;
+            if (this.x > 640) {
+                this.x = -40;
+            }
         }
         //Funktion Fische
         draw() {

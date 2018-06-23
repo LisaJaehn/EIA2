@@ -11,11 +11,15 @@ namespace L09_Canvas {
 
             this.x += 2;
             this.y += 0;
+
+            if ( this.x > 640 ) {
+                this.x = -40;
+            }
         }
 
         //Funktion Fische
 
-            draw(): void {
+        draw(): void {
             ctx.beginPath();
             crc2.fillStyle = "rgb(" + this.r + "," + this.g + "," + this.b + ")";
             ctx.moveTo( this.x, this.y );

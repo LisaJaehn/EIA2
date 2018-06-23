@@ -4,6 +4,9 @@ var L09_Canvas;
         move() {
             this.x += 0;
             this.y -= 2;
+            if (this.y < 0) {
+                this.y = 350;
+            }
         }
         //Funktion Luftblasen aus der Kiste
         drawBubble() {
