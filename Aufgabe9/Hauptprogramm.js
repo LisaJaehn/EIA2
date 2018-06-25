@@ -9,7 +9,6 @@ var L09_Canvas;
     function init(_event) {
         let canvas = document.getElementsByTagName("canvas")[0];
         L09_Canvas.crc2 = canvas.getContext("2d");
-        L09_Canvas.ctx = canvas.getContext("2d");
         console.log(L09_Canvas.crc2);
         //Hintergund mit Klasse erstellen
         let hg = new L09_Canvas.Hintergrund;

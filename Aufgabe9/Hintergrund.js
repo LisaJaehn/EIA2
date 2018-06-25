@@ -20,10 +20,10 @@ var L09_Canvas;
         }
         //Funktion Deckel Schatztruhe
         drawDeckel(_x, _y) {
-            L09_Canvas.ctx.beginPath();
+            L09_Canvas.crc2.beginPath();
             L09_Canvas.crc2.fillStyle = "rgb(139,69,000)";
-            L09_Canvas.ctx.moveTo(_x, _y);
-            L09_Canvas.ctx.bezierCurveTo(_x + 90, _y - 50, _x + 90, _y + 70, _x + 70, _y + 80);
+            L09_Canvas.crc2.moveTo(_x, _y);
+            L09_Canvas.crc2.bezierCurveTo(_x + 90, _y - 50, _x + 90, _y + 70, _x + 70, _y + 80);
             L09_Canvas.crc2.closePath();
             //ctx.stroke();
             L09_Canvas.crc2.fill();
@@ -37,11 +37,11 @@ var L09_Canvas;
         }
         //Funktion Schiffskörper
         drawShip(_x, _y) {
-            L09_Canvas.ctx.beginPath();
+            L09_Canvas.crc2.beginPath();
             L09_Canvas.crc2.fillStyle = "rgb(139,69,19 )";
-            L09_Canvas.ctx.moveTo(_x, _y);
-            L09_Canvas.ctx.bezierCurveTo(_x, _y + 100, _x + 140, _y + 100, _x + 150, _y);
-            L09_Canvas.ctx.stroke();
+            L09_Canvas.crc2.moveTo(_x, _y);
+            L09_Canvas.crc2.bezierCurveTo(_x, _y + 100, _x + 140, _y + 100, _x + 150, _y);
+            L09_Canvas.crc2.stroke();
             L09_Canvas.crc2.moveTo(_x, _y);
             L09_Canvas.crc2.lineTo(_x + 140, _y);
             L09_Canvas.crc2.closePath();
@@ -62,14 +62,14 @@ var L09_Canvas;
         }
         //Funktion Schiffsflagge
         drawFlag(_x, _y) {
-            L09_Canvas.ctx.beginPath();
+            L09_Canvas.crc2.beginPath();
             L09_Canvas.crc2.fillStyle = "rgb(238,0,0)";
-            L09_Canvas.ctx.moveTo(_x, _y);
-            L09_Canvas.ctx.lineTo(_x + 90, _y - 40);
-            L09_Canvas.ctx.lineTo(_x, _y - 80);
+            L09_Canvas.crc2.moveTo(_x, _y);
+            L09_Canvas.crc2.lineTo(_x + 90, _y - 40);
+            L09_Canvas.crc2.lineTo(_x, _y - 80);
             L09_Canvas.crc2.closePath();
-            L09_Canvas.ctx.stroke();
-            L09_Canvas.ctx.fill();
+            L09_Canvas.crc2.stroke();
+            L09_Canvas.crc2.fill();
         }
         //Funktion Pflanze 1
         drawPlant1(_x, _y) {
@@ -83,7 +83,7 @@ var L09_Canvas;
             L09_Canvas.crc2.lineTo(_x + 10, _y - 35);
             L09_Canvas.crc2.lineTo(_x + 10, _y + 85);
             L09_Canvas.crc2.closePath();
-            L09_Canvas.ctx.stroke();
+            L09_Canvas.crc2.stroke();
             L09_Canvas.crc2.fill();
         }
         //Funktion Pflanze 2
@@ -98,7 +98,7 @@ var L09_Canvas;
             L09_Canvas.crc2.lineTo(_x + 10, _y - 35);
             L09_Canvas.crc2.lineTo(_x + 10, _y + 85);
             L09_Canvas.crc2.closePath();
-            L09_Canvas.ctx.stroke();
+            L09_Canvas.crc2.stroke();
             L09_Canvas.crc2.fill();
         }
         //Funktion Pflanze 3
@@ -113,7 +113,7 @@ var L09_Canvas;
             L09_Canvas.crc2.lineTo(_x + 10, _y - 35);
             L09_Canvas.crc2.lineTo(_x + 10, _y + 85);
             L09_Canvas.crc2.closePath();
-            L09_Canvas.ctx.stroke();
+            L09_Canvas.crc2.stroke();
             L09_Canvas.crc2.fill();
         }
         //Seestern

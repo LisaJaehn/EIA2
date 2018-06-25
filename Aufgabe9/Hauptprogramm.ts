@@ -1,7 +1,6 @@
 namespace L09_Canvas {
     window.addEventListener( "load", init );
     export let crc2: CanvasRenderingContext2D;
-    export let ctx: CanvasRenderingContext2D;
     let fishes: Shoal[] = [];
     let bubbles: Blasen[] = [];
     let bubblesRandom: BlasenRandom[] = [];
@@ -11,7 +10,6 @@ namespace L09_Canvas {
     function init( _event: Event ): void {
         let canvas: HTMLCanvasElement = document.getElementsByTagName( "canvas" )[0];
         crc2 = canvas.getContext( "2d" );
-        ctx = canvas.getContext( "2d" );
         console.log( crc2 );
 
         //Hintergund mit Klasse erstellen

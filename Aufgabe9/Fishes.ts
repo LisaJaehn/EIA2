@@ -20,10 +20,10 @@ namespace L09_Canvas {
         //Funktion Fische
 
         draw(): void {
-            ctx.beginPath();
+            crc2.beginPath();
             crc2.fillStyle = "rgb(" + this.r + "," + this.g + "," + this.b + ")";
-            ctx.moveTo( this.x, this.y );
-            ctx.bezierCurveTo( this.x + 30, this.y, this.x + 30, this.y + 20, this.x, this.y + 20 );
+            crc2.moveTo( this.x, this.y );
+            crc2.bezierCurveTo( this.x + 30, this.y, this.x + 30, this.y + 20, this.x, this.y + 20 );
             crc2.moveTo( this.x, this.y + 20 );
             crc2.lineTo( this.x - 20, this.y + 10 );
             crc2.lineTo( this.x - 25, this.y + 15 );
@@ -31,8 +31,8 @@ namespace L09_Canvas {
             crc2.lineTo( this.x - 20, this.y + 5 );
             crc2.lineTo( this.x, this.y );
             crc2.closePath();
-            ctx.stroke();
-            ctx.fill();
+            crc2.stroke();
+            crc2.fill();
             crc2.closePath();
         }
 

@@ -13,11 +13,11 @@ namespace L09_Canvas {
         //Funktion Luftblasen random im Wasser
 
         drawBubblesRandom(): void {
-            ctx.beginPath();
+            crc2.beginPath();
             crc2.fillStyle = "rgb(255,250,240)";
-            ctx.arc( this.x, this.y, this.radius, 0, 2 * Math.PI );
+            crc2.arc( this.x, this.y, this.radius, 0, 2 * Math.PI );
             crc2.closePath();
-            ctx.stroke();
+            crc2.stroke();
             crc2.fill();
         }
 

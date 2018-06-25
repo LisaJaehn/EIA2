@@ -7,11 +7,11 @@ var L09_Canvas;
         }
         //Funktion Luftblasen random im Wasser
         drawBubblesRandom() {
-            L09_Canvas.ctx.beginPath();
+            L09_Canvas.crc2.beginPath();
             L09_Canvas.crc2.fillStyle = "rgb(255,250,240)";
-            L09_Canvas.ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
+            L09_Canvas.crc2.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
             L09_Canvas.crc2.closePath();
-            L09_Canvas.ctx.stroke();
+            L09_Canvas.crc2.stroke();
             L09_Canvas.crc2.fill();
         }
     }

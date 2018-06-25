@@ -26,10 +26,10 @@ namespace L09_Canvas {
         //Funktion Deckel Schatztruhe
 
         drawDeckel( _x: number, _y: number ): void {
-            ctx.beginPath();
+            crc2.beginPath();
             crc2.fillStyle = "rgb(139,69,000)";
-            ctx.moveTo( _x, _y );
-            ctx.bezierCurveTo( _x + 90, _y - 50, _x + 90, _y + 70, _x + 70, _y + 80 );
+            crc2.moveTo( _x, _y );
+            crc2.bezierCurveTo( _x + 90, _y - 50, _x + 90, _y + 70, _x + 70, _y + 80 );
             crc2.closePath();
             //ctx.stroke();
             crc2.fill();
@@ -48,11 +48,11 @@ namespace L09_Canvas {
         //Funktion Schiffskörper
 
         drawShip( _x: number, _y: number ): void {
-            ctx.beginPath();
+            crc2.beginPath();
             crc2.fillStyle = "rgb(139,69,19 )";
-            ctx.moveTo( _x, _y );
-            ctx.bezierCurveTo( _x, _y + 100, _x + 140, _y + 100, _x + 150, _y );
-            ctx.stroke();
+            crc2.moveTo( _x, _y );
+            crc2.bezierCurveTo( _x, _y + 100, _x + 140, _y + 100, _x + 150, _y );
+            crc2.stroke();
             crc2.moveTo( _x, _y );
             crc2.lineTo( _x + 140, _y );
             crc2.closePath();
@@ -81,14 +81,14 @@ namespace L09_Canvas {
         //Funktion Schiffsflagge
 
         drawFlag( _x: number, _y: number ): void {
-            ctx.beginPath();
+            crc2.beginPath();
             crc2.fillStyle = "rgb(238,0,0)";
-            ctx.moveTo( _x, _y );
-            ctx.lineTo( _x + 90, _y - 40 );
-            ctx.lineTo( _x, _y - 80 );
+            crc2.moveTo( _x, _y );
+            crc2.lineTo( _x + 90, _y - 40 );
+            crc2.lineTo( _x, _y - 80 );
             crc2.closePath();
-            ctx.stroke();
-            ctx.fill();
+            crc2.stroke();
+            crc2.fill();
         }
 
 
@@ -105,7 +105,7 @@ namespace L09_Canvas {
             crc2.lineTo( _x + 10, _y - 35 );
             crc2.lineTo( _x + 10, _y + 85 );
             crc2.closePath();
-            ctx.stroke();
+            crc2.stroke();
             crc2.fill();
         }
 
@@ -122,7 +122,7 @@ namespace L09_Canvas {
             crc2.lineTo( _x + 10, _y - 35 );
             crc2.lineTo( _x + 10, _y + 85 );
             crc2.closePath();
-            ctx.stroke();
+            crc2.stroke();
             crc2.fill();
         }
 
@@ -139,7 +139,7 @@ namespace L09_Canvas {
             crc2.lineTo( _x + 10, _y - 35 );
             crc2.lineTo( _x + 10, _y + 85 );
             crc2.closePath();
-            ctx.stroke();
+            crc2.stroke();
             crc2.fill();
         }
 
