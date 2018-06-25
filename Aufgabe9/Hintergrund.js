@@ -25,7 +25,6 @@ var L09_Canvas;
             L09_Canvas.crc2.moveTo(_x, _y);
             L09_Canvas.crc2.bezierCurveTo(_x + 90, _y - 50, _x + 90, _y + 70, _x + 70, _y + 80);
             L09_Canvas.crc2.closePath();
-            //ctx.stroke();
             L09_Canvas.crc2.fill();
         }
         //Funktion Hintergrund
