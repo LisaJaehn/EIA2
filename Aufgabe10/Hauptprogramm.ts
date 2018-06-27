@@ -13,7 +13,7 @@ namespace L10_Canvas {
         console.log( crc2 );
 
         //Hintergund mit Klasse erstellen
-        let hg: Hintergrund = new Hintergrund;
+        let hg: Background = new Background;
         hg.paint();
         imgData = crc2.getImageData( 0, 0, canvas.width, canvas.height ); //Speichern des Canvas als Bild
         console.log( imgData );

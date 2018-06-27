@@ -1,6 +1,6 @@
 var L10_Canvas;
 (function (L10_Canvas) {
-    class Hintergrund {
+    class Background {
         paint() {
             this.drawBackground(260);
             this.drawStone(260, 380);
@@ -147,6 +147,6 @@ var L10_Canvas;
             L10_Canvas.crc2.fill();
         }
     }
-    L10_Canvas.Hintergrund = Hintergrund;
+    L10_Canvas.Background = Background;
 })(L10_Canvas || (L10_Canvas = {}));
 //# sourceMappingURL=Hintergrund.js.map
