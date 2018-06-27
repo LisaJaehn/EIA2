@@ -4,7 +4,6 @@ namespace L11_Inheritance {
     let stars: DavidStar[] = [];
     let n: number = 100;
 
-    //let rects: Rect[] = [];
 
     function init(_event: Event): void {
         let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
@@ -19,11 +18,16 @@ namespace L11_Inheritance {
 
             let rect: Rect = new Rect("#ff0000");
             stars.push(rect);
+            
+            let circle: Circle = new Circle("#FF1493");
+            stars.push(circle);
         }
 
 
         animate();
     }
+    
+    //Bei Klick ensteht ein gelber Stern
 
     function insertNewObject(_event: Event): void {
         let star: DavidStar = new DavidStar("#ffff00");

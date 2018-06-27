@@ -13,6 +13,7 @@ var L11_Inheritance;
         move() {
             this.x += Math.random() * 4 - 2;
             this.y += Math.random() * 4 - 2;
+            this.radius = Math.random() * 10;
         }
         draw() {
             L11_Inheritance.crc2.beginPath();

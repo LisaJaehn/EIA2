@@ -3,6 +3,7 @@ namespace L11_Inheritance {
         x: number;
         y: number;
         color: string;
+        radius: number;
 
         constructor(_color: string) {
             this.setRandomPosition();
@@ -18,6 +19,7 @@ namespace L11_Inheritance {
         move(): void {
             this.x += Math.random() * 4 - 2;
             this.y += Math.random() * 4 - 2;
+            this.radius = Math.random() * 10;
         }
 
         draw(): void {

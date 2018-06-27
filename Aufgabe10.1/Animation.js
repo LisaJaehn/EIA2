@@ -3,7 +3,6 @@ var L11_Inheritance;
     window.addEventListener("load", init);
     let stars = [];
     let n = 100;
-    //let rects: Rect[] = [];
     function init(_event) {
         let canvas = document.getElementsByTagName("canvas")[0];
         L11_Inheritance.crc2 = canvas.getContext("2d");
@@ -14,9 +13,12 @@ var L11_Inheritance;
             stars.push(star);
             let rect = new L11_Inheritance.Rect("#ff0000");
             stars.push(rect);
+            let circle = new L11_Inheritance.Circle("#FF1493");
+            stars.push(circle);
         }
         animate();
     }
+    //Bei Klick ensteht ein gelber Stern
     function insertNewObject(_event) {
         let star = new L11_Inheritance.DavidStar("#ffff00");
         stars.push(star);
