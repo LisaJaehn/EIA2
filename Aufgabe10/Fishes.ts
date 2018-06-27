@@ -6,6 +6,22 @@ namespace L10_Canvas {
         r: number;
         b: number;
         g: number;
+        color: string;
+        radius: number;
+
+        constructor( _color: string ) {
+            this.setRandomPosition();
+            this.color = _color;
+        }
+
+        setRandomPosition(): void {
+            
+            this.x = Math.random() * crc2.canvas.width;
+            this.y = Math.random() * crc2.canvas.height;
+            this.r = Math.random() * 300;
+            this.g = Math.random() * 300;
+            this.b = Math.random() * 300;
+}
 
         move(): void {
 

@@ -1,6 +1,17 @@
 var L10_Canvas;
 (function (L10_Canvas) {
     class Shoal {
+        constructor(_color) {
+            this.setRandomPosition();
+            this.color = _color;
+        }
+        setRandomPosition() {
+            this.x = Math.random() * L10_Canvas.crc2.canvas.width;
+            this.y = Math.random() * L10_Canvas.crc2.canvas.height;
+            this.r = Math.random() * 300;
+            this.g = Math.random() * 300;
+            this.b = Math.random() * 300;
+        }
         move() {
             this.x += 2;
             this.y += 0;

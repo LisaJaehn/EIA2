@@ -2,9 +2,9 @@ namespace L10_Canvas {
     window.addEventListener( "load", init );
     export let crc2: CanvasRenderingContext2D;
     let fishes: Shoal[] = [];
-    let bubbles: Blasen[] = [];
-    let bubblesRandom: BlasenRandom[] = [];
-    let foods: Food[] = [];
+    //let bubbles: Blasen[] = [];
+    //let bubblesRandom: BlasenRandom[] = [];
+    //let foods: Food[] = [];
     let n: number = 10;
     let imgData: ImageData;
 
@@ -19,7 +19,7 @@ namespace L10_Canvas {
         imgData = crc2.getImageData( 0, 0, canvas.width, canvas.height ); //Speichern des Canvas als Bild
         console.log( imgData );
         
-      //Herunterfallendes Essen
+     /* //Herunterfallendes Essen
 
         for ( let i: number = 0; i < n; i++ ) {
             let food: Food = new Food();
@@ -50,28 +50,31 @@ namespace L10_Canvas {
             bubble.radius = Math.random() * 10;
 
             bubbles.push( bubble );
-        }
+        }*/
+        
+        for (let i: number = 0; i < n; i++) {
+            
+            let fish: Shoal = new Shoal("#00ffff");
+            fishes.push(fish);
 
-        //Fische
+            let bubbleRandom: BlasenRandom = new BlasenRandom("rgb(255,250,240)");
+            fishes.push(bubbleRandom);
+            
+            let bubble: Blasen = new Blasen("rgb(152,245,255)");
+            fishes.push(bubble);
+            
+            let food: Food = new Food( "rgb(255,185,15)");
+            fishes.push(food);
+        
 
-        for ( let i: number = 0; i < n; i++ ) {
-            let fish: Shoal = new Shoal();
-            fish.x = Math.random() * crc2.canvas.width;
-            fish.y = Math.random() * crc2.canvas.height;
-            fish.r = Math.random() * 300;
-            fish.g = Math.random() * 300;
-            fish.b = Math.random() * 300;
-
-            fishes.push( fish );
-        }
-
+     
         //Animation aufrufen
 
         animate();
     }
 
     function animate(): void {
-        window.setTimeout( animate, 10 );
+        window.setTimeout( animate, 100 );
 
         //console.log(animate);
 
@@ -87,32 +90,12 @@ namespace L10_Canvas {
         for ( let i: number = 0; i < fishes.length; i++ ) {
             fishes[i].move();
         }
-
-        for ( let i: number = 0; i < bubbles.length; i++ ) {
-            bubbles[i].move();
-        }
-
-        for ( let i: number = 0; i < bubblesRandom.length; i++ ) {
-            bubblesRandom[i].move();
-        }
-        
-        for ( let i: number = 0; i < bubblesRandom.length; i++ ) {
-            foods[i].move();
-        }
-    }
+ }
 
     function drawObjects(): void {
         for ( let i: number = 0; i < fishes.length; i++ )
             fishes[i].draw();
 
-
-        for ( let i: number = 0; i < bubbles.length; i++ )
-            bubbles[i].drawBubble();
-
-        for ( let i: number = 0; i < bubblesRandom.length; i++ )
-            bubblesRandom[i].drawBubblesRandom();
-        
-        for ( let i: number = 0; i < bubblesRandom.length; i++ )
-            foods[i].drawFood();
     }
+}
 }
