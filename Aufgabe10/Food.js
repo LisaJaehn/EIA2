@@ -2,7 +2,6 @@ var L10_Canvas;
 (function (L10_Canvas) {
     class Food extends L10_Canvas.Shoal {
         constructor(_color) {
-            //this.setRandomPosition2();
             super(_color);
         }
         setRandomPosition() {

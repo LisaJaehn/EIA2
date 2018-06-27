@@ -9,7 +9,6 @@ var L10_Canvas;
         L10_Canvas.crc2 = canvas.getContext("2d");
         console.log(L10_Canvas.crc2);
         canvas.addEventListener("click", insertNewObject);
-        //Hintergund mit Klasse erstellen
         let hg = new L10_Canvas.Background;
         hg.paint();
         imgData = L10_Canvas.crc2.getImageData(0, 0, canvas.width, canvas.height);

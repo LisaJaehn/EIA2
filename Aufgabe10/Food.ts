@@ -3,7 +3,6 @@ namespace L10_Canvas {
     export class Food extends Shoal {
 
         constructor( _color: string ) {
-            //this.setRandomPosition2();
             super( _color );
         }
 
