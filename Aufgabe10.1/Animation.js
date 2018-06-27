@@ -2,7 +2,7 @@ var L11_Inheritance;
 (function (L11_Inheritance) {
     window.addEventListener("load", init);
     let stars = [];
-    let n = 100;
+    let n = 50;
     function init(_event) {
         let canvas = document.getElementsByTagName("canvas")[0];
         L11_Inheritance.crc2 = canvas.getContext("2d");
@@ -15,6 +15,8 @@ var L11_Inheritance;
             stars.push(rect);
             let circle = new L11_Inheritance.Circle("#FF1493");
             stars.push(circle);
+            let triangle = new L11_Inheritance.Triangle("#CD2990");
+            stars.push(triangle);
         }
         animate();
     }
