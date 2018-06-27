@@ -9,12 +9,12 @@ namespace L10_Canvas {
         let canvas: HTMLCanvasElement = document.getElementsByTagName( "canvas" )[0];
         crc2 = canvas.getContext( "2d" );
         console.log( crc2 );
-        
-        canvas.addEventListener("click", insertNewObject);
+
+        canvas.addEventListener( "click", insertNewObject );
 
         let hg: Background = new Background;
         hg.paint();
-        imgData = crc2.getImageData( 0, 0, canvas.width, canvas.height ); 
+        imgData = crc2.getImageData( 0, 0, canvas.width, canvas.height );
         console.log( imgData );
 
         for ( let i: number = 0; i < n; i++ ) {
@@ -33,11 +33,25 @@ namespace L10_Canvas {
 
             animate();
         }
-        
-        function insertNewObject(_event: Event): void {
-            let food: Food = new Food("#ffff00");
-            fishes.push(food);
-            
+
+        function insertNewObject( _event: MouseEvent ): void {
+            /* let food: Food = new Food("#ffff00");
+             fishes.push(food);*/
+
+            let x: number = _event.clientX;
+            let y: number = _event.clientY;
+            let n: number = Math.floor( Math.random() * 2 );
+
+            switch ( n ) {
+                case 0:
+                    let food: Food = new Food( "#ffff00" );
+                    food.x = x;
+                    food.y = y;
+                    fishes.push( food );
+                    break;
+
+            }
+
         }
 
         function animate(): void {

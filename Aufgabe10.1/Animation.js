@@ -8,7 +8,6 @@ var L11_Inheritance;
         L11_Inheritance.crc2 = canvas.getContext("2d");
         console.log(L11_Inheritance.crc2);
         canvas.addEventListener("click", insertNewObject);
-        canvas.addEventListener("mousedown", insertNewBubbles, false);
         for (let i = 0; i < n; i++) {
             let star = new L11_Inheritance.DavidStar("#00ffff");
             stars.push(star);
@@ -23,12 +22,25 @@ var L11_Inheritance;
     }
     //Bei Klick ensteht ein gelber Stern
     function insertNewObject(_event) {
-        let star = new L11_Inheritance.DavidStar("#ffff00");
-        stars.push(star);
-        let circle = new L11_Inheritance.Circle("#FF4500");
-        stars.push(circle);
-    }
-    function insertNewBubbles() {
+        /*let star: DavidStar = new DavidStar("#ffff00");
+        stars.push(star);*/
+        let x = _event.clientX;
+        let y = _event.clientY;
+        let n = Math.floor(Math.random() * 2);
+        switch (n) {
+            case 0:
+                let star = new L11_Inheritance.DavidStar("#ffff00");
+                star.x = x;
+                star.y = y;
+                stars.push(star);
+                break;
+            case 1:
+                let circle = new L11_Inheritance.Circle("#ffb90f");
+                circle.x = x;
+                circle.y = y;
+                stars.push(circle);
+                break;
+        }
     }
     function animate() {
         window.setTimeout(animate, 10);

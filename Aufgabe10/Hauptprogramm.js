@@ -25,8 +25,19 @@ var L10_Canvas;
             animate();
         }
         function insertNewObject(_event) {
-            let food = new L10_Canvas.Food("#ffff00");
-            fishes.push(food);
+            /* let food: Food = new Food("#ffff00");
+             fishes.push(food);*/
+            let x = _event.clientX;
+            let y = _event.clientY;
+            let n = Math.floor(Math.random() * 2);
+            switch (n) {
+                case 0:
+                    let food = new L10_Canvas.Food("#ffff00");
+                    food.x = x;
+                    food.y = y;
+                    fishes.push(food);
+                    break;
+            }
         }
         function animate() {
             window.setTimeout(animate, 100);
