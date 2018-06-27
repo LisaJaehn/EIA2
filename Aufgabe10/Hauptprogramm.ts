@@ -28,8 +28,8 @@ namespace L10_Canvas {
             let bubble: Blasen = new Blasen( "rgb(152,245,255)" );
             fishes.push( bubble );
 
-            let food: Food = new Food( "rgb(255,185,15)" );
-            fishes.push( food );
+            /*let food: Food = new Food( "rgb(255,185,15)" );
+            fishes.push( food );*/
 
             animate();
         }

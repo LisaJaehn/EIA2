@@ -6,14 +6,21 @@ var L10_Canvas;
         }
         setRandomPosition() {
             this.x = Math.random() * L10_Canvas.crc2.canvas.width;
-            this.y = Math.random() * L10_Canvas.crc2.canvas.height;
+            this.y = 0;
             this.radius = Math.random() * 10;
         }
         move() {
             this.x += 0;
-            this.y += 2;
-            if (this.y < 0) {
-                this.y = 300;
+            /*this.y += 2;
+
+            if ( this.y < 0 ) {
+                this.y = 350;
+            }*/
+            if (this.y < 600) {
+                this.y += 2;
+            }
+            else if (this.y >= 600) {
+                this.y += 0;
             }
         }
         //Funktion Luftblasen aus der Kiste
