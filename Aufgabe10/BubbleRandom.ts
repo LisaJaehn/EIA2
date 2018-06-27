@@ -1,16 +1,16 @@
 namespace L10_Canvas {
 
     export class BlasenRandom extends Shoal {
-      
-        constructor(_color: string) {
-            super(_color);
+
+        constructor( _color: string ) {
+            super( _color );
         }
-        
+
         setRandomPosition(): void {
-        
-        this.x = Math.random() * crc2.canvas.width;
-        this.y = Math.random() * crc2.canvas.height;
-        this.radius = Math.random() * 10;
+
+            this.x = Math.random() * crc2.canvas.width;
+            this.y = Math.random() * crc2.canvas.height;
+            this.radius = Math.random() * 10;
         }
 
         move(): void {
@@ -30,4 +30,4 @@ namespace L10_Canvas {
         }
 
     }
-    }
+}

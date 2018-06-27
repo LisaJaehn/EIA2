@@ -15,13 +15,13 @@ namespace L10_Canvas {
         }
 
         setRandomPosition(): void {
-            
+
             this.x = Math.random() * crc2.canvas.width;
             this.y = Math.random() * crc2.canvas.height;
             this.r = Math.random() * 300;
             this.g = Math.random() * 300;
             this.b = Math.random() * 300;
-}
+        }
 
         move(): void {
 
@@ -51,7 +51,5 @@ namespace L10_Canvas {
             crc2.fill();
             crc2.closePath();
         }
-
     }
-
 }
