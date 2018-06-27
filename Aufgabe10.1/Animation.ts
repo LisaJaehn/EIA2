@@ -11,6 +11,7 @@ namespace L11_Inheritance {
         console.log(crc2);
 
         canvas.addEventListener("click", insertNewObject);
+        canvas.addEventListener("mousedown", insertNewBubbles, false);
 
         for (let i: number = 0; i < n; i++) {
             let star: DavidStar = new DavidStar("#00ffff");
@@ -35,6 +36,14 @@ namespace L11_Inheritance {
     function insertNewObject(_event: Event): void {
         let star: DavidStar = new DavidStar("#ffff00");
         stars.push(star);
+        
+        let circle: Circle = new Circle("#FF4500");
+        stars.push(circle);
+    }
+    
+    function insertNewBubbles(): void {
+        
+        
     }
 
     function animate(): void {
