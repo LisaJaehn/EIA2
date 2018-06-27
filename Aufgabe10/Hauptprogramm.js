@@ -4,6 +4,7 @@ var L10_Canvas;
     let fishes = [];
     let bubbles = [];
     let bubblesRandom = [];
+    let foods = [];
     let n = 10;
     let imgData;
     function init(_event) {
@@ -15,12 +16,20 @@ var L10_Canvas;
         hg.paint();
         imgData = L10_Canvas.crc2.getImageData(0, 0, canvas.width, canvas.height); //Speichern des Canvas als Bild
         console.log(imgData);
+        //Herunterfallendes Essen
+        for (let i = 0; i < n; i++) {
+            let food = new L10_Canvas.Food();
+            food.x = Math.random() * L10_Canvas.crc2.canvas.width;
+            food.y = Math.random() * L10_Canvas.crc2.canvas.height;
+            food.radius = Math.random() * 5;
+            foods.push(food);
+        }
         //Luftblasen random im Wasser
         for (let i = 0; i < n; i++) {
             let bubbleRandom = new L10_Canvas.BlasenRandom();
             bubbleRandom.x = Math.random() * L10_Canvas.crc2.canvas.width;
             bubbleRandom.y = Math.random() * L10_Canvas.crc2.canvas.height;
-            bubbleRandom.radius = Math.random() * 5;
+            bubbleRandom.radius = Math.random() * 10;
             bubblesRandom.push(bubbleRandom);
         }
         //Luftblasen aus Kiste
@@ -62,6 +71,9 @@ var L10_Canvas;
         for (let i = 0; i < bubblesRandom.length; i++) {
             bubblesRandom[i].move();
         }
+        for (let i = 0; i < bubblesRandom.length; i++) {
+            foods[i].move();
+        }
     }
     function drawObjects() {
         for (let i = 0; i < fishes.length; i++)
@@ -70,6 +82,8 @@ var L10_Canvas;
             bubbles[i].drawBubble();
         for (let i = 0; i < bubblesRandom.length; i++)
             bubblesRandom[i].drawBubblesRandom();
+        for (let i = 0; i < bubblesRandom.length; i++)
+            foods[i].drawFood();
     }
 })(L10_Canvas || (L10_Canvas = {}));
 //# sourceMappingURL=Hauptprogramm.js.map

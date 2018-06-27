@@ -4,6 +4,7 @@ namespace L10_Canvas {
     let fishes: Shoal[] = [];
     let bubbles: Blasen[] = [];
     let bubblesRandom: BlasenRandom[] = [];
+    let foods: Food[] = [];
     let n: number = 10;
     let imgData: ImageData;
 
@@ -17,6 +18,17 @@ namespace L10_Canvas {
         hg.paint();
         imgData = crc2.getImageData( 0, 0, canvas.width, canvas.height ); //Speichern des Canvas als Bild
         console.log( imgData );
+        
+      //Herunterfallendes Essen
+
+        for ( let i: number = 0; i < n; i++ ) {
+            let food: Food = new Food();
+            food.x = Math.random() * crc2.canvas.width;
+            food.y = Math.random() * crc2.canvas.height;
+            food.radius = Math.random() * 5;
+
+           foods.push( food );
+        }
 
         //Luftblasen random im Wasser
 
@@ -24,7 +36,7 @@ namespace L10_Canvas {
             let bubbleRandom: BlasenRandom = new BlasenRandom();
             bubbleRandom.x = Math.random() * crc2.canvas.width;
             bubbleRandom.y = Math.random() * crc2.canvas.height;
-            bubbleRandom.radius = Math.random() * 5;
+            bubbleRandom.radius = Math.random() * 10;
 
             bubblesRandom.push( bubbleRandom );
         }
@@ -83,6 +95,10 @@ namespace L10_Canvas {
         for ( let i: number = 0; i < bubblesRandom.length; i++ ) {
             bubblesRandom[i].move();
         }
+        
+        for ( let i: number = 0; i < bubblesRandom.length; i++ ) {
+            foods[i].move();
+        }
     }
 
     function drawObjects(): void {
@@ -95,5 +111,8 @@ namespace L10_Canvas {
 
         for ( let i: number = 0; i < bubblesRandom.length; i++ )
             bubblesRandom[i].drawBubblesRandom();
+        
+        for ( let i: number = 0; i < bubblesRandom.length; i++ )
+            foods[i].drawFood();
     }
 }
