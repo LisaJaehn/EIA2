@@ -8,7 +8,7 @@ var L10_Canvas;
         setRandomPosition() {
             this.x = Math.random() * L10_Canvas.crc2.canvas.width;
             this.y = Math.random() * L10_Canvas.crc2.canvas.height;
-            this.radius = Math.random() * 5;
+            this.radius = Math.random() * 10;
         }
         move() {
             this.x += 0;

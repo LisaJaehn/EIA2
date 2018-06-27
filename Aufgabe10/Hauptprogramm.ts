@@ -9,6 +9,8 @@ namespace L10_Canvas {
         let canvas: HTMLCanvasElement = document.getElementsByTagName( "canvas" )[0];
         crc2 = canvas.getContext( "2d" );
         console.log( crc2 );
+        
+        canvas.addEventListener("click", insertNewObject);
 
         //Hintergund mit Klasse erstellen
         let hg: Background = new Background;
@@ -31,6 +33,12 @@ namespace L10_Canvas {
             fishes.push( food );
 
             animate();
+        }
+        
+        function insertNewObject(_event: Event): void {
+            let food: Food = new Food("#ffff00");
+            fishes.push(food);
+            
         }
 
         function animate(): void {

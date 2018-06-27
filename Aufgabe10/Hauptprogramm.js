@@ -8,6 +8,7 @@ var L10_Canvas;
         let canvas = document.getElementsByTagName("canvas")[0];
         L10_Canvas.crc2 = canvas.getContext("2d");
         console.log(L10_Canvas.crc2);
+        canvas.addEventListener("click", insertNewObject);
         //Hintergund mit Klasse erstellen
         let hg = new L10_Canvas.Background;
         hg.paint();
@@ -23,6 +24,10 @@ var L10_Canvas;
             let food = new L10_Canvas.Food("rgb(255,185,15)");
             fishes.push(food);
             animate();
+        }
+        function insertNewObject(_event) {
+            let food = new L10_Canvas.Food("#ffff00");
+            fishes.push(food);
         }
         function animate() {
             window.setTimeout(animate, 100);

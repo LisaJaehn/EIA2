@@ -10,7 +10,7 @@ namespace L10_Canvas {
         setRandomPosition(): void {
             this.x = Math.random() * crc2.canvas.width;
             this.y = Math.random() * crc2.canvas.height;
-            this.radius = Math.random() * 5;
+            this.radius = Math.random() * 10;
         }
 
         move(): void {
