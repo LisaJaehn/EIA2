@@ -28,14 +28,14 @@ namespace L10_Canvas {
             let bubbles: Waterbubble = new Waterbubble( "rgb(152,245,255)" );
             movingObjects.push( bubbles );
 
-            /*let food: Food = new Food( "rgb(255,185,15)" );
+            /*let foods: Food = new Food( "rgb(255,185,15)" );
             movingObjects.push( food );*/
 
             animate();
         }
 
         function insertNewObject( _event: MouseEvent ): void {
-            /* let food: Food = new Food("#ffff00");
+            /* let foods: Food = new Food("#ffff00");
              fishes.push(food);*/
 
             let x: number = _event.clientX;
@@ -44,10 +44,10 @@ namespace L10_Canvas {
 
             switch ( n ) {
                 case 0:
-                    let food: Food = new Food( "#ffff00" );
-                    food.x = x;
-                    food.y = y;
-                    movingObjects.push( food );
+                    let foods: Food = new Food( "#ffff00" );
+                    foods.x = x;
+                    foods.y = y;
+                    movingObjects.push( foods );
                     break;
             }
         }

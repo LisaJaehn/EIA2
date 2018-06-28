@@ -20,22 +20,22 @@ var L10_Canvas;
             movingObjects.push(bubblesRandom);
             let bubbles = new L10_Canvas.Waterbubble("rgb(152,245,255)");
             movingObjects.push(bubbles);
-            /*let food: Food = new Food( "rgb(255,185,15)" );
+            /*let foods: Food = new Food( "rgb(255,185,15)" );
             movingObjects.push( food );*/
             animate();
         }
         function insertNewObject(_event) {
-            /* let food: Food = new Food("#ffff00");
+            /* let foods: Food = new Food("#ffff00");
              fishes.push(food);*/
             let x = _event.clientX;
             let y = _event.clientY;
             let n = Math.floor(Math.random() * 2);
             switch (n) {
                 case 0:
-                    let food = new L10_Canvas.Food("#ffff00");
-                    food.x = x;
-                    food.y = y;
-                    movingObjects.push(food);
+                    let foods = new L10_Canvas.Food("#ffff00");
+                    foods.x = x;
+                    foods.y = y;
+                    movingObjects.push(foods);
                     break;
             }
         }
