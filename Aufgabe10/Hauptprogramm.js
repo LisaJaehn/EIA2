@@ -1,7 +1,7 @@
 var L10_Canvas;
 (function (L10_Canvas) {
     window.addEventListener("load", init);
-    let fishes = [];
+    let movingObject = [];
     let n = 10;
     let imgData;
     function init(_event) {
@@ -15,13 +15,13 @@ var L10_Canvas;
         console.log(imgData);
         for (let i = 0; i < n; i++) {
             let fish = new L10_Canvas.Shoal("#00ffff");
-            fishes.push(fish);
+            movingObject.push(fish);
             let bubbleRandom = new L10_Canvas.BlasenRandom("rgb(255,250,240)");
-            fishes.push(bubbleRandom);
+            movingObject.push(bubbleRandom);
             let bubble = new L10_Canvas.Blasen("rgb(152,245,255)");
-            fishes.push(bubble);
+            movingObject.push(bubble);
             /*let food: Food = new Food( "rgb(255,185,15)" );
-            fishes.push( food );*/
+            movingObjects.push( food );*/
             animate();
         }
         function insertNewObject(_event) {
@@ -35,7 +35,7 @@ var L10_Canvas;
                     let food = new L10_Canvas.Food("#ffff00");
                     food.x = x;
                     food.y = y;
-                    fishes.push(food);
+                    movingObject.push(food);
                     break;
             }
         }
@@ -46,13 +46,13 @@ var L10_Canvas;
             drawObjects();
         }
         function moveObjects() {
-            for (let i = 0; i < fishes.length; i++) {
-                fishes[i].move();
+            for (let i = 0; i < movingObject.length; i++) {
+                movingObject[i].move();
             }
         }
         function drawObjects() {
-            for (let i = 0; i < fishes.length; i++)
-                fishes[i].draw();
+            for (let i = 0; i < movingObject.length; i++)
+                movingObject[i].draw();
         }
     }
 })(L10_Canvas || (L10_Canvas = {}));

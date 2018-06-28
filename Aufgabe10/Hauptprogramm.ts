@@ -1,7 +1,7 @@
 namespace L10_Canvas {
     window.addEventListener( "load", init );
     export let crc2: CanvasRenderingContext2D;
-    let fishes: Shoal[] = [];
+    let movingObject: MovingObjects[] = [];
     let n: number = 10;
     let imgData: ImageData;
 
@@ -20,16 +20,16 @@ namespace L10_Canvas {
         for ( let i: number = 0; i < n; i++ ) {
 
             let fish: Shoal = new Shoal( "#00ffff" );
-            fishes.push( fish );
+            movingObject.push( fish );
 
             let bubbleRandom: BlasenRandom = new BlasenRandom( "rgb(255,250,240)" );
-            fishes.push( bubbleRandom );
+            movingObject.push( bubbleRandom );
 
             let bubble: Blasen = new Blasen( "rgb(152,245,255)" );
-            fishes.push( bubble );
+            movingObject.push( bubble );
 
             /*let food: Food = new Food( "rgb(255,185,15)" );
-            fishes.push( food );*/
+            movingObjects.push( food );*/
 
             animate();
         }
@@ -47,11 +47,9 @@ namespace L10_Canvas {
                     let food: Food = new Food( "#ffff00" );
                     food.x = x;
                     food.y = y;
-                    fishes.push( food );
+                    movingObject.push( food );
                     break;
-
             }
-
         }
 
         function animate(): void {
@@ -64,14 +62,14 @@ namespace L10_Canvas {
         }
 
         function moveObjects(): void {
-            for ( let i: number = 0; i < fishes.length; i++ ) {
-                fishes[i].move();
+            for ( let i: number = 0; i < movingObject.length; i++ ) {
+                movingObject[i].move();
             }
         }
 
         function drawObjects(): void {
-            for ( let i: number = 0; i < fishes.length; i++ )
-                fishes[i].draw();
+            for ( let i: number = 0; i < movingObject.length; i++ )
+                movingObject[i].draw();
         }
     }
 }

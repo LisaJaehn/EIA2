@@ -1,6 +1,6 @@
 namespace L10_Canvas {
 
-    export class BlasenRandom extends Shoal {
+    export class BlasenRandom extends MovingObjects {
 
         constructor( _color: string ) {
             super( _color );

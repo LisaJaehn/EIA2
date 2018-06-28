@@ -1,17 +1,9 @@
 namespace L10_Canvas {
 
-    export class Shoal {
-        x: number;
-        y: number;
-        r: number;
-        b: number;
-        g: number;
-        color: string;
-        radius: number;
+    export class Shoal extends MovingObjects {
 
         constructor( _color: string ) {
-            this.setRandomPosition();
-            this.color = _color;
+            super( _color );
         }
 
         setRandomPosition(): void {
