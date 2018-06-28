@@ -1,7 +1,7 @@
 var L10_Canvas;
 (function (L10_Canvas) {
     window.addEventListener("load", init);
-    let movingObject = [];
+    let movingObjects = [];
     let n = 10;
     let imgData;
     function init(_event) {
@@ -14,12 +14,12 @@ var L10_Canvas;
         imgData = L10_Canvas.crc2.getImageData(0, 0, canvas.width, canvas.height);
         console.log(imgData);
         for (let i = 0; i < n; i++) {
-            let fish = new L10_Canvas.Shoal("#00ffff");
-            movingObject.push(fish);
-            let bubbleRandom = new L10_Canvas.BlasenRandom("rgb(255,250,240)");
-            movingObject.push(bubbleRandom);
-            let bubble = new L10_Canvas.Blasen("rgb(152,245,255)");
-            movingObject.push(bubble);
+            let fishes = new L10_Canvas.Shoal("#00ffff");
+            movingObjects.push(fishes);
+            let bubblesRandom = new L10_Canvas.WaterBubbleRandom("rgb(255,250,240)");
+            movingObjects.push(bubblesRandom);
+            let bubbles = new L10_Canvas.Waterbubble("rgb(152,245,255)");
+            movingObjects.push(bubbles);
             /*let food: Food = new Food( "rgb(255,185,15)" );
             movingObjects.push( food );*/
             animate();
@@ -35,7 +35,7 @@ var L10_Canvas;
                     let food = new L10_Canvas.Food("#ffff00");
                     food.x = x;
                     food.y = y;
-                    movingObject.push(food);
+                    movingObjects.push(food);
                     break;
             }
         }
@@ -46,13 +46,13 @@ var L10_Canvas;
             drawObjects();
         }
         function moveObjects() {
-            for (let i = 0; i < movingObject.length; i++) {
-                movingObject[i].move();
+            for (let i = 0; i < movingObjects.length; i++) {
+                movingObjects[i].move();
             }
         }
         function drawObjects() {
-            for (let i = 0; i < movingObject.length; i++)
-                movingObject[i].draw();
+            for (let i = 0; i < movingObjects.length; i++)
+                movingObjects[i].draw();
         }
     }
 })(L10_Canvas || (L10_Canvas = {}));

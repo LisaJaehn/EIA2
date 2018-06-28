@@ -1,6 +1,6 @@
 namespace L10_Canvas {
 
-    export class Food extends MovingObjects {
+    export class Food extends MovingObject {
 
         constructor( _color: string ) {
             super( _color );

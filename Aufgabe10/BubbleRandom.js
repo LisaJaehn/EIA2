@@ -1,6 +1,6 @@
 var L10_Canvas;
 (function (L10_Canvas) {
-    class BlasenRandom extends L10_Canvas.Shoal {
+    class WaterBubbleRandom extends L10_Canvas.MovingObject {
         constructor(_color) {
             super(_color);
         }
@@ -23,6 +23,6 @@ var L10_Canvas;
             L10_Canvas.crc2.fill();
         }
     }
-    L10_Canvas.BlasenRandom = BlasenRandom;
+    L10_Canvas.WaterBubbleRandom = WaterBubbleRandom;
 })(L10_Canvas || (L10_Canvas = {}));
 //# sourceMappingURL=BubbleRandom.js.map

@@ -1,6 +1,6 @@
 namespace L10_Canvas {
 
-    export class Shoal extends MovingObjects {
+    export class Shoal extends MovingObject {
 
         constructor( _color: string ) {
             super( _color );

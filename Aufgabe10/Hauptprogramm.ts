@@ -1,7 +1,7 @@
 namespace L10_Canvas {
     window.addEventListener( "load", init );
     export let crc2: CanvasRenderingContext2D;
-    let movingObject: MovingObjects[] = [];
+    let movingObjects: MovingObject[] = [];
     let n: number = 10;
     let imgData: ImageData;
 
@@ -19,14 +19,14 @@ namespace L10_Canvas {
 
         for ( let i: number = 0; i < n; i++ ) {
 
-            let fish: Shoal = new Shoal( "#00ffff" );
-            movingObject.push( fish );
+            let fishes: Shoal = new Shoal( "#00ffff" );
+            movingObjects.push( fishes );
 
-            let bubbleRandom: BlasenRandom = new BlasenRandom( "rgb(255,250,240)" );
-            movingObject.push( bubbleRandom );
+            let bubblesRandom: WaterBubbleRandom = new WaterBubbleRandom( "rgb(255,250,240)" );
+            movingObjects.push( bubblesRandom );
 
-            let bubble: Blasen = new Blasen( "rgb(152,245,255)" );
-            movingObject.push( bubble );
+            let bubbles: Waterbubble = new Waterbubble( "rgb(152,245,255)" );
+            movingObjects.push( bubbles );
 
             /*let food: Food = new Food( "rgb(255,185,15)" );
             movingObjects.push( food );*/
@@ -47,7 +47,7 @@ namespace L10_Canvas {
                     let food: Food = new Food( "#ffff00" );
                     food.x = x;
                     food.y = y;
-                    movingObject.push( food );
+                    movingObjects.push( food );
                     break;
             }
         }
@@ -62,14 +62,14 @@ namespace L10_Canvas {
         }
 
         function moveObjects(): void {
-            for ( let i: number = 0; i < movingObject.length; i++ ) {
-                movingObject[i].move();
+            for ( let i: number = 0; i < movingObjects.length; i++ ) {
+                movingObjects[i].move();
             }
         }
 
         function drawObjects(): void {
-            for ( let i: number = 0; i < movingObject.length; i++ )
-                movingObject[i].draw();
+            for ( let i: number = 0; i < movingObjects.length; i++ )
+                movingObjects[i].draw();
         }
     }
 }

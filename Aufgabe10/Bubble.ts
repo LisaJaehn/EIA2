@@ -1,6 +1,6 @@
 namespace L10_Canvas {
 
-    export class Blasen extends MovingObjects {
+    export class Waterbubble extends MovingObject {
 
         constructor( _color: string ) {
             super( _color );

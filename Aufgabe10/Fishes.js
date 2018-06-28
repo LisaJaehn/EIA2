@@ -1,6 +1,6 @@
 var L10_Canvas;
 (function (L10_Canvas) {
-    class Shoal extends L10_Canvas.MovingObjects {
+    class Shoal extends L10_Canvas.MovingObject {
         constructor(_color) {
             super(_color);
         }

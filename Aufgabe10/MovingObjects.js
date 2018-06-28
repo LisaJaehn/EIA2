@@ -1,6 +1,6 @@
 var L10_Canvas;
 (function (L10_Canvas) {
-    class MovingObjects {
+    class MovingObject {
         constructor(_color) {
             this.setRandomPosition();
             this.color = _color;
@@ -9,6 +9,6 @@ var L10_Canvas;
         move() { }
         draw() { }
     }
-    L10_Canvas.MovingObjects = MovingObjects;
+    L10_Canvas.MovingObject = MovingObject;
 })(L10_Canvas || (L10_Canvas = {}));
 //# sourceMappingURL=MovingObjects.js.map

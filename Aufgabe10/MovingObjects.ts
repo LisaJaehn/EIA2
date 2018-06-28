@@ -1,6 +1,6 @@
 namespace L10_Canvas {
 
-    export class MovingObjects {
+    export class MovingObject {
 
         x: number;
         y: number;
