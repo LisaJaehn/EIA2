@@ -38,7 +38,7 @@ namespace L10_Canvas {
             /* let foods: Food = new Food("#ffff00");
              fishes.push(food);*/
 
-            let x: number = _event.clientX;
+           let x: number = _event.clientX;
             let y: number = _event.clientY;
             let n: number = Math.floor( Math.random() * 2 );
 
