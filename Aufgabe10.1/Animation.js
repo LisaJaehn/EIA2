@@ -2,7 +2,7 @@ var L11_Inheritance;
 (function (L11_Inheritance) {
     window.addEventListener("load", init);
     let stars = [];
-    let n = 50;
+    let n = 20;
     function init(_event) {
         let canvas = document.getElementsByTagName("canvas")[0];
         L11_Inheritance.crc2 = canvas.getContext("2d");
@@ -26,7 +26,7 @@ var L11_Inheritance;
         stars.push(star);*/
         let x = _event.clientX;
         let y = _event.clientY;
-        let n = Math.floor(Math.random() * 2);
+        let n = Math.floor(Math.random() * 3);
         switch (n) {
             case 0:
                 let star = new L11_Inheritance.DavidStar("#ffff00");
@@ -39,6 +39,12 @@ var L11_Inheritance;
                 circle.x = x;
                 circle.y = y;
                 stars.push(circle);
+                break;
+            case 2:
+                let greenDavidStar = new L11_Inheritance.DavidStarGreen("#00FF00");
+                greenDavidStar.x = x;
+                greenDavidStar.y = y;
+                stars.push(greenDavidStar);
                 break;
         }
     }

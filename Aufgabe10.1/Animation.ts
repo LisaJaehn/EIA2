@@ -2,7 +2,7 @@ namespace L11_Inheritance {
     window.addEventListener( "load", init );
     export let crc2: CanvasRenderingContext2D;
     let stars: DavidStar[] = [];
-    let n: number = 50;
+    let n: number = 20;
 
 
     function init( _event: Event ): void {
@@ -40,7 +40,7 @@ namespace L11_Inheritance {
         let x: number = _event.clientX;
         let y: number = _event.clientY;
 
-        let n: number = Math.floor( Math.random() * 2 );
+        let n: number = Math.floor( Math.random() * 3 );
 
         switch ( n ) {
             case 0:
@@ -55,6 +55,13 @@ namespace L11_Inheritance {
                 circle.x = x;
                 circle.y = y;
                 stars.push( circle );
+                break;
+                
+            case 2:
+                let greenDavidStar: DavidStarGreen = new DavidStarGreen("#00FF00");
+                greenDavidStar.x = x;
+                greenDavidStar.y = y;
+                stars.push(greenDavidStar);
                 break;
 
         }
