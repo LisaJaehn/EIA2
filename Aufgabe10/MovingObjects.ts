@@ -10,9 +10,7 @@ namespace L10_Canvas {
         color: string;
         radius: number;
 
-        constructor( _color: string ) {
-            this.setRandomPosition();
-            this.color = _color;
+        constructor() {
         }
 
         setRandomPosition(): void { }

@@ -2,9 +2,15 @@ namespace L10_Canvas {
 
     export class Food extends MovingObject {
 
-        constructor( _color: string ) {
-            super( _color );
+        constructor() {
+            super();
+            this.setRandomPosition();
+            this.setColor();
         }
+        
+        setColor(): void {
+            this.color = "rgb(255,165,0)";
+            }
 
         setRandomPosition(): void {
             this.x = Math.random() * crc2.canvas.width;

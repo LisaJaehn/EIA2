@@ -1,7 +1,7 @@
 var L10_Canvas;
 (function (L10_Canvas) {
     class Background {
-        paint() {
+        constructor() {
             this.drawBackground(260);
             this.drawStone(260, 380);
             this.drawTreasureChest(60, 370, 100, 60);

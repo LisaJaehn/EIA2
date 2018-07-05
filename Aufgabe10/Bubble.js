@@ -1,8 +1,13 @@
 var L10_Canvas;
 (function (L10_Canvas) {
     class Waterbubble extends L10_Canvas.MovingObject {
-        constructor(_color) {
-            super(_color);
+        constructor() {
+            super();
+            this.setRandomPosition();
+            this.setColor();
+        }
+        setColor() {
+            this.color = "rgb(152,245,255)";
         }
         setRandomPosition() {
             this.x = (110);

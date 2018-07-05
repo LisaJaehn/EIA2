@@ -13,19 +13,19 @@ namespace L10_Canvas {
         canvas.addEventListener( "click", insertNewObject );
 
         let hg: Background = new Background;
-        hg.paint();
+        //hg.paint();
         imgData = crc2.getImageData( 0, 0, canvas.width, canvas.height );
         console.log( imgData );
 
         for ( let i: number = 0; i < n; i++ ) {
 
-            let fishes: Shoal = new Shoal( "#00ffff" );
+            let fishes: Shoal = new Shoal( /*"#00ffff"*/ );
             movingObjects.push( fishes );
 
-            let bubblesRandom: WaterBubbleRandom = new WaterBubbleRandom( "rgb(255,250,240)" );
+            let bubblesRandom: WaterBubbleRandom = new WaterBubbleRandom( /*"rgb(255,250,240)"*/ );
             movingObjects.push( bubblesRandom );
 
-            let bubbles: Waterbubble = new Waterbubble( "rgb(152,245,255)" );
+            let bubbles: Waterbubble = new Waterbubble( /*"rgb(152,245,255)"*/ );
             movingObjects.push( bubbles );
 
             /*let foods: Food = new Food( "rgb(255,185,15)" );
@@ -38,13 +38,13 @@ namespace L10_Canvas {
             /* let foods: Food = new Food("#ffff00");
              fishes.push(food);*/
 
-           let x: number = _event.clientX;
+            let x: number = _event.clientX;
             let y: number = _event.clientY;
             let n: number = Math.floor( Math.random() * 2 );
 
             switch ( n ) {
                 case 0:
-                    let foods: Food = new Food( "#ffff00" );
+                    let foods: Food = new Food( /*"#ffff00"*/ );
                     foods.x = x;
                     foods.y = y;
                     movingObjects.push( foods );

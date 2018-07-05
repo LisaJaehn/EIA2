@@ -1,8 +1,15 @@
 var L10_Canvas;
 (function (L10_Canvas) {
     class Shoal extends L10_Canvas.MovingObject {
-        constructor(_color) {
-            super(_color);
+        constructor() {
+            super();
+            this.setRandomPosition();
+            this.setRandomColor();
+        }
+        setRandomColor() {
+            this.r = Math.random() * 300;
+            this.g = Math.random() * 300;
+            this.b = Math.random() * 300;
         }
         setRandomPosition() {
             this.x = Math.random() * L10_Canvas.crc2.canvas.width;

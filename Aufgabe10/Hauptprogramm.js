@@ -10,15 +10,15 @@ var L10_Canvas;
         console.log(L10_Canvas.crc2);
         canvas.addEventListener("click", insertNewObject);
         let hg = new L10_Canvas.Background;
-        hg.paint();
+        //hg.paint();
         imgData = L10_Canvas.crc2.getImageData(0, 0, canvas.width, canvas.height);
         console.log(imgData);
         for (let i = 0; i < n; i++) {
-            let fishes = new L10_Canvas.Shoal("#00ffff");
+            let fishes = new L10_Canvas.Shoal();
             movingObjects.push(fishes);
-            let bubblesRandom = new L10_Canvas.WaterBubbleRandom("rgb(255,250,240)");
+            let bubblesRandom = new L10_Canvas.WaterBubbleRandom();
             movingObjects.push(bubblesRandom);
-            let bubbles = new L10_Canvas.Waterbubble("rgb(152,245,255)");
+            let bubbles = new L10_Canvas.Waterbubble();
             movingObjects.push(bubbles);
             /*let foods: Food = new Food( "rgb(255,185,15)" );
             movingObjects.push( food );*/
@@ -32,7 +32,7 @@ var L10_Canvas;
             let n = Math.floor(Math.random() * 2);
             switch (n) {
                 case 0:
-                    let foods = new L10_Canvas.Food("#ffff00");
+                    let foods = new L10_Canvas.Food();
                     foods.x = x;
                     foods.y = y;
                     movingObjects.push(foods);

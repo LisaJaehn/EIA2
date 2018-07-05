@@ -2,9 +2,15 @@ namespace L10_Canvas {
 
     export class Waterbubble extends MovingObject {
 
-        constructor( _color: string ) {
-            super( _color );
+        constructor() {
+            super();
+            this.setRandomPosition();
+            this.setColor();
         }
+        
+        setColor(): void {
+            this.color = "rgb(152,245,255)";
+            }
 
         setRandomPosition(): void {
             this.x = ( 110 );

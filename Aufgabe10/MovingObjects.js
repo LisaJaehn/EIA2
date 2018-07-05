@@ -1,9 +1,7 @@
 var L10_Canvas;
 (function (L10_Canvas) {
     class MovingObject {
-        constructor(_color) {
-            this.setRandomPosition();
-            this.color = _color;
+        constructor() {
         }
         setRandomPosition() { }
         move() { }

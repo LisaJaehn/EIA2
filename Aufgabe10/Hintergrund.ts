@@ -2,7 +2,7 @@ namespace L10_Canvas {
 
     export class Background {
 
-        public paint(): void {
+            constructor() {
             this.drawBackground( 260 );
             this.drawStone( 260, 380 );
             this.drawTreasureChest( 60, 370, 100, 60 );
