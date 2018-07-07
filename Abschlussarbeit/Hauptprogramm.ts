@@ -1,178 +1,123 @@
 namespace Abschlussarbeit {
 
     window.addEventListener( "load", init );
-    let crc2: CanvasRenderingContext2D;
+    export let crc2: CanvasRenderingContext2D;
+    let trees: Tree[] = [];
+    let n: number = 4;
+
+    let bubblesPink: BubblePink[] = [];
+    let bubblesRed: BubbleRed[] = [];
+    let bubblesOrange: BubbleOrange[] = [];
+    let m: number = 8;
 
     function init( _event: Event ): void {
         let canvas: HTMLCanvasElement = document.getElementsByTagName( "canvas" )[0];
         crc2 = canvas.getContext( "2d" );
         console.log( crc2 );
 
+        let hg: Hintergrund = new Hintergrund;
+        hg.paint();
+        imgData = crc2.getImageData( 0, 0, canvas.width, canvas.height );
+        console.log( imgData );
 
 
-        //Hintergrund
-        drawBackground( 100 );
-        
         //Baum
-        drawTree1( 150, 550 );
-        
+
+        for ( let i: number = 0; i < n; i++ ) {
+            tree.x = Math.random() * 900;
+            tree.y = ( 550 );
+
+            trees.push( tree );
+
+            //drawTree( x, y);
+
+            //drawTree( 150, 550 );
+        }
+
         //Korb
         drawBasket( 450, 630 );
-        
-        //Sonne
-        drawSun(600, 100, 70);
+
 
         //Rote Kugeln
-        for ( let i: number = 0; i < 8; i++ ) {
-            let x: number = Math.random() * crc2.canvas.width;
-            let y: number = Math.random() * crc2.canvas.height;
+        for ( let i: number = 0; i < m; i++ ) {
+            let bubbleRed: BubbleRed = new BubbleRed();
+            bubbleRed.x = Math.random() * crc2.canvas.width;
+            bubbleRed.y = Math.random() * crc2.canvas.height;
+            bubbleRed.radius = Math.random() * 5;
 
-            drawBubbleRed( x, y, 10 );
+            bubblesRed.push( bubbleRed );
 
         }
 
         //Orangene Kugeln
-        for ( let i: number = 0; i < 8; i++ ) {
-            let x: number = Math.random() * crc2.canvas.width;
-            let y: number = Math.random() * crc2.canvas.height;
+        for ( let i: number = 0; i < m; i++ ) {
+            bubbleOrange.x = Math.random() * crc2.canvas.width;
+            bubbleOrange.y = Math.random() * crc2.canvas.height;
+            bubbleOrange.radius = Math.random() * 5;
 
-            drawBubbleOrange( x, y, 10 );
+            bubblesOrange.push( bubbleOrange );
 
         }
-        
+
         //Pinke Kugeln
-        for ( let i: number = 0; i < 8; i++ ) {
-            let x: number = Math.random() * crc2.canvas.width;
-            let y: number = Math.random() * crc2.canvas.height;
+        for ( let i: number = 0; i < m; i++ ) {
+            bubblePink.x = Math.random() * crc2.canvas.width;
+            bubblePink.y = Math.random() * crc2.canvas.height;
+            bubblePink.radius = Math.random() * 5;
 
-            drawBubblePink( x, y, 10 );
+            bubblesPink.push( bubblePink );
 
         }
-        
-    }
 
-    //Funktion Hintergrund
-    function drawBackground( _forestHeight: number ): void {
-        crc2.fillStyle = "rgb(100,149, 237)";
-        crc2.fillRect( 0, 0, crc2.canvas.width, crc2.canvas.height );
-
-        crc2.fillStyle = "rgb(0,205,0)";
-        crc2.fillRect( 0, crc2.canvas.height - _forestHeight, crc2.canvas.width, crc2.canvas.height );
-    }
-
-    //Rote Kugeln
-    function drawBubbleRed( _x: number, _y: number, _radius: number ): void {
-        crc2.beginPath();
-        crc2.fillStyle = "rgb(255,0,0)";
-        crc2.arc( _x, _y, _radius, 0, 2 * Math.PI );
-        crc2.closePath();
-        crc2.stroke();
-        crc2.fill();
-    }
-
-    //Orange Kugeln
-    function drawBubbleOrange( _x: number, _y: number, _radius: number ): void {
-        crc2.beginPath();
-        crc2.fillStyle = "rgb(255,144,0)";
-        crc2.arc( _x, _y, _radius, 0, 2 * Math.PI );
-        crc2.closePath();
-        crc2.stroke();
-        crc2.fill();
-    }
-    
-    //Pinke Kugeln
-    function drawBubblePink( _x: number, _y: number, _radius: number ): void {
-        crc2.beginPath();
-        crc2.fillStyle = "rgb(255,0,255)";
-        crc2.arc( _x, _y, _radius, 0, 2 * Math.PI );
-        crc2.closePath();
-        crc2.stroke();
-        crc2.fill();
-    }
-
-
-    //Korb
-    function drawBasket( _x: number, _y: number ): void {
-        crc2.beginPath();
-        crc2.fillStyle = "rgb(139,69,0)";
-        //crc2.moveTo( 400, 630 );
-        crc2.moveTo(_x, _y);
-        crc2.bezierCurveTo(_x, _y + 70, _x + 100, _y + 70, _x + 100, _y);
-        crc2.closePath();
-        crc2.fill();
-        crc2.stroke();
-
-        drawHenckel( 550, 630 );
+        animate();
 
     }
 
-    //Korbhenkel
-    function drawHenckel( _x: number, _y: number ): void {
-        crc2.beginPath();
-        crc2.moveTo(_x, _y);
-        crc2.bezierCurveTo(_x, _y - 70, _x - 100, _y - 70, _x - 100, _y);
-        crc2.closePath();
-        crc2.stroke();
+    function animate(): void {
+        window.setTimeout( animate, 10 );
+        crc2.putImageData( imgData, 0, 0 );
+
+        moveObjects();
+        drawObjects();
     }
 
 
-    //Tannenbaum
-    function drawTree1( _x: number, _y: number ): void {
-        crc2.beginPath();
-        crc2.fillStyle = "rgb(0,100,0)";
-        crc2.moveTo( _x, _y);
-        crc2.lineTo(_x - 100, _y);
-        crc2.lineTo(_x , _y - 100);
-        crc2.lineTo(_x - 80, _y - 100);
-        crc2.lineTo(_x, _y - 200);
-        crc2.lineTo(_x - 60, _y - 200);
-        crc2.lineTo(_x + 25, _y - 300);
-        crc2.lineTo(_x + 110, _y - 200);
-        crc2.lineTo(_x + 50, _y - 200);
-        crc2.lineTo(_x + 130, _y - 100);
-        crc2.lineTo(_x + 50, _y - 100);
-        crc2.lineTo(_x + 150, _y);
-        crc2.lineTo(_x + 50, _y);
-        crc2.stroke();
-        crc2.fill();
+    function moveObjects(): void {
+        for ( let i: number = 0; i < bubblesRed.length; i++ ) {
+            bubblesRed[i].move();
+        }
 
-        //Baumstamm
-        drawTrunk1( 150, 600 );
+        for ( let i: number = 0; i < bubblesOrange.length; i++ ) {
+            bubblesOrange[i].move();
+        }
 
+        for ( let i: number = 0; i < bubblesPink.length; i++ ) {
+            bubblesPink[i].move();
+        }
     }
 
-    //Tannenbaumstamm
-    function drawTrunk1( _x: number, _y: number ): void {
-        crc2.beginPath();
-        crc2.fillStyle = "rgb(139,90,0)";
-        crc2.moveTo( _x, _y);
-        crc2.lineTo( _x, _y - 50);
-        crc2.lineTo( _x + 50, _y - 50);
-        crc2.lineTo( _x + 50, _y);
-        crc2.closePath();
-        crc2.stroke();
-        crc2.fill();
-}
-    
-    //Sonne
-    function drawSun ( _x: number, _y: number, _radius: number ): void {
-        crc2.beginPath();
-        crc2.fillStyle = "rgb(255,255,0)";
-        crc2.arc( _x, _y, _radius, 0, 2 * Math.PI );
-        crc2.closePath();
-        crc2.stroke();
-        crc2.fill();
+    function drawObjects(): void {
+        for ( let i: number = 0; i < bubblesRed.length; i++ )
+            bubblesRed[i].draw();
+
+
+        for ( let i: number = 0; i < bubblesOrange.length; i++ )
+            bubblesOrange[i].drawBubble();
+
+        for ( let i: number = 0; i < bubblesPink.length; i++ )
+            bubblesPink[i].drawBubblesRandom();
+
+        for ( let i: number = 0; i < trees.length; i++ )
+            trees[i].drawBubblesRandom();
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
+
 }

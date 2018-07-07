@@ -9,11 +9,15 @@ var Abschlussarbeit;
         //Hintergrund
         drawBackground(100);
         //Baum
-        drawTree1(150, 550);
+        for (let i = 0; i < 4; i++) {
+            let x = Math.random() * 900;
+            let y = (550);
+            drawTree(x, y);
+        }
         //Korb
         drawBasket(450, 630);
         //Sonne
-        drawSun(600, 100, 70);
+        drawSun(750, 100, 70);
         //Rote Kugeln
         for (let i = 0; i < 8; i++) {
             let x = Math.random() * crc2.canvas.width;
@@ -71,7 +75,6 @@ var Abschlussarbeit;
     function drawBasket(_x, _y) {
         crc2.beginPath();
         crc2.fillStyle = "rgb(139,69,0)";
-        //crc2.moveTo( 400, 630 );
         crc2.moveTo(_x, _y);
         crc2.bezierCurveTo(_x, _y + 70, _x + 100, _y + 70, _x + 100, _y);
         crc2.closePath();
@@ -88,7 +91,7 @@ var Abschlussarbeit;
         crc2.stroke();
     }
     //Tannenbaum
-    function drawTree1(_x, _y) {
+    function drawTree(_x, _y) {
         crc2.beginPath();
         crc2.fillStyle = "rgb(0,100,0)";
         crc2.moveTo(_x, _y);
@@ -106,11 +109,11 @@ var Abschlussarbeit;
         crc2.lineTo(_x + 50, _y);
         crc2.stroke();
         crc2.fill();
-        //Baumstamm
-        drawTrunk1(150, 600);
+        //Baumstamm1
+        drawTrunk(_x, _y + 50);
     }
     //Tannenbaumstamm
-    function drawTrunk1(_x, _y) {
+    function drawTrunk(_x, _y) {
         crc2.beginPath();
         crc2.fillStyle = "rgb(139,90,0)";
         crc2.moveTo(_x, _y);
