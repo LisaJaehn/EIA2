@@ -95,25 +95,24 @@ namespace Abschlussarbeit {
     function drawBasket( _x: number, _y: number ): void {
         crc2.beginPath();
         crc2.fillStyle = "rgb(139,69,0)";
-        crc2.moveTo( 400, 630 );
-        crc2.bezierCurveTo( 400, 700, 500, 700, 500, 630 );
+        //crc2.moveTo( 400, 630 );
+        crc2.moveTo(_x, _y);
+        crc2.bezierCurveTo(_x, _y + 70, _x + 100, _y + 70, _x + 100, _y);
         crc2.closePath();
         crc2.fill();
         crc2.stroke();
 
-        drawHenckel( 500, 630 );
+        drawHenckel( 550, 630 );
 
     }
 
     //Korbhenkel
     function drawHenckel( _x: number, _y: number ): void {
         crc2.beginPath();
-        //crc2.fillStyle = "rgb(139,69,0)";
-        crc2.moveTo( 500, 630 );
-        crc2.bezierCurveTo( 500, 560, 400, 560, 400, 630 );
+        crc2.moveTo(_x, _y);
+        crc2.bezierCurveTo(_x, _y - 70, _x - 100, _y - 70, _x - 100, _y);
         crc2.closePath();
         crc2.stroke();
-        //crc2.fill();
     }
 
 
@@ -121,20 +120,19 @@ namespace Abschlussarbeit {
     function drawTree1( _x: number, _y: number ): void {
         crc2.beginPath();
         crc2.fillStyle = "rgb(0,100,0)";
-        crc2.moveTo( 150, 550 );
-        crc2.lineTo( 50, 550 );
-        crc2.lineTo( 150, 450 );
-        crc2.lineTo( 70, 450 );
-        crc2.lineTo( 150, 350 )
-        crc2.lineTo( 90, 350 );
-        crc2.lineTo( 175, 250 );
-        crc2.lineTo( 260, 350 );
-        crc2.lineTo( 200, 350 );
-        crc2.lineTo( 280, 450 );
-        crc2.lineTo( 200, 450 );
-        crc2.lineTo( 300, 550 );
-        crc2.lineTo( 200, 550 );
-        //crc2.closePath();
+        crc2.moveTo( _x, _y);
+        crc2.lineTo(_x - 100, _y);
+        crc2.lineTo(_x , _y - 100);
+        crc2.lineTo(_x - 80, _y - 100);
+        crc2.lineTo(_x, _y - 200);
+        crc2.lineTo(_x - 60, _y - 200);
+        crc2.lineTo(_x + 25, _y - 300);
+        crc2.lineTo(_x + 110, _y - 200);
+        crc2.lineTo(_x + 50, _y - 200);
+        crc2.lineTo(_x + 130, _y - 100);
+        crc2.lineTo(_x + 50, _y - 100);
+        crc2.lineTo(_x + 150, _y);
+        crc2.lineTo(_x + 50, _y);
         crc2.stroke();
         crc2.fill();
 
@@ -147,10 +145,10 @@ namespace Abschlussarbeit {
     function drawTrunk1( _x: number, _y: number ): void {
         crc2.beginPath();
         crc2.fillStyle = "rgb(139,90,0)";
-        crc2.moveTo( 150, 600 );
-        crc2.lineTo( 150, 550 );
-        crc2.lineTo( 200, 550 );
-        crc2.lineTo( 200, 600 );
+        crc2.moveTo( _x, _y);
+        crc2.lineTo( _x, _y - 50);
+        crc2.lineTo( _x + 50, _y - 50);
+        crc2.lineTo( _x + 50, _y);
         crc2.closePath();
         crc2.stroke();
         crc2.fill();
