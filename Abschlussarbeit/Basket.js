@@ -11,9 +11,9 @@ var Abschlussarbeit;
             Abschlussarbeit.crc2.closePath();
             Abschlussarbeit.crc2.fill();
             Abschlussarbeit.crc2.stroke();
-            //drawHenckel( this.x + 150, this.y );
-            //}
-            //drawHenckel(): void {
+            this.drawHenkel();
+        }
+        drawHenkel() {
             Abschlussarbeit.crc2.beginPath();
             Abschlussarbeit.crc2.moveTo(this.x, this.y);
             Abschlussarbeit.crc2.bezierCurveTo(this.x, this.y - 70, this.x - 100, this.y - 70, this.x - 100, this.y);

@@ -19,7 +19,7 @@ namespace Abschlussarbeit {
             crc2.fill();
             crc2.stroke();
 
-            this.drawHenkel( this.x + 150, this.y );
+            this.drawHenkel(/* this.x + 150, this.y */);
 
             }
 

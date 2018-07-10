@@ -30,17 +30,17 @@ namespace Abschlussarbeit {
             crc2.fill();
 
 
-            this.drawTrunk( this.x, this.y + 50 );
+            this.drawTrunk();
 
             }
 
             drawTrunk(): void {
             crc2.beginPath();
             crc2.fillStyle = "rgb(139,90,0)";
-            crc2.moveTo( this.x, this.y );
-            crc2.lineTo( this.x, this.y - 50 );
-            crc2.lineTo( this.x + 50, this.y - 50 );
-            crc2.lineTo( this.x + 50, this.y );
+            crc2.moveTo( this.x, this.y + 50);
+            crc2.lineTo( this.x, this.y);
+            crc2.lineTo( this.x + 50, this.y);
+            crc2.lineTo( this.x +50, this.y + 50 );
             crc2.closePath();
             crc2.stroke();
             crc2.fill();

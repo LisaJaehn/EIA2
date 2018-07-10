@@ -21,15 +21,15 @@ var Abschlussarbeit;
             Abschlussarbeit.crc2.lineTo(this.x + 50, this.y);
             Abschlussarbeit.crc2.stroke();
             Abschlussarbeit.crc2.fill();
-            // drawTrunk( this.x, this.y + 50 );
-            //}
-            //drawTrunk(): void {
+            this.drawTrunk();
+        }
+        drawTrunk() {
             Abschlussarbeit.crc2.beginPath();
             Abschlussarbeit.crc2.fillStyle = "rgb(139,90,0)";
-            Abschlussarbeit.crc2.moveTo(this.x, this.y);
-            Abschlussarbeit.crc2.lineTo(this.x, this.y - 50);
-            Abschlussarbeit.crc2.lineTo(this.x + 50, this.y - 50);
+            Abschlussarbeit.crc2.moveTo(this.x, this.y + 50);
+            Abschlussarbeit.crc2.lineTo(this.x, this.y);
             Abschlussarbeit.crc2.lineTo(this.x + 50, this.y);
+            Abschlussarbeit.crc2.lineTo(this.x + 50, this.y + 50);
             Abschlussarbeit.crc2.closePath();
             Abschlussarbeit.crc2.stroke();
             Abschlussarbeit.crc2.fill();
