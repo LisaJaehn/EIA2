@@ -81,7 +81,6 @@ namespace Abschlussarbeit {
         drawObjects();
     }
 
-
     function moveObjects(): void {
         for ( let i: number = 0; i < bubblesRed.length; i++ ) {
             bubblesRed[i].move();
@@ -110,14 +109,4 @@ namespace Abschlussarbeit {
         for ( let i: number = 0; i < trees.length; i++ )
             trees[i].draw();
     }
-
-
-
-
-
-
-
-
-
-
 }
