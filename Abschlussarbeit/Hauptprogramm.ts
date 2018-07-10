@@ -3,12 +3,10 @@ namespace Abschlussarbeit {
     window.addEventListener( "load", init );
     export let crc2: CanvasRenderingContext2D;
     let imgData: ImageData;
-    
-    let bubblesPink: BubblePink[] = [];
-    let bubblesRed: BubbleRed[] = [];
-    let bubblesOrange: BubbleOrange[] = [];
+
+    let movingObjects: MovingObject[] = [];
     let m: number = 3;
-    
+
     let trees: Tree[] = [];
     let n: number = 4;
 
@@ -23,44 +21,7 @@ namespace Abschlussarbeit {
         console.log( imgData );
 
 
-        //Korb
-        //drawBasket( 450, 630 );
-
-
-        //Rote Kugeln
-        for ( let i: number = 0; i < m; i++ ) {
-            let bubbleRed: BubbleRed = new BubbleRed();
-            bubbleRed.x = Math.random() * crc2.canvas.width;
-            bubbleRed.y = Math.random() * crc2.canvas.height;
-            bubbleRed.radius = 10;
-
-            bubblesRed.push( bubbleRed );
-
-        }
-
-        //Orangene Kugeln
-        for ( let i: number = 0; i < m; i++ ) {
-            let bubbleOrange: BubbleOrange = new BubbleOrange();
-            bubbleOrange.x = Math.random() * crc2.canvas.width;
-            bubbleOrange.y = Math.random() * crc2.canvas.height;
-            bubbleOrange.radius= 10;
-
-            bubblesOrange.push( bubbleOrange );
-
-        }
-
-        //Pinke Kugeln
-        for ( let i: number = 0; i < m; i++ ) {
-            let bubblePink: BubblePink = new BubblePink();
-            bubblePink.x = Math.random() * crc2.canvas.width;
-            bubblePink.y = Math.random() * crc2.canvas.height;
-            bubblePink.radius = 10;
-
-            bubblesPink.push( bubblePink );
-
-        }
-        
-      //Baum
+        //Bäume
 
         for ( let i: number = 0; i < n; i++ ) {
             let tree: Tree = new Tree();
@@ -68,8 +29,23 @@ namespace Abschlussarbeit {
             tree.y = ( 550 );
 
             trees.push( tree );
-       
         }
+
+
+        //Kugeln
+        
+        for ( let i: number = 0; i < m; i++ ) {
+
+            let bubblesRed: BubbleRed = new BubbleRed();
+            movingObjects.push( bubblesRed );
+
+            let bubblesOrange: BubbleOrange = new BubbleOrange();
+            movingObjects.push( bubblesOrange );
+
+            let bubblesPink: BubblePink = new BubblePink();
+            movingObjects.push( bubblesPink );
+        }
+
 
         animate();
 
@@ -81,37 +57,26 @@ namespace Abschlussarbeit {
 
         moveObjects();
         drawObjects();
-        
+
     }
 
     function moveObjects(): void {
-        for ( let i: number = 0; i < bubblesRed.length; i++ ) {
-            bubblesRed[i].move();
-        }
 
-        for ( let i: number = 0; i < bubblesOrange.length; i++ ) {
-            bubblesOrange[i].move();
-        }
+        for ( let i: number = 0; i < movingObjects.length; i++ ) {
+            movingObjects[i].move();
 
-        for ( let i: number = 0; i < bubblesPink.length; i++ ) {
-            bubblesPink[i].move();
         }
     }
 
     function drawObjects(): void {
-        
+
         for ( let i: number = 0; i < trees.length; i++ )
             trees[i].draw();
-        
-        for ( let i: number = 0; i < bubblesRed.length; i++ )
-            bubblesRed[i].draw();
+
+        for ( let i: number = 0; i < movingObjects.length; i++ )
+            movingObjects[i].draw();
 
 
-        for ( let i: number = 0; i < bubblesOrange.length; i++ )
-            bubblesOrange[i].draw();
-
-        for ( let i: number = 0; i < bubblesPink.length; i++ )
-            bubblesPink[i].draw();
 
     }
 }

@@ -1,10 +1,12 @@
 namespace Abschlussarbeit {
 
-    export class BubblePink {
+    export class BubblePink extends MovingObject{
 
-        x: number;
-        y: number;
-        radius: number;
+        constructor() {
+            super();
+            this.setRandomPosition();
+            
+        }
 
         move(): void {
             this.x += 0;
@@ -14,6 +16,13 @@ namespace Abschlussarbeit {
                 this.y = -40;
             }
 
+        }
+        
+        setRandomPosition(): void {
+            this.x = Math.random() * crc2.canvas.width;
+            this.y = Math.random() * crc2.canvas.height;
+            this.radius= 10;
+            
         }
 
 

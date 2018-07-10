@@ -1,12 +1,21 @@
 var Abschlussarbeit;
 (function (Abschlussarbeit) {
-    class BubbleOrange {
+    class BubbleOrange extends Abschlussarbeit.MovingObject {
+        constructor() {
+            super();
+            this.setRandomPosition();
+        }
         move() {
             this.x += 0;
             this.y += 2;
             if (this.y > 700) {
                 this.y = -40;
             }
+        }
+        setRandomPosition() {
+            this.x = Math.random() * Abschlussarbeit.crc2.canvas.width;
+            this.y = Math.random() * Abschlussarbeit.crc2.canvas.height;
+            this.radius = 10;
         }
         draw() {
             Abschlussarbeit.crc2.beginPath();

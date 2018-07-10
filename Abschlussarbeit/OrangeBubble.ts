@@ -1,10 +1,12 @@
 namespace Abschlussarbeit {
 
-    export class BubbleOrange {
+    export class BubbleOrange extends MovingObject {
 
-        x: number;
-        y: number;
-        radius: number;
+    
+    constructor() {
+        super();
+        this.setRandomPosition();
+    }
 
         move(): void {
             this.x += 0;
@@ -13,7 +15,13 @@ namespace Abschlussarbeit {
             if ( this.y > 700 ) {
                 this.y = -40;
             }
-
+        }
+        
+        setRandomPosition(): void {
+            this.x = Math.random() * crc2.canvas.width;
+            this.y = Math.random() * crc2.canvas.height;
+            this.radius= 10;
+            
         }
 
 
