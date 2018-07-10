@@ -1,0 +1,33 @@
+@media screen and (min-width:16em) {
+
+body canvas{
+  width: 300px;
+ heigth: 100px;
+}
+}
+
+@media screen and (min-width:35.625em) {
+
+body canvas{
+ width: 500px;
+ heigth: 300px;
+}
+}
+
+@media screen and (min-width:48em) {
+
+body canvas{
+width: 700px;
+heigth: 500px;
+}
+}
+
+
+@media screen and (min-width:64em) {
+
+body canvas{
+width: 900px;
+heigth: 700px;
+
+}
+}

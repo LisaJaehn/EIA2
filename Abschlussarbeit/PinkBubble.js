@@ -8,7 +8,7 @@ var Abschlussarbeit;
         move() {
             this.x += 0;
             this.y += 2;
-            if (this.y > 700) {
+            if (this.y > Abschlussarbeit.crc2.canvas.height) {
                 this.y = -40;
             }
         }

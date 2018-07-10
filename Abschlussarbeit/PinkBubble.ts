@@ -12,7 +12,7 @@ namespace Abschlussarbeit {
             this.x += 0;
             this.y += 2;
             
-            if ( this.y > 700 ) {
+            if ( this.y > crc2.canvas.height ) {
                 this.y = -40;
             }
 
