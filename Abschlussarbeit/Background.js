@@ -2,8 +2,8 @@ var Abschlussarbeit;
 (function (Abschlussarbeit) {
     class Background {
         paint() {
-            this.drawSun(750, 100, 70);
             this.drawBackground(100);
+            this.drawSun(750, 100, 70);
         }
         //Funktion Hintergrund
         drawBackground(_forestHeight) {

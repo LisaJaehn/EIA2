@@ -4,8 +4,8 @@ namespace Abschlussarbeit {
 
         public paint(): void {
 
-            this.drawSun( 750, 100, 70 );
             this.drawBackground( 100 );
+            this.drawSun( 750, 100, 70 );
 
         }
 
