@@ -12,7 +12,6 @@ namespace Abschlussarbeit {
 
         }
 
-    }
 
     draw(): void {
         crc2.beginPath();
@@ -23,3 +22,4 @@ namespace Abschlussarbeit {
         crc2.fill();
     }
   }
+}
