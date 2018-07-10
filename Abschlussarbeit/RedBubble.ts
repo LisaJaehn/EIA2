@@ -6,14 +6,15 @@ namespace Abschlussarbeit {
         y: number;
         radius: number;
 
-        move() {
-
+        move() : void {
+            this.x += 0;
+            this.y += 2;
 
         }
 
     }
 
-    draw(): void {
+        draw(): void {
         crc2.beginPath();
         crc2.fillStyle = "rgb(255,0,0)";
         crc2.arc( this.x, this.y, this.radius, 0, 2 * Math.PI );

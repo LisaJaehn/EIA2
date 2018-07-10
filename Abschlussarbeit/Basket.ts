@@ -5,7 +5,7 @@ namespace Abschlussarbeit {
         x: number;
         y: number;
 
-        move() {
+        move() : void {
 
 
         }

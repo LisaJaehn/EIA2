@@ -1,6 +1,6 @@
 var Abschlussarbeit;
 (function (Abschlussarbeit) {
-    class Hintergrund {
+    class Background {
         paint() {
             this.drawSun(750, 100, 70);
             this.drawBackground(100);
@@ -22,6 +22,6 @@ var Abschlussarbeit;
             Abschlussarbeit.crc2.fill();
         }
     }
-    Abschlussarbeit.Hintergrund = Hintergrund;
+    Abschlussarbeit.Background = Background;
 })(Abschlussarbeit || (Abschlussarbeit = {}));
 //# sourceMappingURL=Background.js.map

@@ -2,6 +2,7 @@ namespace Abschlussarbeit {
 
     window.addEventListener( "load", init );
     export let crc2: CanvasRenderingContext2D;
+    let imgData: ImageData;
     let trees: Tree[] = [];
     let n: number = 4;
 
@@ -15,7 +16,7 @@ namespace Abschlussarbeit {
         crc2 = canvas.getContext( "2d" );
         console.log( crc2 );
 
-        let hg: Hintergrund = new Hintergrund;
+        let hg: Background = new Background;
         hg.paint();
         imgData = crc2.getImageData( 0, 0, canvas.width, canvas.height );
         console.log( imgData );
@@ -24,18 +25,15 @@ namespace Abschlussarbeit {
         //Baum
 
         for ( let i: number = 0; i < n; i++ ) {
+            let tree: Tree = new Tree();
             tree.x = Math.random() * 900;
             tree.y = ( 550 );
 
             trees.push( tree );
-
-            //drawTree( x, y);
-
-            //drawTree( 150, 550 );
         }
 
         //Korb
-        drawBasket( 450, 630 );
+        //drawBasket( 450, 630 );
 
 
         //Rote Kugeln
@@ -51,6 +49,7 @@ namespace Abschlussarbeit {
 
         //Orangene Kugeln
         for ( let i: number = 0; i < m; i++ ) {
+            let bubbleOrange: BubbleOrange = new BubbleOrange();
             bubbleOrange.x = Math.random() * crc2.canvas.width;
             bubbleOrange.y = Math.random() * crc2.canvas.height;
             bubbleOrange.radius = Math.random() * 5;
@@ -61,6 +60,7 @@ namespace Abschlussarbeit {
 
         //Pinke Kugeln
         for ( let i: number = 0; i < m; i++ ) {
+            let bubblePink: BubblePink = new BubblePink();
             bubblePink.x = Math.random() * crc2.canvas.width;
             bubblePink.y = Math.random() * crc2.canvas.height;
             bubblePink.radius = Math.random() * 5;
@@ -102,13 +102,13 @@ namespace Abschlussarbeit {
 
 
         for ( let i: number = 0; i < bubblesOrange.length; i++ )
-            bubblesOrange[i].drawBubble();
+            bubblesOrange[i].draw();
 
         for ( let i: number = 0; i < bubblesPink.length; i++ )
-            bubblesPink[i].drawBubblesRandom();
+            bubblesPink[i].draw();
 
         for ( let i: number = 0; i < trees.length; i++ )
-            trees[i].drawBubblesRandom();
+            trees[i].draw();
     }
 
 

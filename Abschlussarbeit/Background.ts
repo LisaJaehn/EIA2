@@ -1,6 +1,6 @@
 namespace Abschlussarbeit {
 
-    export class Hintergrund {
+    export class Background {
 
 
 

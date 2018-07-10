@@ -6,8 +6,9 @@ namespace Abschlussarbeit {
         y: number;
         radius: number;
 
-        move() {
-
+        move() : void{
+            this.x += 0;
+            this.y += 2;
 
         }
 
