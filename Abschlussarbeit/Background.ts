@@ -2,8 +2,6 @@ namespace Abschlussarbeit {
 
     export class Background {
 
-
-
         public paint(): void {
 
             this.drawSun( 750, 100, 70 );
@@ -31,5 +29,4 @@ namespace Abschlussarbeit {
         }
     }
 }
-            
-            
+
