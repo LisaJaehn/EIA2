@@ -9,6 +9,10 @@ namespace Abschlussarbeit {
         move(): void {
             this.x += 0;
             this.y += 2;
+            
+            if ( this.y > 700 ) {
+                this.y = -40;
+            }
 
         }
 

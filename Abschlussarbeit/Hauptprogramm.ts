@@ -3,13 +3,14 @@ namespace Abschlussarbeit {
     window.addEventListener( "load", init );
     export let crc2: CanvasRenderingContext2D;
     let imgData: ImageData;
-    let trees: Tree[] = [];
-    let n: number = 4;
-
+    
     let bubblesPink: BubblePink[] = [];
     let bubblesRed: BubbleRed[] = [];
     let bubblesOrange: BubbleOrange[] = [];
-    let m: number = 8;
+    let m: number = 3;
+    
+    let trees: Tree[] = [];
+    let n: number = 4;
 
     function init( _event: Event ): void {
         let canvas: HTMLCanvasElement = document.getElementsByTagName( "canvas" )[0];
@@ -22,17 +23,6 @@ namespace Abschlussarbeit {
         console.log( imgData );
 
 
-        //Baum
-
-        for ( let i: number = 0; i < n; i++ ) {
-            let tree: Tree = new Tree();
-            tree.x = Math.random() * 900;
-            tree.y = ( 550 );
-
-            trees.push( tree );
-       
-        }
-
         //Korb
         //drawBasket( 450, 630 );
 
@@ -42,7 +32,7 @@ namespace Abschlussarbeit {
             let bubbleRed: BubbleRed = new BubbleRed();
             bubbleRed.x = Math.random() * crc2.canvas.width;
             bubbleRed.y = Math.random() * crc2.canvas.height;
-            bubbleRed.radius = Math.random() * 5;
+            bubbleRed.radius = 10;
 
             bubblesRed.push( bubbleRed );
 
@@ -53,7 +43,7 @@ namespace Abschlussarbeit {
             let bubbleOrange: BubbleOrange = new BubbleOrange();
             bubbleOrange.x = Math.random() * crc2.canvas.width;
             bubbleOrange.y = Math.random() * crc2.canvas.height;
-            bubbleOrange.radius = Math.random() * 5;
+            bubbleOrange.radius= 10;
 
             bubblesOrange.push( bubbleOrange );
 
@@ -64,10 +54,21 @@ namespace Abschlussarbeit {
             let bubblePink: BubblePink = new BubblePink();
             bubblePink.x = Math.random() * crc2.canvas.width;
             bubblePink.y = Math.random() * crc2.canvas.height;
-            bubblePink.radius = Math.random() * 5;
+            bubblePink.radius = 10;
 
             bubblesPink.push( bubblePink );
 
+        }
+        
+      //Baum
+
+        for ( let i: number = 0; i < n; i++ ) {
+            let tree: Tree = new Tree();
+            tree.x = Math.random() * 900;
+            tree.y = ( 550 );
+
+            trees.push( tree );
+       
         }
 
         animate();
@@ -80,6 +81,7 @@ namespace Abschlussarbeit {
 
         moveObjects();
         drawObjects();
+        
     }
 
     function moveObjects(): void {
@@ -97,6 +99,10 @@ namespace Abschlussarbeit {
     }
 
     function drawObjects(): void {
+        
+        for ( let i: number = 0; i < trees.length; i++ )
+            trees[i].draw();
+        
         for ( let i: number = 0; i < bubblesRed.length; i++ )
             bubblesRed[i].draw();
 
@@ -107,7 +113,5 @@ namespace Abschlussarbeit {
         for ( let i: number = 0; i < bubblesPink.length; i++ )
             bubblesPink[i].draw();
 
-        for ( let i: number = 0; i < trees.length; i++ )
-            trees[i].draw();
     }
 }

@@ -4,6 +4,9 @@ var Abschlussarbeit;
         move() {
             this.x += 0;
             this.y += 2;
+            if (this.y > 700) {
+                this.y = -40;
+            }
         }
         draw() {
             Abschlussarbeit.crc2.beginPath();
