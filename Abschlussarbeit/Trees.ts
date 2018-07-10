@@ -30,11 +30,11 @@ namespace Abschlussarbeit {
             crc2.fill();
 
 
-            // drawTrunk( this.x, this.y + 50 );
+            this.drawTrunk( this.x, this.y + 50 );
 
-            //}
+            }
 
-            //drawTrunk(): void {
+            drawTrunk(): void {
             crc2.beginPath();
             crc2.fillStyle = "rgb(139,90,0)";
             crc2.moveTo( this.x, this.y );

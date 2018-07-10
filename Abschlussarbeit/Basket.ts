@@ -19,11 +19,11 @@ namespace Abschlussarbeit {
             crc2.fill();
             crc2.stroke();
 
-            //drawHenckel( this.x + 150, this.y );
+            this.drawHenckel( this.x + 150, this.y );
 
-            //}
+            }
 
-            //drawHenckel(): void {
+            drawHenckel(): void {
             crc2.beginPath();
             crc2.moveTo( this.x, this.y );
             crc2.bezierCurveTo( this.x, this.y - 70, this.x - 100, this.y - 70, this.x - 100, this.y );
