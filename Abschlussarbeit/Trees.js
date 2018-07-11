@@ -1,8 +1,6 @@
 var Abschlussarbeit;
 (function (Abschlussarbeit) {
     class Tree {
-        move() {
-        }
         draw() {
             Abschlussarbeit.crc2.beginPath();
             Abschlussarbeit.crc2.fillStyle = "rgb(0,100,0)";

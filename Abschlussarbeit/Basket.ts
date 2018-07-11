@@ -8,16 +8,20 @@ namespace Abschlussarbeit {
         basketWidth: number = 100;
         basketHeight: number = 70;
 
+        //Korb bewegt sich nach links
+
         moveLeft(): void {
-          if(this.x > 0) {
-            this.x -= 10;
-          }
+            if ( this.x > 0 ) {
+                this.x -= 10;
+            }
         }
 
+        //Korb bewegt sich nach rechts
+
         moveRight(): void {
-          if(this.x+this.basketWidth < crc2.canvas.width) {
-              this.x += 10;
-          }
+            if ( this.x + this.basketWidth < crc2.canvas.width ) {
+                this.x += 10;
+            }
         }
 
         draw(): void {
@@ -34,17 +38,19 @@ namespace Abschlussarbeit {
 
         drawHenkel(): void {
             crc2.beginPath();
-            crc2.moveTo( this.x+this.basketWidth, this.y );
-            crc2.bezierCurveTo( this.x+50, this.y - this.basketHeight, this.x+50, this.y - this.basketHeight, this.x, this.y );
+            crc2.moveTo( this.x + this.basketWidth, this.y );
+            crc2.bezierCurveTo( this.x + 50, this.y - this.basketHeight, this.x + 50, this.y - this.basketHeight, this.x, this.y );
             crc2.closePath();
             crc2.stroke();
         }
 
-        checkIfInside(_x: number, _y: number): boolean {
-          if(_x > this.x && _x < (this.x + this.basketWidth) && _y > this.y && _y < this.y + this.basketHeight) {
-            return true;
-          }
-          return false;
+        //Um zu checken, ob Kugen und Korb aud gleicher Höhe sind
+
+        checkIfInside( _x: number, _y: number ): boolean {
+            if ( _x > this.x && _x < ( this.x + this.basketWidth ) && _y > this.y && _y < this.y + this.basketHeight ) {
+                return true;
+            }
+            return false;
         }
     }
-  }
+}

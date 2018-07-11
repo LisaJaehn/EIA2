@@ -5,11 +5,13 @@ var Abschlussarbeit;
             this.basketWidth = 100;
             this.basketHeight = 70;
         }
+        //Korb bewegt sich nach links
         moveLeft() {
             if (this.x > 0) {
                 this.x -= 10;
             }
         }
+        //Korb bewegt sich nach rechts
         moveRight() {
             if (this.x + this.basketWidth < Abschlussarbeit.crc2.canvas.width) {
                 this.x += 10;
@@ -32,6 +34,7 @@ var Abschlussarbeit;
             Abschlussarbeit.crc2.closePath();
             Abschlussarbeit.crc2.stroke();
         }
+        //Um zu checken, ob Kugen und Korb aud gleicher Höhe sind
         checkIfInside(_x, _y) {
             if (_x > this.x && _x < (this.x + this.basketWidth) && _y > this.y && _y < this.y + this.basketHeight) {
                 return true;

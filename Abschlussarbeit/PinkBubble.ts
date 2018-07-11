@@ -1,6 +1,6 @@
 namespace Abschlussarbeit {
 
-    export class BubblePink extends MovingObject{
+    export class BubblePink extends MovingObject {
 
         constructor() {
             super();
