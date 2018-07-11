@@ -1,13 +1,25 @@
 var Abschlussarbeit;
 (function (Abschlussarbeit) {
     class Basket {
-        move() {
+        constructor() {
+            this.basketWidth = 100;
+            this.basketHeight = 70;
+        }
+        moveLeft() {
+            if (this.x > 0) {
+                this.x -= 10;
+            }
+        }
+        moveRight() {
+            if (this.x + this.basketWidth < Abschlussarbeit.crc2.canvas.width) {
+                this.x += 10;
+            }
         }
         draw() {
             Abschlussarbeit.crc2.beginPath();
             Abschlussarbeit.crc2.fillStyle = "rgb(139,69,0)";
             Abschlussarbeit.crc2.moveTo(this.x, this.y);
-            Abschlussarbeit.crc2.bezierCurveTo(this.x, this.y + 70, this.x + 100, this.y + 70, this.x + 100, this.y);
+            Abschlussarbeit.crc2.bezierCurveTo(this.x, this.y + this.basketHeight, this.x + this.basketWidth, this.y + this.basketHeight, this.x + this.basketWidth, this.y);
             Abschlussarbeit.crc2.closePath();
             Abschlussarbeit.crc2.fill();
             Abschlussarbeit.crc2.stroke();
@@ -15,10 +27,16 @@ var Abschlussarbeit;
         }
         drawHenkel() {
             Abschlussarbeit.crc2.beginPath();
-            Abschlussarbeit.crc2.moveTo(this.x, this.y);
-            Abschlussarbeit.crc2.bezierCurveTo(this.x, this.y - 70, this.x - 100, this.y - 70, this.x - 100, this.y);
+            Abschlussarbeit.crc2.moveTo(this.x + this.basketWidth, this.y);
+            Abschlussarbeit.crc2.bezierCurveTo(this.x + 50, this.y - this.basketHeight, this.x + 50, this.y - this.basketHeight, this.x, this.y);
             Abschlussarbeit.crc2.closePath();
             Abschlussarbeit.crc2.stroke();
+        }
+        checkIfInside(_x, _y) {
+            if (_x > this.x && _x < (this.x + this.basketWidth) && _y > this.y && _y < this.y + this.basketHeight) {
+                return true;
+            }
+            return false;
         }
     }
     Abschlussarbeit.Basket = Basket;
