@@ -22,7 +22,6 @@ namespace L10_Canvas {
 
             this.x += 0;
             /*this.y += 2;
-
             if ( this.y < 0 ) {
                 this.y = 350;
             }*/
@@ -37,7 +36,6 @@ namespace L10_Canvas {
         }
 
         //Funktion Luftblasen aus der Kiste
-
         draw(): void {
             crc2.beginPath();
             crc2.fillStyle = this.color;

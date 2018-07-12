@@ -34,7 +34,6 @@ namespace L10_Canvas {
         }
 
         //Funktion Fische
-
         draw(): void {
             crc2.beginPath();
             crc2.fillStyle = "rgb(" + this.r + "," + this.g + "," + this.b + ")";

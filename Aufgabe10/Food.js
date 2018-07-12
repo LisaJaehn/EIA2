@@ -17,7 +17,6 @@ var L10_Canvas;
         move() {
             this.x += 0;
             /*this.y += 2;
-
             if ( this.y < 0 ) {
                 this.y = 350;
             }*/
